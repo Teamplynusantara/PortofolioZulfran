@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Zulfran</title>
+  <!-- Google Font Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- FontAwesome untuk Ikon Bintang -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; background-color: #1a1a1a; color: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+
+  <!-- Canvas Outer Container -->
+  <div style="width: 100vw; height: 100vh; background-color: #1e1e1e; position: relative; overflow: hidden; box-sizing: border-box;">
+
+    <!-- 1. Teks Raksasa "ZULFRAN" di Bagian Paling Atas -->
+    <h1 style="position: absolute; top: 6%; left: 6%; font-size: 18vw; font-weight: 900; color: #3065A3; margin: 0; line-height: 0.8; user-select: none; pointer-events: none; z-index: 1; letter-spacing: -2px;">
+      ZULFRAN
+    </h1>
+
+    <!-- 2. Area Konten Kiri (Diposisikan DI BAWAH Teks ZULFRAN) -->
+    <div style="position: absolute; top: 40%; left: 6%; z-index: 3; max-width: 460px;">
+      
+      <!-- Nav Links ("ABOUT ME | PROJECTS | FAQ") -->
+      <nav style="font-size: 26px; font-weight: 800; letter-spacing: 1px; color: #ffffff; margin-bottom: 20px; text-transform: uppercase;">
+        ABOUT ME &nbsp;&nbsp;|&nbsp;&nbsp; PROJECTS &nbsp;&nbsp;|&nbsp;&nbsp; FAQ
+      </nav>
+
+      <!-- Subtitle/Role -->
+      <h2 style="font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: #ffffff;">
+        3D Designer
+      </h2>
+
+      <!-- Deskripsi -->
+      <p style="font-size: 14px; line-height: 1.6; color: #b3b3b3; margin: 0 0 30px 0; max-width: 420px; font-weight: 400;">
+        Working closely with your team to deliver Webflow builds that merge creativity, technical excellence, and long-term value.
+      </p>
+
+      <!-- Tombol CTA -->
+      <div style="display: flex; gap: 14px; align-items: center;">
+        <a href="#call" style="background-color: #3065A3; color: #ffffff; padding: 13px 26px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block;">
+          Book a call
+        </a>
+        <a href="#cv" style="background-color: #3065A3; color: #ffffff; padding: 13px 26px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block;">
+          Download CV
+        </a>
+      </div>
+
+    </div>
+
+    <!-- 3. Foto Subject Kanan & Glass Card Melayang -->
+    <div style="position: absolute; right: 2%; bottom: 0; width: 55%; height: 90vh; display: flex; align-items: flex-end; justify-content: flex-end; z-index: 2;">
+
+      <!-- Subject Image (Mengisi sisi kanan layar dari bawah) -->
+     <img src="asset/zullfran.jpg" alt="Zulfran Profile" style="
+  height: 600px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  /* Tambahkan filter brightness di bawah ini */
+  filter: brightness(0.6) drop-shadow(0 10px 20px rgba(62, 61, 61, 0.6));
+">
+
+      <!-- Floating Glass Card (Di sebelah kiri dada subjek) -->
+      <div style="position: absolute; left: 10%; bottom: 22%; z-index: 4; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.15); padding: 20px 26px; border-radius: 16px; width: 160px; box-shadow: 0 15px 35px rgba(0,0,0,0.4);">
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; font-weight: 600; color: #ffffff; display: flex; flex-direction: column; gap: 12px;">
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> Creative
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> reliable
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> effecient
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> strategist
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> smart
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
