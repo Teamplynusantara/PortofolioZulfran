@@ -1,93 +1,509 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page Zulfran</title>
-  <!-- Google Font Poppins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- FontAwesome untuk Ikon Bintang -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zulfran — 3D Designer</title>
 </head>
-<body style="margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; background-color: #1a1a1a; color: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+<body style="margin:0;padding:0;background:#021526;color:#f5f6f8;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden;">
 
-  <!-- Canvas Outer Container -->
-  <div style="width: 100vw; height: 100vh; background-color: #1e1e1e; position: relative; overflow: hidden; box-sizing: border-box;">
+<!-- ================= HERO ================= -->
+<section style="position:relative;overflow:hidden;background:#000000;min-height:100vh;">
+  
+  <!-- Abstract Grey "Coretan" Layer using pseudo-elements -->
+  <style>
+    #heroSection::before,
+    #heroSection::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Let clicks pass through */
+      z-index: 0; /* Behind all content */
+    }
 
-    <!-- 1. Teks Raksasa "ZULFRAN" di Bagian Paling Atas -->
-    <h1 style="position: absolute; top: 6%; left: 6%; font-size: 18vw; font-weight: 900; color: #3065A3; margin: 0; line-height: 0.8; user-select: none; pointer-events: none; z-index: 1; letter-spacing: -2px;">
-      ZULFRAN
-    </h1>
+    /* First layer of abstract grey shapes */
+    #heroSection::before {
+      background-image: 
+        radial-gradient(ellipse at 20% 30%, rgba(3, 52, 110, 0.12) 0%, rgba(3, 52, 110, 0.12) 20%, transparent 60%),
+        radial-gradient(ellipse at 70% 15%, rgba(3, 52, 110, 0.10) 0%, rgba(3, 52, 110, 0.10) 15%, transparent 55%),
+        radial-gradient(ellipse at 40% 70%, rgba(3, 52, 110, 0.08) 0%, rgba(3, 52, 110, 0.08) 25%, transparent 65%);
+      filter: blur(15px); /* Soften the edges */
+    }
 
-    <!-- 2. Area Konten Kiri (Diposisikan DI BAWAH Teks ZULFRAN) -->
-    <div style="position: absolute; top: 40%; left: 6%; z-index: 3; max-width: 460px;">
-      
-      <!-- Nav Links ("ABOUT ME | PROJECTS | FAQ") -->
-      <nav style="font-size: 26px; font-weight: 800; letter-spacing: 1px; color: #ffffff; margin-bottom: 20px; text-transform: uppercase;">
-        ABOUT ME &nbsp;&nbsp;|&nbsp;&nbsp; PROJECTS &nbsp;&nbsp;|&nbsp;&nbsp; FAQ
-      </nav>
+    /* Second layer for more depth and scattering */
+    #heroSection::after {
+      background-image: 
+        radial-gradient(ellipse at 85% 60%, rgba(3, 52, 110, 0.10) 0%, rgba(3, 52, 110, 0.10) 18%, transparent 58%),
+        radial-gradient(ellipse at 15% 80%, rgba(3, 52, 110, 0.06) 0%, rgba(3, 52, 110, 0.06) 22%, transparent 62%);
+      filter: blur(20px);
+    }
+  </style>
 
-      <!-- Subtitle/Role -->
-      <h2 style="font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: #ffffff;">
-        3D Designer
-      </h2>
+  <div id="heroSection" style="position:relative; width:100%; height:100%; z-index: 1;">
 
-      <!-- Deskripsi -->
-      <p style="font-size: 14px; line-height: 1.6; color: #b3b3b3; margin: 0 0 30px 0; max-width: 420px; font-weight: 400;">
-        Working closely with your team to deliver Webflow builds that merge creativity, technical excellence, and long-term value.
-      </p>
-
-      <!-- Tombol CTA -->
-      <div style="display: flex; gap: 14px; align-items: center;">
-        <a href="#call" style="background-color: #3065A3; color: #ffffff; padding: 13px 26px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block;">
-          Book a call
-        </a>
-        <a href="#cv" style="background-color: #3065A3; color: #ffffff; padding: 13px 26px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block;">
-          Download CV
-        </a>
-      </div>
-
+    <!-- Photo: z-index 2 -->
+    <div id="heroPhoto" style="position:absolute;top:0;right:0;width:min(42vw,560px);height:min(880px,98%);overflow:hidden;z-index:2;opacity:1;">
+      <img src="asset/unnamed-removebg-preview (1).png" alt="Zulfran" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">
     </div>
 
-    <!-- 3. Foto Subject Kanan & Glass Card Melayang -->
-    <div style="position: absolute; right: 2%; bottom: 0; width: 55%; height: 90vh; display: flex; align-items: flex-end; justify-content: flex-end; z-index: 2;">
-
-      <!-- Subject Image (Mengisi sisi kanan layar dari bawah) -->
-     <img src="asset/zullfran.jpg" alt="Zulfran Profile" style="
-  height: 600px;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  /* Tambahkan filter brightness di bawah ini */
-  filter: brightness(0.6) drop-shadow(0 10px 20px rgba(62, 61, 61, 0.6));
-">
-
-      <!-- Floating Glass Card (Di sebelah kiri dada subjek) -->
-      <div style="position: absolute; left: 10%; bottom: 22%; z-index: 4; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.15); padding: 20px 26px; border-radius: 16px; width: 160px; box-shadow: 0 15px 35px rgba(0,0,0,0.4);">
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; font-weight: 600; color: #ffffff; display: flex; flex-direction: column; gap: 12px;">
-          <li style="display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> Creative
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> reliable
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> effecient
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> strategist
-          </li>
-          <li style="display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-star" style="font-size: 12px; color: #ffffff;"></i> smart
-          </li>
-        </ul>
-      </div>
-
+    <!-- Badge Card: z-index 3 (Di depan foto) -->
+    <div id="badgeCard" style="position:absolute;right:26%;top:50%;width:230px;background:rgba(3,52,110,.18);border-radius:10px;padding:16px 20px;z-index:3;opacity:1;backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08);">
+      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#b9bcc2;opacity:1;"><span style="color:#c7cad0;font-size:13px;">★</span> Creative</div>
+      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#b9bcc2;opacity:1;"><span style="color:#c7cad0;font-size:13px;">★</span> reliable</div>
+      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#c2c4ca;opacity:1;"><span style="color:#cdd0d5;font-size:13px;">★</span> effecient</div>
+      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#cccfd4;opacity:1;"><span style="color:#d6d8dc;font-size:13px;">★</span> strategist</div>
+      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#d8dade;opacity:1;"><span style="color:#e0e2e5;font-size:13px;">★</span> smart</div>
     </div>
 
+    <!-- Title: z-index 1 -->
+    <h1 id="heroTitle" style="position:relative;z-index:1;font-size:clamp(64px,12.5vw,175px);font-weight:800;color:#03346E;letter-spacing:1px;line-height:1;padding:40px 32px 0;white-space:nowrap;margin:0;opacity:1;transform:translateY(0);">ZULFRAN</h1>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:1;padding:70px 32px 90px;min-height:260px;">
+      <div id="heroCopy" style="max-width:460px;opacity:1;transform:translateY(0);">
+        <p style="color:#e0e0e0;font-weight:700;line-height:1.55;font-size:19px;margin:0 0 32px;">Working closely with your team to deliver Webflow builds that merge creativity, technical excellence, and long-term value.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <button class="btn-primary" style="padding:16px 30px;border-radius:10px;font-weight:800;font-size:16px;background:#03346E;color:#ffffff;border:none;cursor:pointer;transition:transform .3s ease, background .3s ease, box-shadow .3s ease;">Book a call</button>
+          <button class="btn-outline" style="padding:16px 30px;border-radius:10px;font-weight:800;font-size:16px;background:#03346E;color:#ffffff;border:none;cursor:pointer;transition:transform .3s ease, background .3s ease;">Download CV</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" style="padding:90px 32px 60px;">
+  <div style="display:grid;grid-template-columns:250px 1fr;gap:56px;max-width:2000px;margin:0 auto;align-items:start;" id="aboutGrid">
+
+    <aside style="display:flex;flex-direction:column;gap:14px;position:sticky;top:24px;">
+      <div style="display:flex;gap:10px;">
+        <div class="aside-bubble" style="background:radial-gradient(circle at 30% 25%, #0a2c4a, #04203a 70%);border:1px solid #0d3a5c;border-radius:999px;padding:20px 18px;flex:1;box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);text-align:center;opacity:0;transform:translateY(24px);transition-delay:0s;">
+          <div style="color:#ffffff;font-weight:800;font-size:19px;">17+</div>
+          <div style="font-size:10px;color:#93959c;margin-top:3px;line-height:1.3;">Projects Has Be Created</div>
+        </div>
+        <div class="aside-bubble" style="background:radial-gradient(circle at 30% 25%, #0a2c4a, #04203a 70%);border:1px solid #0d3a5c;border-radius:999px;padding:20px 18px;flex:1;box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);text-align:center;opacity:0;transform:translateY(24px);transition-delay:.05s;">
+          <div style="color:#ffffff;font-weight:800;font-size:19px;">7+</div>
+          <div style="font-size:10px;color:#93959c;margin-top:3px;line-height:1.3;">Years Of Experience</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;" id="navList">
+        <div class="nav-item aside-bubble" data-active="true" style="background:#03346E;color:#021526;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(3,52,110,.35);opacity:0;transform:translateY(24px);transition-delay:.1s;">
+          <span style="width:15px;height:15px;border-radius:50%;background:#021526;"></span> Home
+        </div>
+        <div class="nav-item aside-bubble" style="background:#04203a;color:#f5f6f8;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.15s;">
+          <span style="width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.15);"></span> Home
+        </div>
+        <div class="nav-item aside-bubble" style="background:#04203a;color:#f5f6f8;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.2s;">
+          <span style="width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.15);"></span> Home
+        </div>
+        <div class="nav-item aside-bubble" style="background:#04203a;color:#f5f6f8;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.25s;">
+          <span style="width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.15);"></span> Home
+        </div>
+      </div>
+
+      <div class="aside-bubble" style="background:#04203a;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-size:12.5px;color:#93959c;margin-top:8px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.3s;">email@email.com</div>
+      <div class="see-more aside-bubble" style="background:#03346E;color:#021526;border-radius:999px;padding:14px 20px;font-weight:700;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;margin-top:6px;cursor:pointer;transition:transform .3s ease;box-shadow:0 8px 20px rgba(3,52,110,.4);opacity:0;transform:translateY(24px);transition-delay:.35s;">See More <span>↗</span></div>
+    </aside>
+
+    <div>
+      <span style="display:inline-block;border:1px solid #0d3a5c;border-radius:20px;padding:6px 16px;font-size:12px;color:#93959c;margin-bottom:20px;">Designer &amp; Artist</span>
+      <h2 style="font-size:clamp(30px,4vw,44px);font-weight:800;line-height:1.15;margin:0 0 18px;">About Me
+      <p style="color:#93959c;max-width:500px;line-height:1.7;margin:0 0 60px;font-size:14.5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
+
+      <div style="position:relative;">
+        <div id="timelineTrack" style="position:relative;min-height:2100px;">
+          <svg id="timelineSvg" style="position:absolute;top: 00px;;left: 0px;width:100%;height:100%;overflow:visible;pointer-events:none;"></svg>
+
+          <div class="step-card" data-i="0" style="position:absolute;top:0;left:54%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
+            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
+            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
+            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores quis iste inventore eaque fuga ducimus dolorem molestiae voluptates, enim cupiditate earum consectetur itaque nostrum quisquam aperiam in libero! Ullam quia, architecto et, expedita, facere nam ducimus harum ex at rem odit consectetur explicabo velit vero qui fugiat quibusdam laboriosam nisi.
+            </p>
+          </div>
+          <div class="step-card" data-i="1" data-line-start-offset="-100" data-line-end-offset="-20" style="position:absolute;top:520px;left:0%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
+            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
+            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
+            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ut ipsum voluptatem fuga reprehenderit necessitatibus. Aperiam, culpa minima enim voluptatum iure voluptatibus fugiat repudiandae saepe unde quos nesciunt laboriosam facere consectetur possimus consequuntur repellendus excepturi! Vitae magni facilis fugiat repellendus quae cumque, debitis quam sint modi. Sed fuga debitis quidem?</p>
+          </div>
+          <div class="step-card" data-i="2" data-line-start-offset="-100" data-line-end-offset="-20" style="position:absolute;top:1040px;left:54%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
+            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
+            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
+            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio alias eum, facilis amet ex dolore sint obcaecati cumque quisquam ad laboriosam impedit sit culpa necessitatibus atque eius quo esse tempora ducimus saepe, tenetur facere. Enim corporis, maxime voluptatem ad dolores harum sit ipsum totam animi. Ad possimus voluptatum aperiam. Eius?</p>
+          </div>
+          <div class="step-card" data-i="3" data-line-start-offset="-100" data-line-end-offset="-20" style="position:absolute;top:1560px;left:0%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
+            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
+            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
+            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste placeat perferendis delectus nisi eligendi blanditiis commodi aut accusamus, dolorum sapiente magni laudantium, fugiat, numquam accusantium tempore quisquam illum voluptates soluta porro vel! Aut sint voluptatum quod eveniet, eius vero minus totam amet saepe nemo dicta corrupti. Quaerat, eos dolores.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" style="padding:70px 0 80px;">
+  <div style="padding:0 32px;">
+    <div class="reveal" style="display:inline-block;border:1.5px solid #f5f6f8;border-radius:6px;padding:13px 26px;font-weight:700;margin:0 0 40px;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;">Project unggulan</div>
   </div>
 
+  <div style="display:flex;gap:20px;overflow-x:auto;padding:0 32px 14px;scroll-snap-type:x proximity;">
+
+    <div class="project-card" style="flex:0 0 290px;scroll-snap-align:start;background:#04203a;border-radius:14px;overflow:hidden;border:1px solid #0d3a5c;opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease,box-shadow .3s ease;">
+      <div style="position:relative;height:250px;overflow:hidden;">
+        <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;align-items:center;z-index:2;">
+          <span style="background:#fff;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;">1</span>
+          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">testing project</span>
+          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">3D</span>
+        </div>
+        <img class="project-img" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=500&q=80" alt="testing project" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;">
+      </div>
+      <div style="padding:18px 20px 22px;position:relative;">
+        <h4 style="font-size:17px;margin:0 0 8px;">testing project</h4>
+        <p style="color:#93959c;font-size:12.5px;line-height:1.6;margin:0;padding-right:36px;">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
+        <div class="arrow-btn" style="position:absolute;right:18px;bottom:18px;width:32px;height:32px;border-radius:50%;background:#0a2c4a;border:1px solid #0d3a5c;color:#f5f6f8;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease;">↗</div>
+      </div>
+    </div>
+
+    <div class="project-card" style="flex:0 0 290px;scroll-snap-align:start;background:#04203a;border-radius:14px;overflow:hidden;border:1px solid #0d3a5c;opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease,box-shadow .3s ease;">
+      <div style="position:relative;height:250px;overflow:hidden;">
+        <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;align-items:center;z-index:2;">
+          <span style="background:#fff;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;">1</span>
+          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">testing project</span>
+          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">3D</span>
+        </div>
+        <img class="project-img" src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=500&q=80" alt="testing project" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;">
+      </div>
+      <div style="padding:18px 20px 22px;position:relative;">
+        <h4 style="font-size:17px;margin:0 0 8px;">testing project</h4>
+        <p style="color:#93959c;font-size:12.5px;line-height:1.6;margin:0;padding-right:36px;">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
+        <div class="arrow-btn" style="position:absolute;right:18px;bottom:18px;width:32px;height:32px;border-radius:50%;background:#0a2c4a;border:1px solid #0d3a5c;color:#f5f6f8;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease;">↗</div>
+      </div>
+    </div>
+
+    <div class="project-card" style="flex:0 0 290px;scroll-snap-align:start;background:#04203a;border-radius:14px;overflow:hidden;border:1px solid #0d3a5c;opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease,box-shadow .3s ease;">
+      <div style="position:relative;height:250px;overflow:hidden;">
+        <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;align-items:center;z-index:2;">
+          <span style="background:#fff;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;">1</span>
+          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">testing project</span>
+          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">3D</span>
+        </div>
+        <img class="project-img" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=500&q=80" alt="testing project" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;">
+      </div>
+      <div style="padding:18px 20px 22px;position:relative;">
+        <h4 style="font-size:17px;margin:0 0 8px;">testing project</h4>
+        <p style="color:#93959c;font-size:12.5px;line-height:1.6;margin:0;padding-right:36px;">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
+        <div class="arrow-btn" style="position:absolute;right:18px;bottom:18px;width:32px;height:32px;border-radius:50%;background:#0a2c4a;border:1px solid #0d3a5c;color:#f5f6f8;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease;">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" style="padding:70px 32px 100px;">
+  <h2 class="reveal" style="font-size:clamp(34px,6vw,58px);font-weight:800;margin:0 0 40px;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;">Tanya kuy!</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:980px;align-content:start;" id="faqGrid">
+
+    <div class="faq-item reveal" data-open="true" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
+        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">-</span>
+      </div>
+      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:200px;opacity:1;margin-top:14px;">
+        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
+        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
+      </div>
+      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
+        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
+        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
+      </div>
+      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
+        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
+        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
+      </div>
+      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
+        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
+        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
+      </div>
+      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
+        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer style="border-top:1px solid #0d3a5c;padding:50px 32px;">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;max-width:1180px;margin:0 auto;">
+    <div>
+      <h3 style="color:#03346E;margin:0 0 10px;font-size:20px;">Zulfran</h3>
+      <p style="color:#93959c;font-size:13px;max-width:240px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien.</p>
+    </div>
+    <div>
+      <div style="color:#03346E;font-weight:700;margin-bottom:14px;">Quick Link</div>
+      <a href="#" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">Home</a>
+      <a href="#projects" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">Project</a>
+      <a href="#about" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">About</a>
+      <a href="#faq" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">FAQ</a>
+    </div>
+    <div>
+      <div style="color:#03346E;font-weight:700;margin-bottom:14px;">Follow Me</div>
+      <div style="display:flex;gap:10px;margin-bottom:14px;">
+        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
+        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
+        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
+        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
+      </div>
+      <a href="#" class="footlink" style="display:block;color:#93959c;font-size:13.5px;text-decoration:none;transition:color .3s ease;">email@email.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Page-load intro animation ---------- */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const t = document.getElementById('heroTitle');
+    if(t) {
+      t.style.transition = 'opacity 1s cubic-bezier(.22,.9,.32,1), transform 1s cubic-bezier(.22,.9,.32,1)';
+      t.style.opacity = '1'; t.style.transform = 'translateY(0)';
+    }
+  }, 100);
+  setTimeout(() => {
+    const p = document.getElementById('heroPhoto');
+    if(p) {
+      p.style.transition = 'opacity 1.1s cubic-bezier(.22,.9,.32,1)';
+      p.style.opacity = '1';
+    }
+  }, 300);
+  setTimeout(() => {
+    const c = document.getElementById('heroCopy');
+    if(c) {
+      c.style.transition = 'opacity .9s cubic-bezier(.22,.9,.32,1), transform .9s cubic-bezier(.22,.9,.32,1)';
+      c.style.opacity = '1'; c.style.transform = 'translateY(0)';
+    }
+  }, 700);
+  setTimeout(() => {
+    const b = document.getElementById('badgeCard');
+    if(b) {
+      b.style.transition = 'opacity .8s cubic-bezier(.22,.9,.32,1), transform .8s cubic-bezier(.22,.9,.32,1)';
+      b.style.opacity = '1'; b.style.transform = 'translateX(0) scale(1)';
+      document.querySelectorAll('.badge-row').forEach((row, i) => {
+        setTimeout(() => {
+          row.style.transition = 'opacity .6s cubic-bezier(.22,.9,.32,1)';
+          row.style.opacity = '1';
+        }, i * 120);
+      });
+    }
+  }, 1100);
+});
+
+/* ---------- Hover effects ---------- */
+function hoverFX(selector, onEnter, onLeave){
+  document.querySelectorAll(selector).forEach(el => {
+    el.addEventListener('mouseenter', () => onEnter(el));
+    el.addEventListener('mouseleave', () => onLeave(el));
+  });
+}
+hoverFX('.navlink', el => el.style.color = '#03346E', el => el.style.color = '#f5f6f8');
+hoverFX('.btn-primary',
+  el => { el.style.transform = 'translateY(-3px)'; el.style.boxShadow = '0 10px 24px rgba(3,52,110,.35)'; el.style.background = '#0a4a8a'; },
+  el => { el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none'; el.style.background = '#03346E'; });
+hoverFX('.btn-outline',
+  el => { el.style.transform = 'translateY(-3px)'; el.style.background = 'rgba(3,52,110,.2)'; },
+  el => { el.style.transform = 'translateY(0)'; el.style.background = '#03346E'; });
+hoverFX('.nav-item',
+  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(4px)'; el.style.background = '#0a2c4a'; } },
+  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(0)'; el.style.background = '#04203a'; } });
+hoverFX('.see-more', el => el.style.transform = 'translateY(-2px)', el => el.style.transform = 'translateY(0)');
+hoverFX('.project-card',
+  el => { el.style.boxShadow = '0 20px 40px rgba(0,0,0,.4)'; el.style.transform = 'translateY(-6px)';
+          const img = el.querySelector('.project-img'); if (img) img.style.transform = 'scale(1.08)';
+          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#03346E'; arrow.style.color = '#021526'; arrow.style.transform = 'rotate(45deg)'; } },
+  el => { el.style.boxShadow = 'none'; el.style.transform = 'translateY(0)';
+          const img = el.querySelector('.project-img'); if (img) img.style.transform = 'scale(1)';
+          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#0a2c4a'; arrow.style.color = '#f5f6f8'; arrow.style.transform = 'rotate(0deg)'; } });
+hoverFX('.faq-item', el => el.style.background = '#0d3a5c', el => { if (el.dataset.open !== 'true') el.style.background = '#0a2c4a'; });
+hoverFX('.footlink', el => el.style.color = '#03346E', el => el.style.color = '#93959c');
+hoverFX('.social-dot', el => { el.style.background = '#03346E'; el.style.transform = 'translateY(-3px)'; }, el => { el.style.background = '#04203a'; el.style.transform = 'translateY(0)'; });
+
+/* ---------- Reveal-on-scroll (Masuk saat Scroll Down & Keluar saat Scroll Up) ---------- */
+const revealEls = document.querySelectorAll('.step-card, .project-card, .reveal, .faq-item, .aside-bubble');
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const el = entry.target;
+
+    if (entry.isIntersecting) {
+      el.style.opacity = '1';
+      el.style.transform = el.classList.contains('step-card') ? 'translateY(0) scale(1)' : 'translateY(0)';
+    } else {
+      el.style.opacity = '0';
+      if (entry.boundingClientRect.top > 0) {
+        el.style.transform = el.classList.contains('step-card') ? 'translateY(50px) scale(.94)' : 'translateY(30px)';
+      }
+    }
+  });
+}, { 
+  threshold: 0.15, 
+  rootMargin: '0px 0px -40px 0px' 
+});
+
+revealEls.forEach((el) => {
+  el.style.transition = 'opacity .8s ease, transform .8s ease';
+  io.observe(el);
+});
+
+/* ---------- Garis penghubung timeline (1 GARIS = 1 CARD) ---------- */
+const track = document.getElementById('timelineTrack');
+const svg = document.getElementById('timelineSvg');
+const cards = Array.from(document.querySelectorAll('.step-card'));
+let paths = [];
+
+function drawLines(){
+  if (!svg || !track) return;
+  svg.innerHTML = '';
+  paths = [];
+  const trackRect = track.getBoundingClientRect();
+  svg.setAttribute('viewBox', `0 0 ${trackRect.width} ${trackRect.height}`);
+
+  for (let i = 1; i < cards.length; i++){
+    const prevCard = cards[i - 1];
+    const currCard = cards[i];
+
+    const prev = prevCard.getBoundingClientRect();
+    const curr = currCard.getBoundingClientRect();
+
+    const startOffset = parseFloat(currCard.dataset.lineStartOffset ?? -100);
+    const endOffset = parseFloat(currCard.dataset.lineEndOffset ?? -20);
+
+    const startX = prev.left - trackRect.left + prev.width / 2;
+    const startY = (prev.top - trackRect.top + prev.height) + startOffset;
+
+    const endX = curr.left - trackRect.left + curr.width / 2;
+    const endY = (curr.top - trackRect.top) + endOffset;
+
+    const midY = (startY + endY) / 2;
+    const d = `M ${startX} ${startY} C ${startX} ${midY}, ${endX} ${midY}, ${endX} ${endY}`;
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke', '#03346E');
+    path.setAttribute('stroke-width', '2');
+    path.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(path);
+
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+    path.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(.22,.9,.32,1)';
+    paths.push({ el: path, cardTarget: currCard });
+  }
+}
+function revealLines(){
+  const winH = window.innerHeight;
+  paths.forEach((p) => {
+    const card = p.cardTarget.getBoundingClientRect();
+    if (card.top < winH - 80 && card.bottom > 0) {
+      p.el.style.strokeDashoffset = '0';
+    } else {
+      p.el.style.strokeDashoffset = p.el.getTotalLength();
+    }
+  });
+}
+
+window.addEventListener('load', () => { drawLines(); revealLines(); });
+window.addEventListener('resize', drawLines);
+window.addEventListener('scroll', revealLines, { passive: true });
+setTimeout(drawLines, 400);
+
+if (window.ResizeObserver) {
+  const cardResizeObserver = new ResizeObserver(() => {
+    drawLines();
+    revealLines();
+  });
+  cards.forEach(card => cardResizeObserver.observe(card));
+}
+
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const body = item.querySelector('.faq-body');
+    const toggle = item.querySelector('.faq-toggle');
+    const isOpen = item.dataset.open === 'true';
+    if (isOpen){
+      item.dataset.open = 'false';
+      body.style.maxHeight = '0'; body.style.opacity = '0'; body.style.marginTop = '0';
+      toggle.style.transform = 'rotate(0deg)'; toggle.textContent = '+';
+      item.style.background = '#0a2c4a';
+    } else {
+      item.dataset.open = 'true';
+      body.style.maxHeight = '200px'; body.style.opacity = '1'; body.style.marginTop = '14px';
+      toggle.style.transform = 'rotate(135deg)'; toggle.textContent = '-';
+      item.style.background = '#0d3a5c';
+    }
+  });
+});
+
+/* ---------- Sidebar nav active state ---------- */
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(i => {
+      i.dataset.active = 'false';
+      i.style.background = '#04203a'; i.style.color = '#f5f6f8';
+      i.querySelector('span').style.background = 'rgba(255,255,255,.15)';
+    });
+    item.dataset.active = 'true';
+    item.style.background = '#03346E'; item.style.color = '#021526';
+    item.querySelector('span').style.background = '#021526';
+  });
+});
+
+/* ---------- Responsif sederhana ---------- */
+function applyResponsive(){
+  const narrow = window.innerWidth <= 900;
+  const grid = document.getElementById('aboutGrid');
+  if(grid) grid.style.gridTemplateColumns = narrow ? '1fr' : '250px 1fr';
+  document.querySelectorAll('.step-card').forEach(c => {
+    if (!c.dataset.baseWidth) {
+      c.dataset.baseWidth = c.style.width || '270px';
+    }
+    c.style.position = narrow ? 'static' : 'absolute';
+    c.style.width = narrow ? '100%' : c.dataset.baseWidth;
+    c.style.marginBottom = narrow ? '24px' : '0';
+  });
+  if(svg) svg.style.display = narrow ? 'none' : 'block';
+  const faqGrid = document.getElementById('faqGrid');
+  if(faqGrid) faqGrid.style.gridTemplateColumns = narrow ? '1fr' : '1fr 1fr';
+  if (!narrow) drawLines();
+}
+window.addEventListener('resize', applyResponsive);
+window.addEventListener('load', applyResponsive);
+</script>
 </body>
 </html>
