@@ -4,70 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zulfran — 3D Designer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#021526',      // background utama
+          panel: '#04203a',   // panel/card
+          panel2: '#062a48',  // panel FAQ
+          border: '#0d3a5c',  // border tipis
+          accent: '#03346E',  // warna aksen biru (angka, judul, tombol aktif)
+          fg: '#f5f6f8',      // teks terang
+          muted: '#93959c',   // teks abu-abu
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* Lapisan abstrak "coretan" grey di hero — pakai CSS murni karena
+     multi radial-gradient di pseudo-element sulit direpresentasikan
+     lewat utility class tanpa mengubah warnanya. */
+  #heroSection::before,
+  #heroSection::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  #heroSection::before {
+    background-image:
+      radial-gradient(ellipse at 20% 30%, rgba(100,100,100,0.08) 0%, rgba(100,100,100,0.08) 20%, transparent 60%),
+      radial-gradient(ellipse at 70% 15%, rgba(130,130,130,0.06) 0%, rgba(130,130,130,0.06) 15%, transparent 55%),
+      radial-gradient(ellipse at 40% 70%, rgba(80,80,80,0.05) 0%, rgba(80,80,80,0.05) 25%, transparent 65%);
+    filter: blur(15px);
+  }
+  #heroSection::after {
+    background-image:
+      radial-gradient(ellipse at 85% 60%, rgba(110,110,110,0.07) 0%, rgba(110,110,110,0.07) 18%, transparent 58%),
+      radial-gradient(ellipse at 15% 80%, rgba(90,90,90,0.04) 0%, rgba(90,90,90,0.04) 22%, transparent 62%);
+    filter: blur(20px);
+  }
+</style>
 </head>
-<body style="margin:0;padding:0;background:#021526;color:#f5f6f8;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden;">
+<body class="m-0 p-0 bg-bg text-fg font-sans overflow-x-hidden" style="font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
 
 <!-- ================= HERO ================= -->
-<section style="position:relative;overflow:hidden;background:#000000;min-height:100vh;">
-  
-  <!-- Abstract Grey "Coretan" Layer using pseudo-elements -->
-  <style>
-    #heroSection::before,
-    #heroSection::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; /* Let clicks pass through */
-      z-index: 0; /* Behind all content */
-    }
+<section id="home" class="relative overflow-hidden bg-bg min-h-[750px]">
+  <div id="heroSection" class="relative w-full h-full z-[1]">
 
-    /* First layer of abstract grey shapes */
-    #heroSection::before {
-      background-image: 
-        radial-gradient(ellipse at 20% 30%, rgba(3, 52, 110, 0.12) 0%, rgba(3, 52, 110, 0.12) 20%, transparent 60%),
-        radial-gradient(ellipse at 70% 15%, rgba(3, 52, 110, 0.10) 0%, rgba(3, 52, 110, 0.10) 15%, transparent 55%),
-        radial-gradient(ellipse at 40% 70%, rgba(3, 52, 110, 0.08) 0%, rgba(3, 52, 110, 0.08) 25%, transparent 65%);
-      filter: blur(15px); /* Soften the edges */
-    }
-
-    /* Second layer for more depth and scattering */
-    #heroSection::after {
-      background-image: 
-        radial-gradient(ellipse at 85% 60%, rgba(3, 52, 110, 0.10) 0%, rgba(3, 52, 110, 0.10) 18%, transparent 58%),
-        radial-gradient(ellipse at 15% 80%, rgba(3, 52, 110, 0.06) 0%, rgba(3, 52, 110, 0.06) 22%, transparent 62%);
-      filter: blur(20px);
-    }
-  </style>
-
-  <div id="heroSection" style="position:relative; width:100%; height:100%; z-index: 1;">
-
-    <!-- Photo: z-index 2 -->
-    <div id="heroPhoto" style="position:absolute;top:0;right:0;width:min(42vw,560px);height:min(880px,98%);overflow:hidden;z-index:2;opacity:1;">
-      <img src="asset/unnamed-removebg-preview (1).png" alt="Zulfran" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">
+    <!-- Photo -->
+    <div id="heroPhoto" class="absolute top-0 right-0 w-[min(42vw,560px)] h-[700px] overflow-hidden z-[2] opacity-100">
+      <img src="asset/unnamed-removebg-preview (1).png" alt="Zulfran" class="w-full h-full object-cover object-top block">
     </div>
 
-    <!-- Badge Card: z-index 3 (Di depan foto) -->
-    <div id="badgeCard" style="position:absolute;right:26%;top:50%;width:230px;background:rgba(3,52,110,.18);border-radius:10px;padding:16px 20px;z-index:3;opacity:1;backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08);">
-      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#b9bcc2;opacity:1;"><span style="color:#c7cad0;font-size:13px;">★</span> Creative</div>
-      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#b9bcc2;opacity:1;"><span style="color:#c7cad0;font-size:13px;">★</span> reliable</div>
-      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#c2c4ca;opacity:1;"><span style="color:#cdd0d5;font-size:13px;">★</span> effecient</div>
-      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#cccfd4;opacity:1;"><span style="color:#d6d8dc;font-size:13px;">★</span> strategist</div>
-      <div class="badge-row" style="display:flex;align-items:center;gap:10px;padding:6px 0;font-weight:700;font-size:15px;color:#d8dade;opacity:1;"><span style="color:#e0e2e5;font-size:13px;">★</span> smart</div>
+    <!-- Badge Card -->
+    <div id="badgeCard" class="absolute right-[25%] top-[60%] w-[250px] h-[250px] rounded-[10px] p-4 px-5 z-[3] opacity-100 backdrop-blur-[8px] border border-white/[0.08]" style="background:rgba(150,150,155,.14);">
+      <div class="badge-row flex items-center gap-2.5 py-1.5 font-bold text-[20px] text-[#b9bcc2] opacity-100"><span class="text-[#c7cad0] text-[13px]">★</span> Creative</div>
+      <div class="badge-row flex items-center gap-2.5 py-1.5 font-bold text-[20px] text-[#b9bcc2] opacity-100"><span class="text-[#c7cad0] text-[13px]">★</span> reliable</div>
+      <div class="badge-row flex items-center gap-2.5 py-1.5 font-bold text-[20px] text-[#c2c4ca] opacity-100"><span class="text-[#cdd0d5] text-[13px]">★</span> effecient</div>
+      <div class="badge-row flex items-center gap-2.5 py-1.5 font-bold text-[20px] text-[#cccfd4] opacity-100"><span class="text-[#d6d8dc] text-[13px]">★</span> strategist</div>
+      <div class="badge-row flex items-center gap-2.5 py-1.5 font-bold text-[20px] text-[#d8dade] opacity-100"><span class="text-[#e0e2e5] text-[13px]">★</span> smart</div>
     </div>
 
-    <!-- Title: z-index 1 -->
-    <h1 id="heroTitle" style="position:relative;z-index:1;font-size:clamp(64px,12.5vw,175px);font-weight:800;color:#03346E;letter-spacing:1px;line-height:1;padding:40px 32px 0;white-space:nowrap;margin:0;opacity:1;transform:translateY(0);">ZULFRAN</h1>
+    <!-- Title -->
+    <h1 id="heroTitle" class="relative z-[1] font-extrabold text-accent tracking-[1px] leading-none pt-10 px-8 pb-0 whitespace-nowrap m-0 opacity-100 translate-y-0" style="font-size:clamp(64px,12.5vw,175px);">ZULFRAN</h1>
 
     <!-- Content -->
-    <div style="position:relative;z-index:1;padding:70px 32px 90px;min-height:260px;">
-      <div id="heroCopy" style="max-width:460px;opacity:1;transform:translateY(0);">
-        <p style="color:#e0e0e0;font-weight:700;line-height:1.55;font-size:19px;margin:0 0 32px;">Working closely with your team to deliver Webflow builds that merge creativity, technical excellence, and long-term value.</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <button class="btn-primary" style="padding:16px 30px;border-radius:10px;font-weight:800;font-size:16px;background:#03346E;color:#ffffff;border:none;cursor:pointer;transition:transform .3s ease, background .3s ease, box-shadow .3s ease;">Book a call</button>
-          <button class="btn-outline" style="padding:16px 30px;border-radius:10px;font-weight:800;font-size:16px;background:#03346E;color:#ffffff;border:none;cursor:pointer;transition:transform .3s ease, background .3s ease;">Download CV</button>
+    <div class="relative z-[1] px-8 pt-[70px] pb-[90px] min-h-[260px]">
+      <div id="heroCopy" class="max-w-[460px] opacity-100 translate-y-0">
+        <p class="text-[#e0e0e0] font-bold leading-[1.55] text-[19px] mb-8">Working closely with your team to deliver Webflow builds that merge creativity, technical excellence, and long-term value.</p>
+        <div class="flex gap-4 flex-wrap">
+
+          <button class="btn-primary w-[220px] py-4 rounded-full font-extrabold text-base text-white border border-white/40 backdrop-blur-[12px] cursor-pointer transition-all duration-300 flex items-center justify-center text-center"
+            style="background:linear-gradient(135deg, rgba(94,200,242,0.35) 0%, rgba(3,52,110,0.35) 100%);
+                   box-shadow: inset 0 1px 1px rgba(255,255,255,0.6), inset 0 -6px 10px rgba(3,52,110,0.25), 0 8px 20px rgba(3,52,110,0.35);">
+            Book a call
+          </button>
+
+          <button class="btn-outline w-[220px] py-4 rounded-full font-extrabold text-base text-white border border-white/50 backdrop-blur-[12px] cursor-pointer transition-all duration-300 flex items-center justify-center text-center"
+            style="background:linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+                   box-shadow: inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -6px 10px rgba(255,255,255,0.1), 0 8px 20px rgba(0,0,0,0.15);">
+            Download CV
+          </button>
+
         </div>
       </div>
     </div>
@@ -75,69 +97,74 @@
 </section>
 
 <!-- ================= ABOUT ================= -->
-<section id="about" style="padding:90px 32px 60px;">
-  <div style="display:grid;grid-template-columns:250px 1fr;gap:56px;max-width:2000px;margin:0 auto;align-items:start;" id="aboutGrid">
+<section id="about" class="pt-[90px] px-8 pb-[60px]">
+  <div id="aboutGrid" class="grid gap-14 max-w-[2000px] mx-auto items-start" style="grid-template-columns:250px 1fr;">
 
-    <aside style="display:flex;flex-direction:column;gap:14px;position:sticky;top:24px;">
-      <div style="display:flex;gap:10px;">
-        <div class="aside-bubble" style="background:radial-gradient(circle at 30% 25%, #0a2c4a, #04203a 70%);border:1px solid #0d3a5c;border-radius:999px;padding:20px 18px;flex:1;box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);text-align:center;opacity:0;transform:translateY(24px);transition-delay:0s;">
-          <div style="color:#ffffff;font-weight:800;font-size:19px;">17+</div>
-          <div style="font-size:10px;color:#93959c;margin-top:3px;line-height:1.3;">Projects Has Be Created</div>
+    <aside class="flex flex-col gap-3.5 sticky top-6">
+      <div class="flex gap-2.5">
+        <div class="aside-bubble flex-1 rounded-[30px] border border-border p-5 px-[18px] text-center opacity-0 translate-y-6"
+             style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%); box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:0s;">
+          <div class="text-accent font-extrabold text-[19px]">17+</div>
+          <div class="text-[10px] text-muted mt-[3px] leading-[1.3]">Projects Has Be Created</div>
         </div>
-        <div class="aside-bubble" style="background:radial-gradient(circle at 30% 25%, #0a2c4a, #04203a 70%);border:1px solid #0d3a5c;border-radius:999px;padding:20px 18px;flex:1;box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);text-align:center;opacity:0;transform:translateY(24px);transition-delay:.05s;">
-          <div style="color:#ffffff;font-weight:800;font-size:19px;">7+</div>
-          <div style="font-size:10px;color:#93959c;margin-top:3px;line-height:1.3;">Years Of Experience</div>
+        <div class="aside-bubble flex-1 rounded-[30px] border border-border p-5 px-[18px] text-center opacity-0 translate-y-6"
+             style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%); box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:.05s;">
+          <div class="text-accent font-extrabold text-[19px]">7+</div>
+          <div class="text-[10px] text-muted mt-[3px] leading-[1.3]">Years Of Experience</div>
         </div>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;" id="navList">
-        <div class="nav-item aside-bubble" data-active="true" style="background:#03346E;color:#021526;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(3,52,110,.35);opacity:0;transform:translateY(24px);transition-delay:.1s;">
-          <span style="width:15px;height:15px;border-radius:50%;background:#021526;"></span> Home
+      <div id="navList" class="flex flex-col gap-2.5 mt-1">
+        <div class="nav-item aside-bubble bg-accent text-bg border border-border rounded-[30px] py-3 px-[18px] font-semibold text-[13.5px] flex items-center gap-2.5 cursor-pointer transition-all duration-300 opacity-0 translate-y-6"
+             data-active="true" data-target="#home" style="box-shadow:0 6px 16px rgba(3,52,110,.45); transition-delay:.1s;">
+          <span class="w-[15px] h-[15px] rounded-full bg-bg"></span> Home
         </div>
-        <div class="nav-item aside-bubble" style="background:#04203a;color:#f5f6f8;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.15s;">
-          <span style="width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.15);"></span> Home
+        <div class="nav-item aside-bubble bg-panel text-fg border border-border rounded-[30px] py-3 px-[18px] font-semibold text-[13.5px] flex items-center gap-2.5 cursor-pointer transition-all duration-300 opacity-0 translate-y-6"
+             data-target="#about" style="box-shadow:0 6px 16px rgba(0,0,0,.3); transition-delay:.15s;">
+          <span class="w-[15px] h-[15px] rounded-full bg-white/[0.15]"></span> About
         </div>
-        <div class="nav-item aside-bubble" style="background:#04203a;color:#f5f6f8;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.2s;">
-          <span style="width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.15);"></span> Home
+        <div class="nav-item aside-bubble bg-panel text-fg border border-border rounded-[30px] py-3 px-[18px] font-semibold text-[13.5px] flex items-center gap-2.5 cursor-pointer transition-all duration-300 opacity-0 translate-y-6"
+             data-target="#projects" style="box-shadow:0 6px 16px rgba(0,0,0,.3); transition-delay:.2s;">
+          <span class="w-[15px] h-[15px] rounded-full bg-white/[0.15]"></span> Projects
         </div>
-        <div class="nav-item aside-bubble" style="background:#04203a;color:#f5f6f8;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .3s ease,transform .3s ease;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.25s;">
-          <span style="width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.15);"></span> Home
+        <div class="nav-item aside-bubble bg-panel text-fg border border-border rounded-[30px] py-3 px-[18px] font-semibold text-[13.5px] flex items-center gap-2.5 cursor-pointer transition-all duration-300 opacity-0 translate-y-6"
+             data-target="#faq" style="box-shadow:0 6px 16px rgba(0,0,0,.3); transition-delay:.25s;">
+          <span class="w-[15px] h-[15px] rounded-full bg-white/[0.15]"></span> FAQ
         </div>
       </div>
 
-      <div class="aside-bubble" style="background:#04203a;border:1px solid #0d3a5c;border-radius:999px;padding:12px 18px;font-size:12.5px;color:#93959c;margin-top:8px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;transform:translateY(24px);transition-delay:.3s;">email@email.com</div>
-      <div class="see-more aside-bubble" style="background:#03346E;color:#021526;border-radius:999px;padding:14px 20px;font-weight:700;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;margin-top:6px;cursor:pointer;transition:transform .3s ease;box-shadow:0 8px 20px rgba(3,52,110,.4);opacity:0;transform:translateY(24px);transition-delay:.35s;">See More <span>↗</span></div>
+      <div class="aside-bubble bg-panel border border-border rounded-full py-3 px-[18px] text-[12.5px] text-muted mt-2 text-center opacity-0 translate-y-6" style="box-shadow:0 6px 16px rgba(0,0,0,.3); transition-delay:.3s;">email@email.com</div>
+      <div class="see-more aside-bubble bg-accent text-bg rounded-full py-3.5 px-5 font-bold text-[13.5px] flex justify-between items-center mt-1.5 cursor-pointer transition-transform duration-300 opacity-0 translate-y-6" style="box-shadow:0 8px 20px rgba(3,52,110,.5); transition-delay:.35s;">See More <span>↗</span></div>
     </aside>
 
     <div>
-      <span style="display:inline-block;border:1px solid #0d3a5c;border-radius:20px;padding:6px 16px;font-size:12px;color:#93959c;margin-bottom:20px;">Designer &amp; Artist</span>
-      <h2 style="font-size:clamp(30px,4vw,44px);font-weight:800;line-height:1.15;margin:0 0 18px;">About Me
-      <p style="color:#93959c;max-width:500px;line-height:1.7;margin:0 0 60px;font-size:14.5px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
+      <span class="inline-block border border-border rounded-[20px] py-1.5 px-4 text-xs text-muted mb-5">Designer &amp; Artist</span>
+      <h2 class="font-extrabold leading-[1.15] mb-[18px]" style="font-size:clamp(30px,4vw,44px);">About Me (&amp;)<br>My Journey</h2>
+      <p class="text-muted max-w-[500px] leading-[1.7] mb-[60px] text-[14.5px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
 
-      <div style="position:relative;">
-        <div id="timelineTrack" style="position:relative;min-height:2100px;">
-          <svg id="timelineSvg" style="position:absolute;top: 00px;;left: 0px;width:100%;height:100%;overflow:visible;pointer-events:none;"></svg>
+      <div class="relative">
+        <div id="timelineTrack" class="relative min-h-[2100px]">
+          <svg id="timelineSvg" class="absolute top-0 left-0 w-full h-full overflow-visible pointer-events-none"></svg>
 
-          <div class="step-card" data-i="0" style="position:absolute;top:0;left:54%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
-            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
-            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
-            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores quis iste inventore eaque fuga ducimus dolorem molestiae voluptates, enim cupiditate earum consectetur itaque nostrum quisquam aperiam in libero! Ullam quia, architecto et, expedita, facere nam ducimus harum ex at rem odit consectetur explicabo velit vero qui fugiat quibusdam laboriosam nisi.
-            </p>
+          <div class="step-card absolute top-0 left-[54%] w-[270px] bg-panel border border-border rounded-[14px] pt-6 px-6 pb-[26px] opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="0" style="transform:translateY(50px) scale(.94);">
+            <div class="text-accent font-extrabold text-[25px] mb-3.5">'20</div>
+            <h4 class="text-[16.5px] mb-2.5">First Step</h4>
+            <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores quis iste inventore eaque fuga ducimus dolorem molestiae voluptates, enim cupiditate earum consectetur itaque nostrum quisquam aperiam in libero! Ullam quia, architecto et, expedita, facere nam ducimus harum ex at rem odit consectetur explicabo velit vero qui fugiat quibusdam laboriosam nisi.</p>
           </div>
-          <div class="step-card" data-i="1" data-line-start-offset="-100" data-line-end-offset="-20" style="position:absolute;top:520px;left:0%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
-            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
-            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
-            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ut ipsum voluptatem fuga reprehenderit necessitatibus. Aperiam, culpa minima enim voluptatum iure voluptatibus fugiat repudiandae saepe unde quos nesciunt laboriosam facere consectetur possimus consequuntur repellendus excepturi! Vitae magni facilis fugiat repellendus quae cumque, debitis quam sint modi. Sed fuga debitis quidem?</p>
+          <div class="step-card absolute w-[270px] bg-panel border border-border rounded-[14px] pt-6 px-6 pb-[26px] opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="1" data-line-start-offset="-100" data-line-end-offset="-20" style="top:520px;left:0%;transform:translateY(50px) scale(.94);">
+            <div class="text-accent font-extrabold text-[25px] mb-3.5">'20</div>
+            <h4 class="text-[16.5px] mb-2.5">First Step</h4>
+            <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ut ipsum voluptatem fuga reprehenderit necessitatibus. Aperiam, culpa minima enim voluptatum iure voluptatibus fugiat repudiandae saepe unde quos nesciunt laboriosam facere consectetur possimus consequuntur repellendus excepturi! Vitae magni facilis fugiat repellendus quae cumque, debitis quam sint modi. Sed fuga debitis quidem?</p>
           </div>
-          <div class="step-card" data-i="2" data-line-start-offset="-100" data-line-end-offset="-20" style="position:absolute;top:1040px;left:54%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
-            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
-            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
-            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio alias eum, facilis amet ex dolore sint obcaecati cumque quisquam ad laboriosam impedit sit culpa necessitatibus atque eius quo esse tempora ducimus saepe, tenetur facere. Enim corporis, maxime voluptatem ad dolores harum sit ipsum totam animi. Ad possimus voluptatum aperiam. Eius?</p>
+          <div class="step-card absolute w-[270px] bg-panel border border-border rounded-[14px] pt-6 px-6 pb-[26px] opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="2" data-line-start-offset="-100" data-line-end-offset="-20" style="top:1040px;left:54%;transform:translateY(50px) scale(.94);">
+            <div class="text-accent font-extrabold text-[25px] mb-3.5">'20</div>
+            <h4 class="text-[16.5px] mb-2.5">First Step</h4>
+            <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio alias eum, facilis amet ex dolore sint obcaecati cumque quisquam ad laboriosam impedit sit culpa necessitatibus atque eius quo esse tempora ducimus saepe, tenetur facere. Enim corporis, maxime voluptatem ad dolores harum sit ipsum totam animi. Ad possimus voluptatum aperiam. Eius?</p>
           </div>
-          <div class="step-card" data-i="3" data-line-start-offset="-100" data-line-end-offset="-20" style="position:absolute;top:1560px;left:0%;width:270px;background:#04203a;border:1px solid #0d3a5c;border-radius:14px;padding:24px 24px 26px;opacity:0;transform:translateY(50px) scale(.94);transition:opacity .9s ease,transform .9s ease;">
-            <div style="color:#03346E;font-weight:800;font-size:25px;margin-bottom:14px;">'20</div>
-            <h4 style="font-size:16.5px;margin:0 0 10px;">First Step</h4>
-            <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste placeat perferendis delectus nisi eligendi blanditiis commodi aut accusamus, dolorum sapiente magni laudantium, fugiat, numquam accusantium tempore quisquam illum voluptates soluta porro vel! Aut sint voluptatum quod eveniet, eius vero minus totam amet saepe nemo dicta corrupti. Quaerat, eos dolores.</p>
+          <div class="step-card absolute w-[270px] bg-panel border border-border rounded-[14px] pt-6 px-6 pb-[26px] opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="3" data-line-start-offset="-100" data-line-end-offset="-20" style="top:1560px;left:0%;transform:translateY(50px) scale(.94);">
+            <div class="text-accent font-extrabold text-[25px] mb-3.5">'20</div>
+            <h4 class="text-[16.5px] mb-2.5">First Step</h4>
+            <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste placeat perferendis delectus nisi eligendi blanditiis commodi aut accusamus, dolorum sapiente magni laudantium, fugiat, numquam accusantium tempore quisquam illum voluptates soluta porro vel! Aut sint voluptatum quod eveniet, eius vero minus totam amet saepe nemo dicta corrupti. Quaerat, eos dolores.</p>
           </div>
         </div>
       </div>
@@ -146,139 +173,139 @@
 </section>
 
 <!-- ================= PROJECTS ================= -->
-<section id="projects" style="padding:70px 0 80px;">
-  <div style="padding:0 32px;">
-    <div class="reveal" style="display:inline-block;border:1.5px solid #f5f6f8;border-radius:6px;padding:13px 26px;font-weight:700;margin:0 0 40px;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;">Project unggulan</div>
+<section id="projects" class="py-[70px] pt-[70px] pb-[80px]">
+  <div class="px-8">
+    <div class="reveal inline-block border-[1.5px] border-fg rounded-md py-[13px] px-[26px] font-bold mb-10 opacity-0 translate-y-[30px] transition-[opacity,transform] duration-[800ms] ease-in-out">Project unggulan</div>
   </div>
 
-  <div style="display:flex;gap:20px;overflow-x:auto;padding:0 32px 14px;scroll-snap-type:x proximity;">
+  <div class="flex gap-5 overflow-x-auto px-8 pb-3.5" style="scroll-snap-type:x proximity;">
 
-    <div class="project-card" style="flex:0 0 290px;scroll-snap-align:start;background:#04203a;border-radius:14px;overflow:hidden;border:1px solid #0d3a5c;opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease,box-shadow .3s ease;">
-      <div style="position:relative;height:250px;overflow:hidden;">
-        <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;align-items:center;z-index:2;">
-          <span style="background:#fff;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;">1</span>
-          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">testing project</span>
-          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">3D</span>
+    <div class="project-card flex-none w-[290px] bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out" style="scroll-snap-align:start;">
+      <div class="relative h-[250px] overflow-hidden">
+        <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
+          <span class="bg-white text-black w-6 h-6 rounded-full flex items-center justify-center text-[11.5px] font-extrabold">1</span>
+          <span class="bg-black/[0.55] text-[11px] font-bold py-1.5 px-2.5 rounded-md">testing project</span>
+          <span class="bg-black/[0.55] text-[11px] font-bold py-1.5 px-2.5 rounded-md">3D</span>
         </div>
-        <img class="project-img" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=500&q=80" alt="testing project" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;">
+        <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=500&q=80" alt="testing project">
       </div>
-      <div style="padding:18px 20px 22px;position:relative;">
-        <h4 style="font-size:17px;margin:0 0 8px;">testing project</h4>
-        <p style="color:#93959c;font-size:12.5px;line-height:1.6;margin:0;padding-right:36px;">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
-        <div class="arrow-btn" style="position:absolute;right:18px;bottom:18px;width:32px;height:32px;border-radius:50%;background:#0a2c4a;border:1px solid #0d3a5c;color:#f5f6f8;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease;">↗</div>
+      <div class="relative pt-[18px] px-5 pb-[22px]">
+        <h4 class="text-[17px] mb-2">testing project</h4>
+        <p class="text-muted text-[12.5px] leading-[1.6] m-0 pr-9">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
+        <div class="arrow-btn absolute right-[18px] bottom-[18px] w-8 h-8 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
       </div>
     </div>
 
-    <div class="project-card" style="flex:0 0 290px;scroll-snap-align:start;background:#04203a;border-radius:14px;overflow:hidden;border:1px solid #0d3a5c;opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease,box-shadow .3s ease;">
-      <div style="position:relative;height:250px;overflow:hidden;">
-        <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;align-items:center;z-index:2;">
-          <span style="background:#fff;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;">1</span>
-          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">testing project</span>
-          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">3D</span>
+    <div class="project-card flex-none w-[290px] bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out" style="scroll-snap-align:start;">
+      <div class="relative h-[250px] overflow-hidden">
+        <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
+          <span class="bg-white text-black w-6 h-6 rounded-full flex items-center justify-center text-[11.5px] font-extrabold">1</span>
+          <span class="bg-black/[0.55] text-[11px] font-bold py-1.5 px-2.5 rounded-md">testing project</span>
+          <span class="bg-black/[0.55] text-[11px] font-bold py-1.5 px-2.5 rounded-md">3D</span>
         </div>
-        <img class="project-img" src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=500&q=80" alt="testing project" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;">
+        <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=500&q=80" alt="testing project">
       </div>
-      <div style="padding:18px 20px 22px;position:relative;">
-        <h4 style="font-size:17px;margin:0 0 8px;">testing project</h4>
-        <p style="color:#93959c;font-size:12.5px;line-height:1.6;margin:0;padding-right:36px;">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
-        <div class="arrow-btn" style="position:absolute;right:18px;bottom:18px;width:32px;height:32px;border-radius:50%;background:#0a2c4a;border:1px solid #0d3a5c;color:#f5f6f8;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease;">↗</div>
+      <div class="relative pt-[18px] px-5 pb-[22px]">
+        <h4 class="text-[17px] mb-2">testing project</h4>
+        <p class="text-muted text-[12.5px] leading-[1.6] m-0 pr-9">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
+        <div class="arrow-btn absolute right-[18px] bottom-[18px] w-8 h-8 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
       </div>
     </div>
 
-    <div class="project-card" style="flex:0 0 290px;scroll-snap-align:start;background:#04203a;border-radius:14px;overflow:hidden;border:1px solid #0d3a5c;opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease,box-shadow .3s ease;">
-      <div style="position:relative;height:250px;overflow:hidden;">
-        <div style="position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;align-items:center;z-index:2;">
-          <span style="background:#fff;color:#000;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;">1</span>
-          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">testing project</span>
-          <span style="background:rgba(0,0,0,.55);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;">3D</span>
+    <div class="project-card flex-none w-[290px] bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out" style="scroll-snap-align:start;">
+      <div class="relative h-[250px] overflow-hidden">
+        <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
+          <span class="bg-white text-black w-6 h-6 rounded-full flex items-center justify-center text-[11.5px] font-extrabold">1</span>
+          <span class="bg-black/[0.55] text-[11px] font-bold py-1.5 px-2.5 rounded-md">testing project</span>
+          <span class="bg-black/[0.55] text-[11px] font-bold py-1.5 px-2.5 rounded-md">3D</span>
         </div>
-        <img class="project-img" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=500&q=80" alt="testing project" style="width:100%;height:100%;object-fit:cover;transition:transform .6s ease;">
+        <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=500&q=80" alt="testing project">
       </div>
-      <div style="padding:18px 20px 22px;position:relative;">
-        <h4 style="font-size:17px;margin:0 0 8px;">testing project</h4>
-        <p style="color:#93959c;font-size:12.5px;line-height:1.6;margin:0;padding-right:36px;">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
-        <div class="arrow-btn" style="position:absolute;right:18px;bottom:18px;width:32px;height:32px;border-radius:50%;background:#0a2c4a;border:1px solid #0d3a5c;color:#f5f6f8;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease;">↗</div>
+      <div class="relative pt-[18px] px-5 pb-[22px]">
+        <h4 class="text-[17px] mb-2">testing project</h4>
+        <p class="text-muted text-[12.5px] leading-[1.6] m-0 pr-9">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
+        <div class="arrow-btn absolute right-[18px] bottom-[18px] w-8 h-8 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= FAQ ================= -->
-<section id="faq" style="padding:70px 32px 100px;">
-  <h2 class="reveal" style="font-size:clamp(34px,6vw,58px);font-weight:800;margin:0 0 40px;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;">Tanya kuy!</h2>
+<section id="faq" class="pt-[70px] px-8 pb-[100px]">
+  <h2 class="reveal font-extrabold mb-10 opacity-0 translate-y-[30px] transition-[opacity,transform] duration-[800ms] ease-in-out" style="font-size:clamp(34px,6vw,58px);">Tanya kuy!</h2>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:980px;align-content:start;" id="faqGrid">
+  <div id="faqGrid" class="grid grid-cols-2 gap-4 max-w-[980px]" style="align-content:start;">
 
-    <div class="faq-item reveal" data-open="true" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
-        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">-</span>
+    <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out" data-open="true">
+      <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+        <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">-</span>
       </div>
-      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:200px;opacity:1;margin-top:14px;">
-        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
+      <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:200px;opacity:1;margin-top:14px;">
+        <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
       </div>
     </div>
 
-    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
-        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
+    <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+      <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+        <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
       </div>
-      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
-        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
-        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
-      </div>
-      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
-        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
+        <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
 
-    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
-        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
+    <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+      <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+        <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
       </div>
-      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
-        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
+        <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
 
-    <div class="faq-item reveal" style="background:#0a2c4a;border:1px solid #0d3a5c;border-radius:12px;padding:20px 22px;cursor:pointer;height:fit-content;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease,background .3s ease;">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;font-weight:700;font-size:14.5px;">Berapa value kamu
-        <span class="faq-toggle" style="width:20px;height:20px;border-radius:50%;background:#03346E;color:#021526;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px;transition:transform .4s ease;">+</span>
+    <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+      <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+        <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
       </div>
-      <div class="faq-body" style="overflow:hidden;transition:max-height .5s ease,opacity .4s ease,margin-top .4s ease;max-height:0;opacity:0;margin-top:0;">
-        <p style="color:#93959c;font-size:13px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
+        <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+      <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+        <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
+      </div>
+      <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
+        <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer style="border-top:1px solid #0d3a5c;padding:50px 32px;">
-  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;max-width:1180px;margin:0 auto;">
+<footer class="border-t border-border py-[50px] px-8">
+  <div class="flex flex-wrap justify-between gap-10 max-w-[1180px] mx-auto">
     <div>
-      <h3 style="color:#03346E;margin:0 0 10px;font-size:20px;">Zulfran</h3>
-      <p style="color:#93959c;font-size:13px;max-width:240px;line-height:1.6;margin:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien.</p>
+      <h3 class="text-accent mb-2.5 text-xl">Zulfran</h3>
+      <p class="text-muted text-[13px] max-w-[240px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien.</p>
     </div>
     <div>
-      <div style="color:#03346E;font-weight:700;margin-bottom:14px;">Quick Link</div>
-      <a href="#" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">Home</a>
-      <a href="#projects" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">Project</a>
-      <a href="#about" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">About</a>
-      <a href="#faq" class="footlink" style="display:block;color:#93959c;font-size:13.5px;margin-bottom:8px;text-decoration:none;transition:color .3s ease;">FAQ</a>
+      <div class="text-accent font-bold mb-3.5">Quick Link</div>
+      <a href="#home" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Home</a>
+      <a href="#projects" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Project</a>
+      <a href="#about" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">About</a>
+      <a href="#faq" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">FAQ</a>
     </div>
     <div>
-      <div style="color:#03346E;font-weight:700;margin-bottom:14px;">Follow Me</div>
-      <div style="display:flex;gap:10px;margin-bottom:14px;">
-        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
-        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
-        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
-        <span class="social-dot" style="width:32px;height:32px;border-radius:50%;background:#04203a;border:1px solid #0d3a5c;display:inline-block;transition:background .3s ease,transform .3s ease;"></span>
+      <div class="text-accent font-bold mb-3.5">Follow Me</div>
+      <div class="flex gap-2.5 mb-3.5">
+        <span class="social-dot w-8 h-8 rounded-full bg-panel border border-border inline-block transition-all duration-300"></span>
+        <span class="social-dot w-8 h-8 rounded-full bg-panel border border-border inline-block transition-all duration-300"></span>
+        <span class="social-dot w-8 h-8 rounded-full bg-panel border border-border inline-block transition-all duration-300"></span>
+        <span class="social-dot w-8 h-8 rounded-full bg-panel border border-border inline-block transition-all duration-300"></span>
       </div>
-      <a href="#" class="footlink" style="display:block;color:#93959c;font-size:13.5px;text-decoration:none;transition:color .3s ease;">email@email.com</a>
+      <a href="#" class="footlink block text-muted text-[13.5px] no-underline transition-colors duration-300">email@email.com</a>
     </div>
   </div>
 </footer>
@@ -331,13 +358,13 @@ function hoverFX(selector, onEnter, onLeave){
 }
 hoverFX('.navlink', el => el.style.color = '#03346E', el => el.style.color = '#f5f6f8');
 hoverFX('.btn-primary',
-  el => { el.style.transform = 'translateY(-3px)'; el.style.boxShadow = '0 10px 24px rgba(3,52,110,.35)'; el.style.background = '#0a4a8a'; },
+  el => { el.style.transform = 'translateY(-3px)'; el.style.boxShadow = '0 10px 24px rgba(3,52,110,.45)'; el.style.background = '#0a4a86'; },
   el => { el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none'; el.style.background = '#03346E'; });
 hoverFX('.btn-outline',
-  el => { el.style.transform = 'translateY(-3px)'; el.style.background = 'rgba(3,52,110,.2)'; },
+  el => { el.style.transform = 'translateY(-3px)'; el.style.background = 'rgba(3,52,110,.25)'; },
   el => { el.style.transform = 'translateY(0)'; el.style.background = '#03346E'; });
 hoverFX('.nav-item',
-  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(4px)'; el.style.background = '#0a2c4a'; } },
+  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(4px)'; el.style.background = '#062a48'; } },
   el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(0)'; el.style.background = '#04203a'; } });
 hoverFX('.see-more', el => el.style.transform = 'translateY(-2px)', el => el.style.transform = 'translateY(0)');
 hoverFX('.project-card',
@@ -346,8 +373,8 @@ hoverFX('.project-card',
           const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#03346E'; arrow.style.color = '#021526'; arrow.style.transform = 'rotate(45deg)'; } },
   el => { el.style.boxShadow = 'none'; el.style.transform = 'translateY(0)';
           const img = el.querySelector('.project-img'); if (img) img.style.transform = 'scale(1)';
-          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#0a2c4a'; arrow.style.color = '#f5f6f8'; arrow.style.transform = 'rotate(0deg)'; } });
-hoverFX('.faq-item', el => el.style.background = '#0d3a5c', el => { if (el.dataset.open !== 'true') el.style.background = '#0a2c4a'; });
+          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#062a48'; arrow.style.color = '#f5f6f8'; arrow.style.transform = 'rotate(0deg)'; } });
+hoverFX('.faq-item', el => el.style.background = '#26262e', el => { if (el.dataset.open !== 'true') el.style.background = '#062a48'; });
 hoverFX('.footlink', el => el.style.color = '#03346E', el => el.style.color = '#93959c');
 hoverFX('.social-dot', el => { el.style.background = '#03346E'; el.style.transform = 'translateY(-3px)'; }, el => { el.style.background = '#04203a'; el.style.transform = 'translateY(0)'; });
 
@@ -460,29 +487,53 @@ document.querySelectorAll('.faq-item').forEach(item => {
       item.dataset.open = 'false';
       body.style.maxHeight = '0'; body.style.opacity = '0'; body.style.marginTop = '0';
       toggle.style.transform = 'rotate(0deg)'; toggle.textContent = '+';
-      item.style.background = '#0a2c4a';
+      item.style.background = '#062a48';
     } else {
       item.dataset.open = 'true';
       body.style.maxHeight = '200px'; body.style.opacity = '1'; body.style.marginTop = '14px';
       toggle.style.transform = 'rotate(135deg)'; toggle.textContent = '-';
-      item.style.background = '#0d3a5c';
+      item.style.background = '#26262e';
     }
   });
 });
 
-/* ---------- Sidebar nav active state ---------- */
-document.querySelectorAll('.nav-item').forEach(item => {
+/* ---------- Sidebar nav: klik untuk scroll ke section + active state ---------- */
+const navItems = Array.from(document.querySelectorAll('.nav-item'));
+const navSections = navItems
+  .map(item => document.querySelector(item.dataset.target))
+  .filter(Boolean);
+
+function setActiveNav(activeItem){
+  navItems.forEach(i => {
+    i.dataset.active = 'false';
+    i.style.background = '#04203a'; i.style.color = '#f5f6f8';
+    i.querySelector('span').style.background = 'rgba(255,255,255,.15)';
+  });
+  activeItem.dataset.active = 'true';
+  activeItem.style.background = '#03346E'; activeItem.style.color = '#021526';
+  activeItem.querySelector('span').style.background = '#021526';
+}
+
+navItems.forEach(item => {
   item.addEventListener('click', () => {
-    document.querySelectorAll('.nav-item').forEach(i => {
-      i.dataset.active = 'false';
-      i.style.background = '#04203a'; i.style.color = '#f5f6f8';
-      i.querySelector('span').style.background = 'rgba(255,255,255,.15)';
-    });
-    item.dataset.active = 'true';
-    item.style.background = '#03346E'; item.style.color = '#021526';
-    item.querySelector('span').style.background = '#021526';
+    const targetSel = item.dataset.target;
+    const targetEl = targetSel ? document.querySelector(targetSel) : null;
+    if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setActiveNav(item);
   });
 });
+
+/* Scroll-spy: highlight nav sesuai section yang sedang terlihat */
+const navSpy = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      const idx = navSections.indexOf(entry.target);
+      if (idx !== -1) setActiveNav(navItems[idx]);
+    }
+  });
+}, { threshold: 0.4, rootMargin: '-20% 0px -40% 0px' });
+
+navSections.forEach(sec => navSpy.observe(sec));
 
 /* ---------- Responsif sederhana ---------- */
 function applyResponsive(){
