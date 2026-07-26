@@ -44,9 +44,110 @@
       radial-gradient(ellipse at 15% 80%, rgba(90,90,90,0.04) 0%, rgba(90,90,90,0.04) 22%, transparent 62%);
     filter: blur(20px);
   }
+
+  /* ---------- Mobile navbar / hamburger ---------- */
+  #mobileNavbar { display: none; }
+  #mobileMenuOverlay { display: none; }
+
+  .hamburger-btn { background: none; border: none; padding: 0; }
+  .hamburger-btn .line {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #f5f6f8;
+    border-radius: 2px;
+    transition: transform .35s cubic-bezier(.65,0,.35,1), opacity .25s ease, width .25s ease;
+  }
+  .hamburger-btn .line2 { width: 19px; align-self: flex-end; }
+  .hamburger-btn.active .line1 { transform: translateY(7px) rotate(45deg); }
+  .hamburger-btn.active .line2 { opacity: 0; }
+  .hamburger-btn.active .line3 { transform: translateY(-7px) rotate(-45deg); width: 26px; }
+
+  #mobileMenuOverlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+  }
+  #mobileMenuOverlay.menu-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  #mobileMenuOverlay .menu-row {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  #mobileMenuOverlay.menu-open .menu-row {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    #mobileNavbar { display: flex; }
+    #sidebarAside { display: none; }
+    #mobileMenuOverlay { display: flex; }
+
+    #heroSection { padding-top: 88px; }
+    .hero-desktop-nav { display: none; }
+    #heroMainRow { flex-direction: column; align-items: flex-start; gap: 40px; }
+    #heroPhotoWrap { width: 100%; height: 300px; order: -1; justify-content: center; }
+    #badgeCard { display: none; }
+    #heroTitle { font-size: clamp(52px, 16vw, 96px); }
+  }
+
+  @media (max-width: 520px) {
+    #heroTitle { font-size: clamp(40px, 17vw, 64px); }
+  }
 </style>
 </head>
 <body class="m-0 p-0 bg-bg text-fg font-sans overflow-x-hidden" style="font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+
+<!-- ================= MOBILE NAVBAR (muncul di layar sempit) ================= -->
+<header id="mobileNavbar" class="fixed top-0 left-0 w-full z-[60] items-center justify-between px-6 py-4 bg-bg/90 backdrop-blur-md border-b border-border">
+  <span class="text-accent font-extrabold text-[15px] tracking-wide">ZULFRAN<sup class="text-[9px]">®</sup></span>
+  <button id="hamburgerBtn" class="hamburger-btn w-8 h-8 flex flex-col justify-center gap-[6px]" aria-label="Buka menu" aria-expanded="false" aria-controls="mobileMenuOverlay">
+    <span class="line line1"></span>
+    <span class="line line2"></span>
+    <span class="line line3"></span>
+  </button>
+</header>
+
+<!-- ================= MOBILE MENU OVERLAY ================= -->
+<div id="mobileMenuOverlay" class="fixed inset-0 z-50 flex-col bg-bg px-8 pt-[110px] pb-10 overflow-y-auto">
+  <nav class="flex flex-col gap-2.5">
+    <a href="#home" data-target="#home" class="mobile-nav-link menu-row bg-accent text-bg border border-border rounded-2xl py-4 px-5 font-semibold text-[16px] flex items-center gap-3 no-underline" style="transition-delay:.02s;">
+      <span class="w-[14px] h-[14px] rounded-full bg-bg"></span> Home
+    </a>
+    <a href="#about" data-target="#about" class="mobile-nav-link menu-row bg-panel text-fg border border-border rounded-2xl py-4 px-5 font-semibold text-[16px] flex items-center gap-3 no-underline" style="transition-delay:.07s;">
+      <span class="w-[14px] h-[14px] rounded-full bg-white/[0.15]"></span> About
+    </a>
+    <a href="#projects" data-target="#projects" class="mobile-nav-link menu-row bg-panel text-fg border border-border rounded-2xl py-4 px-5 font-semibold text-[16px] flex items-center gap-3 no-underline" style="transition-delay:.12s;">
+      <span class="w-[14px] h-[14px] rounded-full bg-white/[0.15]"></span> Projects
+    </a>
+    <a href="#faq" data-target="#faq" class="mobile-nav-link menu-row bg-panel text-fg border border-border rounded-2xl py-4 px-5 font-semibold text-[16px] flex items-center gap-3 no-underline" style="transition-delay:.17s;">
+      <span class="w-[14px] h-[14px] rounded-full bg-white/[0.15]"></span> FAQ
+    </a>
+  </nav>
+
+  <div class="menu-row flex gap-2.5 mt-6" style="transition-delay:.22s;">
+    <div class="flex-1 rounded-2xl border border-border p-4 text-center" style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%);">
+      <div class="text-accent font-extrabold text-[18px]">17+</div>
+      <div class="text-[10.5px] text-muted mt-[3px] leading-[1.3]">Projects Has Been Created</div>
+    </div>
+    <div class="flex-1 rounded-2xl border border-border p-4 text-center" style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%);">
+      <div class="text-accent font-extrabold text-[18px]">7+</div>
+      <div class="text-[10.5px] text-muted mt-[3px] leading-[1.3]">Years Of Experience</div>
+    </div>
+  </div>
+
+  <div class="menu-row flex items-center justify-between mt-6 pt-6 border-t border-border" style="transition-delay:.27s;">
+    <a href="#" class="text-muted text-[13px] no-underline">email@email.com</a>
+    <div class="flex gap-2">
+      <a href="#" aria-label="X" class="w-8 h-8 rounded-full bg-panel2 border border-border flex items-center justify-center text-fg text-[12px]">✕</a>
+      <a href="#" aria-label="LinkedIn" class="w-8 h-8 rounded-full bg-panel2 border border-border flex items-center justify-center text-fg text-[12px] font-bold">in</a>
+    </div>
+  </div>
+</div>
 
 <!-- ================= HERO ================= -->
 <section id="home" class="relative w-full h-screen overflow-hidden bg-bg flex items-center justify-center">
@@ -59,7 +160,7 @@
         ZULFRAN
       </h1>
       <!-- Navigasiion -->
-      <nav class="flex items-center gap-8 mt-6 text-white font-semibold text-[22px] tracking-wide">
+      <nav class="hero-desktop-nav flex items-center gap-8 mt-6 text-white font-semibold text-[22px] tracking-wide">
         <a href="#about" class="hover:text-accent transition-colors">ABOUT ME</a>
         <span class="text-white/40">|</span>
         <a href="#projects" class="hover:text-accent transition-colors">PROJECTS</a>
@@ -69,7 +170,7 @@
     </div>
 
     <!-- Container Utama -->
-    <div class="relative flex-1 flex items-center justify-between gap-12 mt-4 w-full">
+    <div id="heroMainRow" class="relative flex-1 flex items-center justify-between gap-12 mt-4 w-full">
 
       <!-- Container Kiri  -->
       <div id="heroCopy" class="max-w-[620px] z-[3]">
@@ -92,24 +193,24 @@
       </div>
 
       <!-- Container Kanan  -->
-      <div class="relative w-[min(50vw,720px)] h-full flex items-end justify-end">
+     <div id="heroPhotoWrap" class="relative w-[min(50vw,720px)] h-full flex items-end justify-end">
 
-        <!-- Foto -->
-        <div id="heroPhoto" class="absolute bottom-0 right-0 w-full h-[110%] overflow-hidden z-[1]"
-             style="filter: brightness(0.7) blur(0px);">
-          <img src="asset/unnamed-removebg-preview (1).png" alt="Zulfran" class="w-full h-full object-cover object-top block">
-        </div>
+  <!-- Foto -->
+ <div id="heroPhoto" class="absolute bottom-0 right-0 w-full h-[150%]  overflow-hidden z-[1] "
+     style="filter: brightness(0.7) blur(0px);">
+  <img src="asset/unnamed-removebg-preview (1).png" alt="Zulfran" class="w-full h-full object-cover object-top block">
+</div>
 
-        <!-- Card Soft Skill -->
-        <div id="badgeCard" class="absolute left-[-60px] bottom-[10%] w-[270px] rounded-[16px] p-5 px-6 z-[2] bg-white/[0.05] backdrop-blur-md border border-white/10 shadow-2xl">
-          <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> Creative</div>
-          <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> reliable</div>
-          <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> efficient</div>
-          <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> strategist</div>
-          <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> smart</div>
-        </div>
+  <!-- Card Soft Skill -->
+  <div id="badgeCard" class="absolute left-[-60px] bottom-[10%] w-[270px] rounded-[16px] p-5 px-6 z-[2] -translate-y-10 bg-white/[0.05] backdrop-blur-md border border-white/10 shadow-2xl">
+    <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> Creative</div>
+    <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> reliable</div>
+    <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> efficient</div>
+    <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> strategist</div>
+    <div class="badge-row flex items-center gap-3.5 py-1.5 font-bold text-[19px] text-white/90"><span class="text-accent text-[14px]">★</span> smart</div>
+  </div>
 
-      </div>
+</div>
 
     </div>
   </div>
@@ -120,7 +221,7 @@
   <div id="mainGrid" class="grid gap-12 w-full mx-auto items-start" style="grid-template-columns: 300px 1fr;">
 
     <!-- SIDEBAR -->
-    <aside class="flex flex-col gap-3.5 sticky top-6 w-full">
+    <aside id="sidebarAside" class="flex flex-col gap-3.5 sticky top-6 w-full">
 
       <!-- sosial media -->
       <div class="aside-bubble bg-panel border border-border rounded-[20px] p-5 opacity-0 translate-y-6" style="box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:0s;">
@@ -208,7 +309,7 @@
       <div id="about">
         <span class="inline-block border border-border rounded-[20px] py-1.5 px-4 text-xs text-muted mb-5">Designer &amp; Artist</span>
         <h2 class="font-extrabold leading-[1.15] mb-[18px] text-white" style="font-size:clamp(32px,4vw,48px);">About Me (&amp;)<br>My Journey</h2>
-        <p class="text-muted max-w-[600px] leading-[1.7] mb-[50px] text-[15px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
+        <p class="text-muted max-w-[600px] leading-[1.7] mb-[50px] text-[15px]">Saya adalah Muhammad Zulfran Rayhan Lesmana, seorang desainer yang berfokus pada Graphic Design dan 3D Visualization. Saya memiliki ketertarikan dalam menciptakan karya visual yang kreatif, fungsional, dan komunikatif, mulai dari branding, media promosi, hingga visualisasi arsitektur. Dalam proses berkarya, saya menguasai berbagai perangkat lunak seperti Blender 3D, Adobe Photoshop, Adobe Illustrator, SketchUp, dan Affinity Designer untuk menghasilkan desain yang berkualitas serta sesuai dengan kebutuhan setiap proyek.</p>
 
         <!-- TIMELINE CONTAINER -->
         <div class="relative w-full">
@@ -218,29 +319,29 @@
             <!-- Card 1 (kanan-tengah) -->
             <div class="step-card absolute top-0 left-[24%] w-[72%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="0" style="transform:translateY(50px) scale(.94);">
               <div class="text-accent font-extrabold text-[46px] mb-2">'20</div>
-              <h4 class="text-[26px] font-bold mb-3 text-white">First Step</h4>
-              <p class="text-muted text-[16px] leading-[1.65] m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores quis iste inventore eaque fuga ducimus dolorem molestiae voluptates, enim cupiditate earum consectetur itaque nostrum quisquam aperiam in libero! Ullam quia, architecto et, expedita, facere nam ducimus harum ex at rem odit consectetur explicabo velit vero qui fugiat quibusdam laboriosam nisi.</p>
+              <h4 class="text-[26px] font-bold mb-3 text-white">Growing Reach</h4>
+              <p class="text-muted text-[16px] leading-[1.65] m-0">Seiring berkembangnya pengalaman saya di dunia kreatif, saya terus memperluas kemampuan di bidang Graphic Design dan 3D Visualization melalui berbagai proyek dan eksplorasi desain. Saya berkomitmen untuk terus mengikuti perkembangan industri serta meningkatkan kualitas karya dengan memanfaatkan Blender 3D, Adobe Photoshop, Adobe Illustrator, SketchUp, dan Affinity Designer. Bagi saya, setiap proyek adalah kesempatan untuk belajar, berinovasi, dan menghadirkan solusi visual yang kreatif, fungsional, serta memberikan dampak positif bagi setiap klien maupun audiens.</p>
             </div>
 
             <!-- Card 2 (kiri-tengah) -->
             <div class="step-card absolute w-[72%] left-[4%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="1" data-line-start-offset="-100" data-line-end-offset="-20" style="top:480px; transform:translateY(50px) scale(.94);">
               <div class="text-accent font-extrabold text-[46px] mb-2">'21</div>
-              <h4 class="text-[26px] font-bold mb-3 text-white">Growing Skills</h4>
-              <p class="text-muted text-[16px] leading-[1.65] m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ut ipsum voluptatem fuga reprehenderit necessitatibus. Aperiam, culpa minima enim voluptatum iure voluptatibus fugiat repudiandae saepe unde quos nesciunt laboriosam facere consectetur possimus consequuntur repellendus excepturi! Vitae magni facilis fugiat repellendus quae cumque, debitis quam sint modi.</p>
+              <h4 class="text-[26px] font-bold mb-3 text-white">Expanding Reach</h4>
+              <p class="text-muted text-[16px] leading-[1.65] m-0">Saya terus memperluas jangkauan karya dengan mengembangkan kemampuan di bidang Graphic Design dan 3D Visualization, serta berkolaborasi dalam berbagai proyek kreatif. Melalui penguasaan Blender 3D, Adobe Photoshop, Adobe Illustrator, SketchUp, dan Affinity Designer, saya berupaya menghadirkan solusi visual yang inovatif, berkualitas, dan relevan dengan kebutuhan klien. Setiap pengalaman menjadi langkah untuk membangun portofolio yang lebih luas, memperkuat kemampuan profesional, dan menciptakan dampak yang lebih besar melalui desain</p>
             </div>
 
             <!-- Card 3 (kanan-tengah) -->
             <div class="step-card absolute w-[72%] left-[24%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="2" data-line-start-offset="-100" data-line-end-offset="-20" style="top:960px; transform:translateY(50px) scale(.94);">
               <div class="text-accent font-extrabold text-[46px] mb-2">'22</div>
-              <h4 class="text-[26px] font-bold mb-3 text-white">Expanding Reach</h4>
-              <p class="text-muted text-[16px] leading-[1.65] m-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio alias eum, facilis amet ex dolore sint obcaecati cumque quisquam ad laboriosam impedit sit culpa necessitatibus atque eius quo esse tempora ducimus saepe, tenetur facere. Enim corporis, maxime voluptatem ad dolores harum sit ipsum totam animi.</p>
+              <h4 class="text-[26px] font-bold mb-3 text-white">First Freelance</h4>
+              <p class="text-muted text-[16px] leading-[1.65] m-0">Memulai perjalanan sebagai freelancer memberikan saya kesempatan untuk menerapkan kemampuan Graphic Design dan 3D Visualization dalam proyek nyata. Dari setiap kolaborasi, saya belajar memahami kebutuhan klien, mengelola waktu secara profesional, serta menghasilkan solusi visual yang kreatif dan berkualitas. Pengalaman ini menjadi fondasi penting dalam membangun portofolio, meningkatkan keterampilan, dan mengembangkan diri sebagai desainer yang mampu memberikan hasil terbaik pada setiap proyek.</p>
             </div>
 
             <!-- Card 4 (kiri-tengah) -->
             <div class="step-card absolute w-[72%] left-[4%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="3" data-line-start-offset="-100" data-line-end-offset="-20" style="top:1440px; transform:translateY(50px) scale(.94);">
               <div class="text-accent font-extrabold text-[46px] mb-2">'23</div>
               <h4 class="text-[26px] font-bold mb-3 text-white">Mastery &amp; Vision</h4>
-              <p class="text-muted text-[16px] leading-[1.65] m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iste placeat perferendis delectus nisi eligendi blanditiis commodi aut accusamus, dolorum sapiente magni laudantium, fugiat, numquam accusantium tempore quisquam illum voluptates soluta porro vel! Aut sint voluptatum quod eveniet, eius vero minus totam amet saepe.</p>
+              <p class="text-muted text-[16px] leading-[1.65] m-0">Saya memiliki visi untuk menjadi seorang profesional di bidang Graphic Design dan 3D Visualization yang mampu menghadirkan karya berkualitas tinggi dengan standar industri. Di masa depan, saya ingin terus mengembangkan kemampuan teknis dan kreativitas, memperluas pengalaman melalui proyek-proyek berskala nasional maupun internasional, serta membangun studio kreatif yang berfokus pada branding, visualisasi arsitektur, dan solusi desain inovatif. Bagi saya, setiap tantangan adalah kesempatan untuk terus belajar, berkembang, dan menciptakan dampak positif melalui desain.</p>
             </div>
 
           </div>
@@ -621,6 +722,53 @@ const navSpy = new IntersectionObserver((entries) => {
 }, { threshold: 0.4, rootMargin: '-20% 0px -40% 0px' });
 
 navSections.forEach(sec => navSpy.observe(sec));
+
+/* ---------- Mobile hamburger menu ---------- */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+let mobileMenuOpen = false;
+
+function setMobileMenu(open){
+  mobileMenuOpen = open;
+  if (open){
+    mobileMenuOverlay.style.display = 'flex';
+    requestAnimationFrame(() => mobileMenuOverlay.classList.add('menu-open'));
+    hamburgerBtn.classList.add('active');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  } else {
+    mobileMenuOverlay.classList.remove('menu-open');
+    hamburgerBtn.classList.remove('active');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!mobileMenuOpen) mobileMenuOverlay.style.display = 'none';
+    }, 350);
+  }
+}
+
+if (hamburgerBtn){
+  hamburgerBtn.addEventListener('click', () => setMobileMenu(!mobileMenuOpen));
+}
+
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetEl = document.querySelector(link.dataset.target);
+    setMobileMenu(false);
+    setTimeout(() => {
+      if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenuOpen) setMobileMenu(false);
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900 && mobileMenuOpen) setMobileMenu(false);
+});
 
 /* ---------- Responsif sederhana ---------- */
 function applyResponsive(){
