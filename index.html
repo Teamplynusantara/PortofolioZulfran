@@ -99,6 +99,82 @@
   @media (max-width: 520px) {
     #heroTitle { font-size: clamp(40px, 17vw, 64px); }
   }
+
+  /* ---------- Lightbox / popup foto project ---------- */
+  #projectLightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(2, 21, 38, 0.88);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+  }
+  #projectLightbox.lightbox-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  #projectLightbox .lightbox-inner {
+    position: relative;
+    max-width: min(1100px, 92vw);
+    max-height: 88vh;
+    width: 100%;
+    transform: scale(.92);
+    opacity: 0;
+    transition: transform .35s cubic-bezier(.22,.9,.32,1), opacity .35s ease;
+  }
+  #projectLightbox.lightbox-open .lightbox-inner {
+    transform: scale(1);
+    opacity: 1;
+  }
+  #projectLightbox img {
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 16px;
+    border: 1px solid #0d3a5c;
+    background: #04203a;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  }
+  #projectLightbox .lightbox-caption {
+    text-align: center;
+    color: #f5f6f8;
+    font-weight: 700;
+    margin-top: 14px;
+    font-size: 15px;
+  }
+  #projectLightbox .lightbox-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    background: #f5f6f8;
+    color: #021526;
+    border: none;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,.4);
+    transition: transform .25s ease;
+  }
+  #projectLightbox .lightbox-close:hover { transform: scale(1.08) rotate(90deg); }
+
+  @media (max-width: 520px) {
+    #projectLightbox .lightbox-close { top: -14px; right: 0; }
+  }
+
+  .project-img { cursor: zoom-in; }
 </style>
 </head>
 <body class="m-0 p-0 bg-bg text-fg font-sans overflow-x-hidden" style="font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
@@ -362,7 +438,23 @@
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
               </div>
-              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=500&q=80" alt="testing project">
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto1.webp.jpeg" alt="testing project">
+            </div>
+            <div class="relative pt-5 px-6 pb-7">
+              <h4 class="text-[20px] mb-2">testing project</h4>
+              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">test</p>
+              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
+            </div>
+          </div>
+
+          <div class="project-card bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out">
+            <div class="relative h-[320px] overflow-hidden">
+              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
+                <span class="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
+              </div>
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto2.webp.jpeg" alt="testing project">
             </div>
             <div class="relative pt-5 px-6 pb-7">
               <h4 class="text-[20px] mb-2">testing project</h4>
@@ -378,7 +470,7 @@
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
               </div>
-              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=500&q=80" alt="testing project">
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/WhatsApp Image 2026-07-26 at 21.09.46.webp.jpeg" alt="testing project">
             </div>
             <div class="relative pt-5 px-6 pb-7">
               <h4 class="text-[20px] mb-2">testing project</h4>
@@ -394,8 +486,9 @@
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
               </div>
-              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=500&q=80" alt="testing project">
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto3.jpeg" alt="testing project">
             </div>
+            
             <div class="relative pt-5 px-6 pb-7">
               <h4 class="text-[20px] mb-2">testing project</h4>
               <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
@@ -404,7 +497,7 @@
           </div>
 
           <!-- Card CTA Behance -->
-          <a href="https://behance.net/" target="_blank" rel="noopener" class="project-card h-full bg-white rounded-[14px] border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out flex flex-col justify-between p-8 no-underline">
+          <a href="https://www.behance.net/muhammalesmana1" target="_blank" rel="noopener" class="project-card h-full bg-white rounded-[14px] border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out flex flex-col justify-between p-8 no-underline">
             <div class="flex items-start justify-between gap-4">
               <h4 class="text-[22px] font-extrabold leading-snug text-bg m-0">Mau lihat project lain saya? Yuk ke Behance</h4>
               <div class="arrow-btn w-11 h-11 rounded-full bg-[#062a48] text-fg flex items-center justify-center text-lg shrink-0 transition-all duration-300">↗</div>
@@ -492,6 +585,15 @@
 
   </div>
 </section>
+
+<!-- ================= LIGHTBOX / POPUP FOTO PROJECT ================= -->
+<div id="projectLightbox" role="dialog" aria-modal="true" aria-label="Preview foto project">
+  <div class="lightbox-inner">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Tutup">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
 
 <!-- ================= FOOTER ================= -->
 <footer class="border-t border-border py-[50px] px-8">
@@ -895,6 +997,54 @@ function applyResponsive(){
 }
 window.addEventListener('resize', applyResponsive);
 window.addEventListener('load', applyResponsive);
+
+/* ---------- Lightbox / popup foto project ---------- */
+(function(){
+  const lightbox = document.getElementById('projectLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  let lastFocusedEl = null;
+
+  function openLightbox(imgEl){
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = imgEl.currentSrc || imgEl.src;
+    lightboxImg.alt = imgEl.alt || '';
+    const card = imgEl.closest('.project-card');
+    const title = card ? card.querySelector('h4') : null;
+    lightboxCaption.textContent = title ? title.textContent.trim() : (imgEl.alt || '');
+    lastFocusedEl = document.activeElement;
+    lightbox.classList.add('lightbox-open');
+    document.body.style.overflow = 'hidden';
+    lightboxClose.focus();
+  }
+
+  function closeLightbox(){
+    if (!lightbox) return;
+    lightbox.classList.remove('lightbox-open');
+    document.body.style.overflow = '';
+    setTimeout(() => { if (!lightbox.classList.contains('lightbox-open')) lightboxImg.src = ''; }, 350);
+    if (lastFocusedEl && lastFocusedEl.focus) lastFocusedEl.focus();
+  }
+
+  document.querySelectorAll('.project-card .project-img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openLightbox(img);
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightbox){
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('lightbox-open')) closeLightbox();
+  });
+})();
 </script>
 </body>
 </html>
