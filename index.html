@@ -661,8 +661,90 @@ if (window.ResizeObserver) {
   const cardResizeObserver = new ResizeObserver(() => {
     drawLines();
     revealLines();
+    updateMobileTimeline();
   });
   cards.forEach(card => cardResizeObserver.observe(card));
+}
+
+/* ---------- Timeline mobile: garis vertikal lurus + titik per card ---------- */
+function updateMobileTimeline(){
+  const narrow = window.innerWidth <= 900;
+  let line = document.getElementById('timelineMobileLine');
+  let dotsLayer = document.getElementById('timelineDotsLayer');
+
+  if (!narrow){
+    if (line) line.style.display = 'none';
+    if (dotsLayer) dotsLayer.style.display = 'none';
+    track.style.paddingLeft = '';
+    track.style.minHeight = '1900px';
+    return;
+  }
+
+  if (!track) return;
+
+  if (!line){
+    line = document.createElement('div');
+    line.id = 'timelineMobileLine';
+    line.style.position = 'absolute';
+    line.style.left = '6px';
+    line.style.width = '2px';
+    line.style.background = '#0d3a5c';
+    line.style.zIndex = '0';
+    line.style.borderRadius = '2px';
+    track.appendChild(line);
+  }
+  if (!dotsLayer){
+    dotsLayer = document.createElement('div');
+    dotsLayer.id = 'timelineDotsLayer';
+    dotsLayer.style.position = 'absolute';
+    dotsLayer.style.top = '0';
+    dotsLayer.style.left = '0';
+    dotsLayer.style.width = '100%';
+    dotsLayer.style.height = '100%';
+    dotsLayer.style.pointerEvents = 'none';
+    dotsLayer.style.zIndex = '2';
+    track.appendChild(dotsLayer);
+  }
+
+  line.style.display = 'block';
+  dotsLayer.style.display = 'block';
+  dotsLayer.innerHTML = '';
+
+  track.style.minHeight = '0';
+  // Ruang di kiri track untuk garis + titik; card TIDAK diubah position/top-nya
+  // sama sekali supaya nilai top absolute peninggalan desktop tidak pernah aktif lagi.
+  track.style.paddingLeft = '30px';
+
+  requestAnimationFrame(() => {
+    if (window.innerWidth > 900) return;
+    const trackRect = track.getBoundingClientRect();
+    const dotVerticalOffset = 30; // sejajar kira-kira dengan angka tahun di tiap card
+    let minY = Infinity, maxY = -Infinity;
+
+    cards.forEach(card => {
+      const r = card.getBoundingClientRect();
+      const y = (r.top - trackRect.top) + dotVerticalOffset;
+      minY = Math.min(minY, y);
+      maxY = Math.max(maxY, y);
+
+      const dot = document.createElement('span');
+      dot.style.position = 'absolute';
+      dot.style.left = '7px';
+      dot.style.top = y + 'px';
+      dot.style.width = '14px';
+      dot.style.height = '14px';
+      dot.style.marginLeft = '-7px';
+      dot.style.marginTop = '-7px';
+      dot.style.borderRadius = '9999px';
+      dot.style.background = '#ffffff';
+      dot.style.border = '3px solid #021526';
+      dot.style.boxShadow = '0 0 0 2px #0d3a5c';
+      dotsLayer.appendChild(dot);
+    });
+
+    line.style.top = minY + 'px';
+    line.style.height = Math.max(0, maxY - minY) + 'px';
+  });
 }
 
 /* ---------- FAQ accordion ---------- */
@@ -787,6 +869,7 @@ function applyResponsive(){
   const faqGrid = document.getElementById('faqGrid');
   if(faqGrid) faqGrid.style.gridTemplateColumns = narrow ? '1fr' : '1fr 1fr';
   if (!narrow) drawLines();
+  updateMobileTimeline();
 }
 window.addEventListener('resize', applyResponsive);
 window.addEventListener('load', applyResponsive);
