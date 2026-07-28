@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zulfran — 3D Designer</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 <script>
   tailwind.config = {
     theme: {
@@ -283,11 +284,11 @@
             <span class="text-[9.5px] text-muted font-medium">Figma</span>
           </div>
           <div class="flex flex-col items-center justify-center gap-1.5 bg-panel2 border border-border rounded-xl py-3 px-2">
-            <img src="https://cdn.simpleicons.org/adobephotoshop/f5f6f8" alt="Photoshop" class="w-6 h-6" loading="lazy">
+            <i class="devicon-photoshop-plain text-3xl"></i>
             <span class="text-[9.5px] text-muted font-medium">Photoshop</span>
           </div>
           <div class="flex flex-col items-center justify-center gap-1.5 bg-panel2 border border-border rounded-xl py-3 px-2">
-            <img src="https://cdn.simpleicons.org/adobeaftereffects/f5f6f8" alt="After Effects" class="w-6 h-6" loading="lazy">
+            <i class="devicon-aftereffects-plain text-3xl"></i>
             <span class="text-[9.5px] text-muted font-medium">After FX</span>
           </div>
           <div class="flex flex-col items-center justify-center gap-1.5 bg-panel2 border border-border rounded-xl py-3 px-2">
@@ -416,51 +417,72 @@
       <!-- ===== FAQ ===== -->
       <div id="faq" class="pt-[70px] pb-[20px]">
         <h2 class="reveal font-extrabold mb-10 opacity-0 translate-y-[30px] transition-[opacity,transform] duration-[800ms] ease-in-out" style="font-size:clamp(34px,6vw,58px);">Tanya kuy!</h2>
-
-        <div id="faqGrid" class="grid grid-cols-2 gap-4 max-w-[980px]" style="align-content:start;">
-
-          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out" data-open="true">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+ 
+        <div id="faqGrid" class="columns-1 sm:columns-2 gap-4 max-w-[980px]">
+ 
+          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out" data-open="true" style="background:#0a3457;">
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Layanan apa saja yang Anda tawarkan?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">-</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:200px;opacity:1;margin-top:14px;">
-              <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in facilisis nulla, a semper sapien. Duis nulla tortor, aliquet vitae imperdiet iaculis.</p>
+              <p class="text-muted text-[13px] leading-[1.6] m-0">
+                Saya menyediakan layanan Graphic Design dan 3D Design, seperti desain media sosial, branding, poster, banner, logo, visualisasi arsitektur, desain interior & eksterior, 3D modeling, hingga rendering.
+              </p>
             </div>
           </div>
-
-          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+ 
+          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa lama proses pengerjaan sebuah proyek?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
-              <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="text-muted text-[13px] leading-[1.6] m-0">
+                Waktu pengerjaan bergantung pada tingkat kesulitan proyek. Desain sederhana umumnya memerlukan waktu 1–3 hari, sedangkan proyek yang lebih kompleks seperti branding atau visualisasi 3D dapat memakan waktu beberapa hari hingga beberapa minggu.
+              </p>
             </div>
           </div>
-
-          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+ 
+          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Format file apa yang akan saya terima?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
-              <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="text-muted text-[13px] leading-[1.6] m-0">
+                File akan disesuaikan dengan kebutuhan Anda, seperti PNG, JPG, PDF, AI, PSD, BLEND, FBX, OBJ, atau format lainnya.
+              </p>
             </div>
           </div>
-
-          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+ 
+          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Apakah Anda menerima proyek dari luar kota atau luar negeri?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
-              <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="text-muted text-[13px] leading-[1.6] m-0">
+                Ya. Saya dapat bekerja secara remote dengan klien dari berbagai daerah maupun luar negeri melalui komunikasi online.
+              </p>
             </div>
           </div>
-
-          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer h-fit opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa value kamu
+ 
+          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Bagaimana cara memulai kerja sama?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
-              <p class="text-muted text-[13px] leading-[1.6] m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p class="text-muted text-[13px] leading-[1.6] m-0">
+                Anda cukup menghubungi saya melalui halaman Kontak, email, atau media sosial. Setelah mendiskusikan kebutuhan proyek, saya akan memberikan penawaran, estimasi waktu, dan alur pengerjaan.
+              </p>
+            </div>
+          </div>
+ 
+          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Mengapa memilih jasa Anda?
+              <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
+            </div>
+            <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
+              <p class="text-muted text-[13px] leading-[1.6] m-0">
+                Saya mengutamakan desain yang kreatif, fungsional, dan sesuai tujuan klien. Setiap proyek dikerjakan dengan komunikasi yang jelas, perhatian terhadap detail, dan komitmen untuk memberikan hasil terbaik.
+              </p>
             </div>
           </div>
         </div>
@@ -562,7 +584,7 @@ hoverFX('.project-card',
   el => { el.style.boxShadow = 'none'; el.style.transform = 'translateY(0)';
           const img = el.querySelector('.project-img'); if (img) img.style.transform = 'scale(1)';
           const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#062a48'; arrow.style.color = '#f5f6f8'; arrow.style.transform = 'rotate(0deg)'; } });
-hoverFX('.faq-item', el => el.style.background = '#26262e', el => { if (el.dataset.open !== 'true') el.style.background = '#062a48'; });
+hoverFX('.faq-item', el => { if (el.dataset.open !== 'true') el.style.background = '#0a3457'; }, el => { if (el.dataset.open !== 'true') el.style.background = '#062a48'; });
 hoverFX('.footlink', el => el.style.color = '#03346E', el => el.style.color = '#93959c');
 hoverFX('.social-dot', el => { el.style.background = '#03346E'; el.style.transform = 'translateY(-3px)'; }, el => { el.style.background = '#04203a'; el.style.transform = 'translateY(0)'; });
 
@@ -762,7 +784,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
       item.dataset.open = 'true';
       body.style.maxHeight = '200px'; body.style.opacity = '1'; body.style.marginTop = '14px';
       toggle.style.transform = 'rotate(135deg)'; toggle.textContent = '-';
-      item.style.background = '#26262e';
+      item.style.background = '#0a3457';
     }
   });
 });
