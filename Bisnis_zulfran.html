@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bisnis - Zulfran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+    tailwind.config = {
+        theme: {
+        extend: {
+            colors: {
+            bg: '#021526',
+            panel: '#04203a',
+            panel2: '#062a48',
+            border: '#0d3a5c',
+            accent: '#4DA3FF',
+            accentDim: '#1c4e7d',
+            gold: '#E8B95C',
+            fg: '#f5f6f8',
+            muted: '#8ea2b8',
+            }
+        }
+        }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+
+        #package #header, #whatYouGet #header {
+            background: linear-gradient(90deg, #ffffff 0%, #cfe0f2 45%, #4DA3FF 100%);
+            width: fit-content;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card {
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #4DA3FF;
+            box-shadow: 0 20px 40px -20px rgba(77,163,255,0.35);
+        }
+
+        .bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+        }
+        .bullet i {
+            margin-top: 2px;
+        }
+
+        .service-row {
+            transition: background-color .2s ease, border-color .2s ease;
+        }
+        .service-row:hover {
+            background-color: rgba(77,163,255,0.06);
+            border-color: #4DA3FF;
+        }
+        #typingTxt::after{
+            content: "|";
+            animation: blink .8s infinite;
+        }
+        #typingTxt.done::after{
+            display:none;
+        }
+        @keyframes blink{
+            50%{
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-bg m-0 p-0 overflow-x-hidden antialiased">
+    <section id="whatYouGet" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
+        <div class="max-w-6xl mx-auto flex flex-col items-center px-6 gap-4">
+            <span class="text-accent font-display font-semibold tracking-widest text-sm uppercase border-2 rounded-full border-accent py-1 px-5">Package</span>
+            <h1 id="header" class="font-display text-8xl md:text-9xl font-bold tracking-tight leading-none uppercase">
+                What you get?
+            </h1>
+            <p id="typingTxt" class="text-5xl text-muted max-w-4xl text-center mt-5"></p>
+        </div>
+    </section>
+
+    <section id="package" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
+        <div class="max-w-6xl mx-auto flex flex-col text-left px-6 gap-4">
+
+            <span class="text-accent font-display font-semibold tracking-widest text-sm uppercase">Pricing</span>
+            <h1 id="header" class="font-display text-5xl md:text-6xl font-bold tracking-tight leading-none uppercase">
+                Package<br/> Offerings
+            </h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+
+                <div class="card bg-panel border border-border rounded-2xl p-7 flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-accentDim/40 flex items-center justify-center mb-6">
+                        <i class="ri-ai-generate-3d-line text-accent text-2xl"></i>
+                    </div>
+                    <h2 class="font-display text-fg font-semibold text-2xl mb-1">Concept Package</h2>
+                    <p class="font-display text-accent font-bold text-2xl mb-6">
+                        IDR 1,5jt <span class="text-muted font-normal text-base">– 3jt</span>
+                    </p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            3D visualization untuk konsep desain awal
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            1–2 draft preview render
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Fokus pada massing & komposisi ruang
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            1x revisi konsep
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card bg-panel border border-border rounded-2xl p-7 flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-accentDim/40 flex items-center justify-center mb-6">
+                        <i class="ri-movie-2-line text-accent text-2xl"></i>
+                    </div>
+                    <h2 class="font-display text-fg font-semibold text-2xl mb-1">Presentation Package</h2>
+                    <p class="font-display text-accent font-bold text-2xl mb-6">
+                        IDR 5jt <span class="text-muted font-normal text-base">– 9jt</span>
+                    </p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            2-4 render foto realistik
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Material dan setup pencahayaan yang realistis
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Komposisi kamera yang profesional
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            File presentasi resolusi tinggi
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            2x revisi
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card bg-panel border border-border rounded-2xl p-7 flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-accentDim/40 flex items-center justify-center mb-6">
+                        <i class="ri-store-3-line text-accent text-2xl"></i>
+                    </div>
+                    <h2 class="font-display text-fg font-semibold text-2xl mb-1">Marketing Package</h2>
+                    <p class="font-display text-accent font-bold text-2xl mb-6">
+                        IDR 7jt <span class="text-muted font-normal text-base">10jt</span>
+                    </p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            4-6 render cinematic-quality
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Styling scene dan landscape detail
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Animasi arsitektur singkat
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Color grading profesional
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Visual asset penuh untuk pemakaian pemasaran
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-muted/70 mt-8">
+
+            <span class="text-accent font-display font-semibold tracking-widest text-lg uppercase text-center mt-4">Add-ons</span>
+
+            <div class="bg-panel border border-border rounded-2xl overflow-hidden">
+                <div class="grid grid-cols-3 bg-accentDim/30 px-7 py-4">
+                    <span class="font-display text-fg font-semibold text-sm uppercase tracking-wide col-span-2">Additional Service</span>
+                    <span class="font-display text-fg font-semibold text-sm uppercase tracking-wide text-right">Estimated Price</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">View tambahan (per gambar)</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 500rb – 1,5jt</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">Revisi ekstra (setelah limit paket)</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 300rb – 1jt</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">Animasi tambahan per detik</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 1jt – 3jt</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">Virtual Tour / 360° Panorama</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 3jt – 5jt</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // typewriting
+        const txt = "Pilih paket visualisasi 3D yang sesuai dengan kebutuhan proyekmu, dari eksplorasi konsep awal hingga presentasi final yang siap dipresentasikan ke klien."
+
+        const element = document.getElementById('typingTxt');
+
+        let typed = false
+
+        function typeWriter() {
+            if (typed) return;
+            typed = true;
+
+            let i = 0;
+
+            function type() {
+                if (i >= txt.length) {
+                    element.classList.add("done");
+                    return;
+                }
+
+                element.textContent += txt[i];
+
+                let delay = 22;
+
+                if (txt[i] === " ") {
+                    delay = 10;
+                }
+
+                if (",.;!?".includes(txt[i])) {
+                    delay = 180;
+                }
+
+                i++;
+
+                setTimeout(type, delay);
+            }
+
+            type();
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    typeWriter()
+                }
+            })
+        }, {
+            threshold: 0.5
+        })
+
+        observer.observe(document.getElementById("whatYouGet"))
+    </script>
+</body>
+</html>
