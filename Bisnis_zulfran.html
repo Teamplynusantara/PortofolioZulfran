@@ -79,16 +79,95 @@
                 opacity: 0;
             }
         }
+
+        /* ---- About Me style for whatYouGet header ---- */
+        .about-photo-frame {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: linear-gradient(160deg, #0d3a5c 0%, #04203a 60%, #021526 100%);
+            border: 1px solid #0d3a5c;
+        }
+        .about-photo-frame::before {
+            content: "";
+            position: absolute;
+            inset: -40% -40% auto auto;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(77,163,255,0.35) 0%, rgba(77,163,255,0) 70%);
+        }
+        .about-photo-frame::after {
+            content: "";
+            position: absolute;
+            inset: auto auto -30% -30%;
+            width: 55%;
+            height: 55%;
+            background: radial-gradient(circle, rgba(232,185,92,0.20) 0%, rgba(232,185,92,0) 70%);
+        }
+        .stat-chip {
+            border: 1px solid #0d3a5c;
+            background: rgba(4,32,58,0.6);
+            backdrop-filter: blur(6px);
+        }
+        .divider-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+        .divider-label::before,
+        .divider-label::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #0d3a5c;
+        }
     </style>
 </head>
 <body class="bg-bg m-0 p-0 overflow-x-hidden antialiased">
-    <section id="whatYouGet" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
-        <div class="max-w-6xl mx-auto flex flex-col items-center px-6 gap-4">
-            <span class="text-accent font-display font-semibold tracking-widest text-sm uppercase border-2 rounded-full border-accent py-1 px-5">Package</span>
-            <h1 id="header" class="font-display text-8xl md:text-9xl font-bold tracking-tight leading-none uppercase">
-                What you get?
-            </h1>
-            <p id="typingTxt" class="text-5xl text-muted max-w-4xl text-center mt-5"></p>
+
+    <section id="whatYouGet" class="bg-panel2 w-full min-h-screen py-16 md:py-24 flex items-center">
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center px-6 gap-16">
+
+            <!-- Top: About Me -->
+            <div class="flex flex-col items-center gap-4 mb-24">
+                <h2 class="font-display text-fg text-3xl md:text-4xl font-bold tracking-tight leading-snug">
+                    Zulfran — 3D Visualizer &amp; Architectural Renderer
+                </h2>
+                <p class="text-muted text-base md:text-lg max-w-2xl">
+                    Membantu arsitek, developer, dan pemilik proyek mewujudkan desain menjadi visual yang jelas dan meyakinkan, dari sketsa awal hingga render siap presentasi ke klien.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-8 mt-4">
+                    <div>
+                        <p class="font-display text-3xl font-bold text-accent">50+</p>
+                        <p class="text-muted text-xs uppercase tracking-wide">Proyek Selesai</p>
+                    </div>
+                    <div>
+                        <p class="font-display text-3xl font-bold text-accent">5+</p>
+                        <p class="text-muted text-xs uppercase tracking-wide">Tahun Pengalaman</p>
+                    </div>
+                    <div>
+                        <p class="font-display text-3xl font-bold text-accent">100%</p>
+                        <p class="text-muted text-xs uppercase tracking-wide">Kepuasan Klien</p>
+                    </div>
+                </div>
+            </div>
+                <!-- Bottom: What You Get -->
+            <div class="flex flex-col items-center gap-4">
+                <h1 id="header" class="font-display text-6xl md:text-8xl font-bold tracking-tight leading-none uppercase">
+                    What you get?
+                </h1>
+                <p id="typingTxt" class="text-2xl md:text-4xl text-muted max-w-3xl mt-4"></p>
+
+                <div class="flex flex-wrap justify-center gap-3 mt-6">
+                    <span class="stat-chip text-fg text-xs font-medium px-4 py-2 rounded-full">3D Visualization</span>
+                    <span class="stat-chip text-fg text-xs font-medium px-4 py-2 rounded-full">Architectural Rendering</span>
+                    <span class="stat-chip text-fg text-xs font-medium px-4 py-2 rounded-full">Cinematic Animation</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -229,6 +308,147 @@
 
         </div>
     </section>
+
+ 
+
+    <section id="package" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
+        <div class="max-w-6xl mx-auto flex flex-col text-left px-6 gap-4">
+
+            <span class="text-accent font-display font-semibold tracking-widest text-sm uppercase">Pricing</span>
+            <h1 id="header" class="font-display text-5xl md:text-6xl font-bold tracking-tight leading-none uppercase">
+                Package<br/> Offerings
+            </h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+
+                <div class="card bg-panel border border-border rounded-2xl p-7 flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-accentDim/40 flex items-center justify-center mb-6">
+                        <i class="ri-ai-generate-3d-line text-accent text-2xl"></i>
+                    </div>
+                    <h2 class="font-display text-fg font-semibold text-2xl mb-1">Concept Package</h2>
+                    <p class="font-display text-accent font-bold text-2xl mb-6">
+                        IDR 1,5jt <span class="text-muted font-normal text-base">– 3jt</span>
+                    </p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            3D visualization untuk konsep desain awal
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            1–2 draft preview render
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Fokus pada massing & komposisi ruang
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            1x revisi konsep
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card bg-panel border border-border rounded-2xl p-7 flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-accentDim/40 flex items-center justify-center mb-6">
+                        <i class="ri-movie-2-line text-accent text-2xl"></i>
+                    </div>
+                    <h2 class="font-display text-fg font-semibold text-2xl mb-1">Presentation Package</h2>
+                    <p class="font-display text-accent font-bold text-2xl mb-6">
+                        IDR 5jt <span class="text-muted font-normal text-base">– 9jt</span>
+                    </p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            2-4 render foto realistik
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Material dan setup pencahayaan yang realistis
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Komposisi kamera yang profesional
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            File presentasi resolusi tinggi
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            2x revisi
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card bg-panel border border-border rounded-2xl p-7 flex flex-col">
+                    <div class="w-12 h-12 rounded-lg bg-accentDim/40 flex items-center justify-center mb-6">
+                        <i class="ri-store-3-line text-accent text-2xl"></i>
+                    </div>
+                    <h2 class="font-display text-fg font-semibold text-2xl mb-1">Marketing Package</h2>
+                    <p class="font-display text-accent font-bold text-2xl mb-6">
+                        IDR 7jt <span class="text-muted font-normal text-base">10jt</span>
+                    </p>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            4-6 render cinematic-quality
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Styling scene dan landscape detail
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Animasi arsitektur singkat
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Color grading profesional
+                        </li>
+                        <li class="bullet text-fg text-sm capitalize">
+                            <i class="ri-checkbox-circle-line text-accent"></i>
+                            Visual asset penuh untuk pemakaian pemasaran
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-muted/70 mt-8">
+
+            <span class="text-accent font-display font-semibold tracking-widest text-lg uppercase text-center mt-4">Add-ons</span>
+
+            <div class="bg-panel border border-border rounded-2xl overflow-hidden">
+                <div class="grid grid-cols-3 bg-accentDim/30 px-7 py-4">
+                    <span class="font-display text-fg font-semibold text-sm uppercase tracking-wide col-span-2">Additional Service</span>
+                    <span class="font-display text-fg font-semibold text-sm uppercase tracking-wide text-right">Estimated Price</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">View tambahan (per gambar)</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 500rb – 1,5jt</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">Revisi ekstra (setelah limit paket)</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 300rb – 1jt</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">Animasi tambahan per detik</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 1jt – 3jt</span>
+                </div>
+
+                <div class="service-row grid grid-cols-3 items-center px-7 py-5 border-t border-border">
+                    <span class="text-fg text-sm col-span-2">Virtual Tour / 360° Panorama</span>
+                    <span class="font-display text-accent font-semibold text-sm text-right">IDR 3jt – 5jt</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
 
     <script>
         // typewriting
