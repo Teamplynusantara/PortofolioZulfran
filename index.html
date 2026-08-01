@@ -11,13 +11,13 @@
     theme: {
       extend: {
         colors: {
-          bg: '#021526',      // background utama
-          panel: '#04203a',   // panel/card
-          panel2: '#062a48',  // panel FAQ
-          border: '#0d3a5c',  // border tipis
-          accent: '#03346E',  // warna aksen biru (angka, judul, tombol aktif)
+          bg: '#0C1E29',      // UNIFORM BLUE - background utama
+          panel: '#163545',   // lebih terang dari bg
+          panel2: '#1f445a',  // lebih terang dari panel
+          border: '#2a5a75',  // border tipis
+          accent: '#FFFF15',  // PALESUN YELLOW - warna aksen
           fg: '#f5f6f8',      // teks terang
-          muted: '#93959c',   // teks abu-abu
+          muted: '#9aaeb9',   // teks abu-abu
         }
       }
     }
@@ -34,15 +34,15 @@
   }
   #heroSection::before {
     background-image:
-      radial-gradient(ellipse at 20% 30%, rgba(100,100,100,0.08) 0%, rgba(100,100,100,0.08) 20%, transparent 60%),
-      radial-gradient(ellipse at 70% 15%, rgba(130,130,130,0.06) 0%, rgba(130,130,130,0.06) 15%, transparent 55%),
-      radial-gradient(ellipse at 40% 70%, rgba(80,80,80,0.05) 0%, rgba(80,80,80,0.05) 25%, transparent 65%);
+      radial-gradient(ellipse at 20% 30%, rgba(255,255,21,0.08) 0%, rgba(255,255,21,0.08) 20%, transparent 60%),
+      radial-gradient(ellipse at 70% 15%, rgba(255,255,21,0.06) 0%, rgba(255,255,21,0.06) 15%, transparent 55%),
+      radial-gradient(ellipse at 40% 70%, rgba(255,255,21,0.05) 0%, rgba(255,255,21,0.05) 25%, transparent 65%);
     filter: blur(15px);
   }
   #heroSection::after {
     background-image:
-      radial-gradient(ellipse at 85% 60%, rgba(110,110,110,0.07) 0%, rgba(110,110,110,0.07) 18%, transparent 58%),
-      radial-gradient(ellipse at 15% 80%, rgba(90,90,90,0.04) 0%, rgba(90,90,90,0.04) 22%, transparent 62%);
+      radial-gradient(ellipse at 85% 60%, rgba(255,255,21,0.07) 0%, rgba(255,255,21,0.07) 18%, transparent 58%),
+      radial-gradient(ellipse at 15% 80%, rgba(255,255,21,0.04) 0%, rgba(255,255,21,0.04) 22%, transparent 62%);
     filter: blur(20px);
   }
 
@@ -109,7 +109,7 @@
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: rgba(2, 21, 38, 0.88);
+    background: rgba(12, 30, 41, 0.88);
     backdrop-filter: blur(6px);
     opacity: 0;
     visibility: hidden;
@@ -138,8 +138,8 @@
     max-height: 80vh;
     object-fit: contain;
     border-radius: 16px;
-    border: 1px solid #0d3a5c;
-    background: #04203a;
+    border: 1px solid #2a5a75;
+    background: #163545;
     box-shadow: 0 30px 80px rgba(0,0,0,.6);
   }
   #projectLightbox .lightbox-caption {
@@ -156,8 +156,8 @@
     width: 42px;
     height: 42px;
     border-radius: 9999px;
-    background: #f5f6f8;
-    color: #021526;
+    background: #FFFF15;
+    color: #0C1E29;
     border: none;
     font-size: 20px;
     font-weight: 800;
@@ -175,11 +175,35 @@
   }
 
   .project-img { cursor: zoom-in; }
+
+  /* ---------- Page transition overlay ---------- */
+  #pageTransition {
+    position: fixed;
+    inset: 0;
+    background: #0C1E29;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease;
+  }
+  #pageTransition.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ---------- Timeline dot color ---------- */
+  .step-card .dot-circle {
+    background: #FFFF15;
+    border: 3px solid #0C1E29;
+    box-shadow: 0 0 0 2px #2a5a75;
+  }
 </style>
 </head>
 <body class="m-0 p-0 bg-bg text-fg font-sans overflow-x-hidden" style="font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
 
-<!-- ================= MOBILE NAVBAR (muncul di layar sempit) ================= -->
+<div id="pageTransition"></div>
+
+<!-- ================= MOBILE NAVBAR ================= -->
 <header id="mobileNavbar" class="fixed top-0 left-0 w-full z-[60] items-center justify-between px-6 py-4 bg-bg/90 backdrop-blur-md border-b border-border">
   <span class="text-accent font-extrabold text-[15px] tracking-wide">ZULFRAN<sup class="text-[9px]">®</sup></span>
   <button id="hamburgerBtn" class="hamburger-btn w-8 h-8 flex flex-col justify-center gap-[6px]" aria-label="Buka menu" aria-expanded="false" aria-controls="mobileMenuOverlay">
@@ -207,11 +231,11 @@
   </nav>
 
   <div class="menu-row flex gap-2.5 mt-6" style="transition-delay:.22s;">
-    <div class="flex-1 rounded-2xl border border-border p-4 text-center" style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%);">
+    <div class="flex-1 rounded-2xl border border-border p-4 text-center" style="background:radial-gradient(circle at 30% 25%, #1a3a4a, #0C1E29 70%);">
       <div class="text-accent font-extrabold text-[18px]">17+</div>
       <div class="text-[10.5px] text-muted mt-[3px] leading-[1.3]">Projects Has Been Created</div>
     </div>
-    <div class="flex-1 rounded-2xl border border-border p-4 text-center" style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%);">
+    <div class="flex-1 rounded-2xl border border-border p-4 text-center" style="background:radial-gradient(circle at 30% 25%, #1a3a4a, #0C1E29 70%);">
       <div class="text-accent font-extrabold text-[18px]">7+</div>
       <div class="text-[10.5px] text-muted mt-[3px] leading-[1.3]">Years Of Experience</div>
     </div>
@@ -236,7 +260,7 @@
       <h1 id="heroTitle" class="font-extrabold text-accent tracking-[-3px] leading-[0.82] whitespace-nowrap m-0 p-0 text-[clamp(80px,14vw,220px)]">
         ZULFRAN
       </h1>
-      <!-- Navigasiion -->
+      <!-- Navigasi -->
       <nav class="hero-desktop-nav flex items-center gap-8 mt-6 text-white font-semibold text-[22px] tracking-wide">
         <a href="#about" class="hover:text-accent transition-colors">ABOUT ME</a>
         <span class="text-white/40">|</span>
@@ -246,10 +270,9 @@
       </nav>
     </div>
 
-    <!-- Container Utama (Konten Tengah) -->
+    <!-- Container Utama -->
     <div id="heroMainRow" class="relative flex-1 flex items-center justify-center mt-4 w-full">
 
-      <!-- Container Kiri (Sekarang di Tengah) -->
       <div id="heroCopy" class="max-w-[620px] z-[3] text-center">
         <h2 class="text-white font-extrabold text-[32px] mb-3">3D Designer</h2>
         <p class="text-[#e0e0e0] font-medium leading-[1.6] text-[20px] mb-8">
@@ -257,12 +280,12 @@
         </p>
 
         <div class="flex gap-5 flex-wrap justify-center">
-          <a href="Bisnis_zulfran.html">
-  <button class="btn-primary w-[220px] py-4 rounded-full font-extrabold text-base text-white border border-white/40 backdrop-blur-md cursor-pointer transition-all duration-300 flex items-center justify-center text-center"
-    style="background:linear-gradient(135deg, rgba(94,200,242,0.35) 0%, rgba(3,52,110,0.35) 100%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.6), inset 0 -6px 10px rgba(3,52,110,0.25), 0 8px 20px rgba(3,52,110,0.35);">
-    My Bisnis
-  </button>
-</a>
+          <a href="Bisnis_zulfran.html" id="bisnisLink">
+            <button class="btn-primary w-[220px] py-4 rounded-full font-extrabold text-base text-bg border border-accent/50 backdrop-blur-md cursor-pointer transition-all duration-300 flex items-center justify-center text-center"
+              style="background:linear-gradient(135deg, #FFFF15 0%, #d4d400 100%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.6), inset 0 -6px 10px rgba(255,255,21,0.25), 0 8px 20px rgba(255,255,21,0.35);">
+              My Bisnis
+            </button>
+          </a>
 
           <button class="btn-outline w-[220px] py-4 rounded-full font-extrabold text-base text-white border border-white/50 backdrop-blur-md cursor-pointer transition-all duration-300 flex items-center justify-center text-center"
             style="background:linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%); box-shadow: inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -6px 10px rgba(255,255,255,0.1), 0 8px 20px rgba(0,0,0,0.15);">
@@ -270,10 +293,6 @@
           </button>
         </div>
       </div>
-
-      <!-- Container Kanan (Dihapus foto dan card soft skill) -->
-      <!-- Tidak ada elemen di sini karena foto dihapus -->
-
     </div>
   </div>
 </section>
@@ -288,10 +307,10 @@
       <!-- sosial media -->
       <div class="aside-bubble bg-panel border border-border rounded-[20px] p-5 opacity-0 translate-y-6" style="box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:0s;">
         <div class="flex items-center justify-between mb-4">
-          <span class="bg-accent text-white font-extrabold text-[13px] tracking-wide py-1.5 px-3 rounded-md">ZULFRAN<sup class="text-[9px]">®</sup></span>
+          <span class="bg-accent text-bg font-extrabold text-[13px] tracking-wide py-1.5 px-3 rounded-md">ZULFRAN<sup class="text-[9px]">®</sup></span>
           <div class="flex gap-2">
-            <a href="#" aria-label="X" class="w-7 h-7 rounded-full bg-panel2 border border-border flex items-center justify-center text-fg text-[11px] transition-colors duration-300 hover:bg-accent">✕</a>
-            <a href="#" aria-label="LinkedIn" class="w-7 h-7 rounded-full bg-panel2 border border-border flex items-center justify-center text-fg text-[11px] font-bold transition-colors duration-300 hover:bg-accent">in</a>
+            <a href="#" aria-label="X" class="w-7 h-7 rounded-full bg-panel2 border border-border flex items-center justify-center text-fg text-[11px] transition-colors duration-300 hover:bg-accent hover:text-bg">✕</a>
+            <a href="#" aria-label="LinkedIn" class="w-7 h-7 rounded-full bg-panel2 border border-border flex items-center justify-center text-fg text-[11px] font-bold transition-colors duration-300 hover:bg-accent hover:text-bg">in</a>
           </div>
         </div>
         <p class="text-[13px] leading-[1.6] m-0 text-muted">Working closely with your team to deliver <span class="text-accent font-semibold">Webflow builds</span> that merge <span class="text-accent font-semibold">creativity</span>, technical excellence, and <span class="text-accent font-semibold">long-term value</span>.</p>
@@ -299,12 +318,12 @@
 
       <div class="flex gap-2.5">
         <div class="aside-bubble flex-1 rounded-2xl border border-border p-5 px-[18px] text-center opacity-0 translate-y-6"
-             style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%); box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:0s;">
+             style="background:radial-gradient(circle at 30% 25%, #1a3a4a, #0C1E29 70%); box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:0s;">
           <div class="text-accent font-extrabold text-[20px]">17+</div>
           <div class="text-[11px] text-muted mt-[3px] leading-[1.3]">Projects Has Been Created</div>
         </div>
         <div class="aside-bubble flex-1 rounded-2xl border border-border p-5 px-[18px] text-center opacity-0 translate-y-6"
-             style="background:radial-gradient(circle at 30% 25%, #22222a, #04203a 70%); box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:.05s;">
+             style="background:radial-gradient(circle at 30% 25%, #1a3a4a, #0C1E29 70%); box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04); transition-delay:.05s;">
           <div class="text-accent font-extrabold text-[20px]">7+</div>
           <div class="text-[11px] text-muted mt-[3px] leading-[1.3]">Years Of Experience</div>
         </div>
@@ -312,7 +331,7 @@
 
       <div id="navList" class="flex flex-col gap-2.5 mt-1">
         <div class="nav-item aside-bubble bg-accent text-bg border border-border rounded-2xl py-3.5 px-5 font-semibold text-[14px] flex items-center gap-3 cursor-pointer transition-all duration-300 opacity-0 translate-y-6"
-             data-active="true" data-target="#home" style="box-shadow:0 6px 16px rgba(3,52,110,.45); transition-delay:.1s;">
+             data-active="true" data-target="#home" style="box-shadow:0 6px 16px rgba(255,255,21,.35); transition-delay:.1s;">
           <span class="w-[14px] h-[14px] rounded-full bg-bg"></span> Home
         </div>
         <div class="nav-item aside-bubble bg-panel text-fg border border-border rounded-2xl py-3.5 px-5 font-semibold text-[14px] flex items-center gap-3 cursor-pointer transition-all duration-300 opacity-0 translate-y-6"
@@ -330,7 +349,7 @@
       </div>
 
       <div class="aside-bubble bg-panel border border-border rounded-2xl py-3.5 px-5 text-[13px] text-muted mt-2 text-center opacity-0 translate-y-6" style="box-shadow:0 6px 16px rgba(0,0,0,.3); transition-delay:.3s;">email@email.com</div>
-      <div class="see-more aside-bubble bg-accent text-bg rounded-2xl py-3.5 px-6 font-bold text-[14px] flex justify-between items-center mt-1.5 cursor-pointer transition-transform duration-300 opacity-0 translate-y-6" style="box-shadow:0 8px 20px rgba(3,52,110,.5); transition-delay:.35s;">Contact <span>↗</span></div>
+      <div class="see-more aside-bubble bg-accent text-bg rounded-2xl py-3.5 px-6 font-bold text-[14px] flex justify-between items-center mt-1.5 cursor-pointer transition-transform duration-300 opacity-0 translate-y-6" style="box-shadow:0 8px 20px rgba(255,255,21,.4); transition-delay:.35s;">Contact <span>↗</span></div>
 
       <!-- Tools/software -->
       <div class="aside-bubble bg-panel border border-border rounded-2xl p-5 mt-2 opacity-0 translate-y-6" style="box-shadow:0 6px 16px rgba(0,0,0,.3); transition-delay:.4s;">
@@ -364,7 +383,7 @@
       </div>
     </aside>
 
-    <!-- KONTEN UTAMA (Kanan - About, Projects, FAQ ) -->
+    <!-- KONTEN UTAMA -->
     <div class="w-full">
 
       <!-- ===== ABOUT ===== -->
@@ -378,27 +397,27 @@
           <div id="timelineTrack" class="relative w-full min-h-[1900px]">
             <svg id="timelineSvg" class="absolute top-0 left-0 w-full h-full overflow-visible pointer-events-none"></svg>
 
-            <!-- Card 1 (kanan-tengah) -->
+            <!-- Card 1 -->
             <div class="step-card absolute top-0 left-[24%] w-[72%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="0" style="transform:translateY(50px) scale(.94);">
-              <h4 class="text-[26px] font-bold mb-3 text-white">Growing Reach</h4>
+              <h4 class="text-[26px] font-bold mb-3 text-accent">Growing Reach</h4>
               <p class="text-muted text-[16px] leading-[1.65] m-0">Seiring berkembangnya pengalaman saya di dunia kreatif, saya terus memperluas kemampuan di bidang Graphic Design dan 3D Visualization melalui berbagai proyek dan eksplorasi desain. Saya berkomitmen untuk terus mengikuti perkembangan industri serta meningkatkan kualitas karya dengan memanfaatkan Blender 3D, Adobe Photoshop, Adobe Illustrator, SketchUp, dan Affinity Designer. Bagi saya, setiap proyek adalah kesempatan untuk belajar, berinovasi, dan menghadirkan solusi visual yang kreatif, fungsional, serta memberikan dampak positif bagi setiap klien maupun audiens.</p>
             </div>
 
-            <!-- Card 2 (kiri-tengah) -->
+            <!-- Card 2 -->
             <div class="step-card absolute w-[72%] left-[4%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="1" data-line-start-offset="-100" data-line-end-offset="-20" style="top:480px; transform:translateY(50px) scale(.94);">
-              <h4 class="text-[26px] font-bold mb-3 text-white">Expanding Reach</h4>
+              <h4 class="text-[26px] font-bold mb-3 text-accent">Expanding Reach</h4>
               <p class="text-muted text-[16px] leading-[1.65] m-0">Saya terus memperluas jangkauan karya dengan mengembangkan kemampuan di bidang Graphic Design dan 3D Visualization, serta berkolaborasi dalam berbagai proyek kreatif. Melalui penguasaan Blender 3D, Adobe Photoshop, Adobe Illustrator, SketchUp, dan Affinity Designer, saya berupaya menghadirkan solusi visual yang inovatif, berkualitas, dan relevan dengan kebutuhan klien. Setiap pengalaman menjadi langkah untuk membangun portofolio yang lebih luas, memperkuat kemampuan profesional, dan menciptakan dampak yang lebih besar melalui desain</p>
             </div>
 
-            <!-- Card 3 (kanan-tengah) -->
+            <!-- Card 3 -->
             <div class="step-card absolute w-[72%] left-[24%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="2" data-line-start-offset="-100" data-line-end-offset="-20" style="top:960px; transform:translateY(50px) scale(.94);">
-              <h4 class="text-[26px] font-bold mb-3 text-white">First Freelance</h4>
+              <h4 class="text-[26px] font-bold mb-3 text-accent">First Freelance</h4>
               <p class="text-muted text-[16px] leading-[1.65] m-0">Memulai perjalanan sebagai freelancer memberikan saya kesempatan untuk menerapkan kemampuan Graphic Design dan 3D Visualization dalam proyek nyata. Dari setiap kolaborasi, saya belajar memahami kebutuhan klien, mengelola waktu secara profesional, serta menghasilkan solusi visual yang kreatif dan berkualitas. Pengalaman ini menjadi fondasi penting dalam membangun portofolio, meningkatkan keterampilan, dan mengembangkan diri sebagai desainer yang mampu memberikan hasil terbaik pada setiap proyek.</p>
             </div>
 
-            <!-- Card 4 (kiri-tengah) -->
+            <!-- Card 4 -->
             <div class="step-card absolute w-[72%] left-[4%] bg-panel border border-border rounded-[20px] p-8 opacity-0 transition-[opacity,transform] duration-[900ms] ease-in-out" data-i="3" data-line-start-offset="-100" data-line-end-offset="-20" style="top:1440px; transform:translateY(50px) scale(.94);">
-              <h4 class="text-[26px] font-bold mb-3 text-white">Mastery &amp; Vision</h4>
+              <h4 class="text-[26px] font-bold mb-3 text-accent">Mastery &amp; Vision</h4>
               <p class="text-muted text-[16px] leading-[1.65] m-0">Saya memiliki visi untuk menjadi seorang profesional di bidang Graphic Design dan 3D Visualization yang mampu menghadirkan karya berkualitas tinggi dengan standar industri. Di masa depan, saya ingin terus mengembangkan kemampuan teknis dan kreativitas, memperluas pengalaman melalui proyek-proyek berskala nasional maupun internasional, serta membangun studio kreatif yang berfokus pada branding, visualisasi arsitektur, dan solusi desain inovatif. Bagi saya, setiap tantangan adalah kesempatan untuk terus belajar, berkembang, dan menciptakan dampak positif melalui desain.</p>
             </div>
           </div>
@@ -407,94 +426,97 @@
 
       <!-- ===== PROJECTS ===== -->
       <div id="projects" class="pt-[80px] pb-[40px]">
-        <div class="reveal inline-block border-[1.5px] border-fg rounded-md py-[13px] px-[26px] font-bold mb-10 opacity-0 translate-y-[30px] transition-[opacity,transform] duration-[800ms] ease-in-out">Project unggulan</div>
+        <div class="reveal inline-block border-[1.5px] border-accent text-accent rounded-md py-[13px] px-[26px] font-bold mb-10 opacity-0 translate-y-[30px] transition-[opacity,transform] duration-[800ms] ease-in-out">Project unggulan</div>
 
         <div id="projectsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
           <div class="project-card bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out">
             <div class="relative h-[320px] overflow-hidden">
-              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
-                <span class="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
-                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
+              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2] flex-wrap">
+                <span class="bg-accent text-bg w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Isometric Coffee Shop </span>
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Blender</span>
               </div>
-              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto1.webp" alt="testing project">
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto1.webp" alt="Isometric Coffee Shop ">
             </div>
             <div class="relative pt-5 px-6 pb-7">
-              <h4 class="text-[20px] mb-2">testing project</h4>
-              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">test</p>
-              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
+              <h4 class="text-[20px] mb-2 text-accent">Isometric Coffee Shop</h4>
+              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Model 3D bergaya isometrik yang menampilkan sebuah coffee shop modern dengan area indoor dan outdoor yang lengkap. Dibuat menggunakan Blender, proyek ini mencakup proses modeling, texturing, lighting, serta rendering untuk menciptakan visual arsitektur yang menarik. Desain ini menunjukkan kemampuan dalam membuat environment 3D yang detail dan estetik.</p>
+              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-panel2 border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
             </div>
           </div>
 
           <div class="project-card bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out">
             <div class="relative h-[320px] overflow-hidden">
-              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
-                <span class="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
-                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
-                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
+              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2] flex-wrap">
+                <span class="bg-accent text-bg w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Open Trip Bali</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Design promosi</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Adobe Illustrator</span>
               </div>
-              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto2.webp" alt="testing project">
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto2.webp" alt="Open Trip Bali Social Media Design">
             </div>
             <div class="relative pt-5 px-6 pb-7">
-              <h4 class="text-[20px] mb-2">testing project</h4>
-              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
-              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
+              <h4 class="text-[20px] mb-2 text-accent">Open Trip Bali Social Media Design</h4>
+              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Desain konten media sosial bertema promosi paket wisata Bali yang dibuat menggunakan Adobe Illustrator. Mengusung konsep modern dengan tata letak yang bersih, tipografi yang jelas, serta elemen visual yang menarik sehingga informasi mudah dipahami dan mampu meningkatkan daya tarik promosi di media sosial.</p>
+              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-panel2 border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
             </div>
           </div>
 
           <div class="project-card bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out">
             <div class="relative h-[320px] overflow-hidden">
-              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
-                <span class="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
-                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
+              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2] flex-wrap">
+                <span class="bg-accent text-bg w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Luxury Pen</span>
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Blender</span>
               </div>
-              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/WhatsApp Image 2026-07-26 at 21.09.46.webp" alt="testing project">
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/WhatsApp Image 2026-07-26 at 21.09.46.webp" alt="Luxury Pen Product Visualization">
             </div>
             <div class="relative pt-5 px-6 pb-7">
-              <h4 class="text-[20px] mb-2">testing project</h4>
-              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
-              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
+              <h4 class="text-[20px] mb-2 text-accent">Luxury Pen Product Visualization</h4>
+              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Visualisasi produk 3D berupa sebuah pena premium yang ditempatkan di dalam kotak eksklusif dengan konsep elegan dan mewah. Proyek ini dibuat menggunakan Blender, mencakup proses 3D modeling, material texturing, lighting, dan rendering untuk menghasilkan tampilan yang realistis dan berkelas. Cocok digunakan sebagai media promosi, branding, maupun presentasi produk.</p>
+              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-panel2 border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
             </div>
           </div>
 
           <div class="project-card bg-panel rounded-[14px] overflow-hidden border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out">
             <div class="relative h-[320px] overflow-hidden">
-              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2]">
-                <span class="bg-white text-black w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
-                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">testing project</span>
+              <div class="absolute top-3 left-3 right-3 flex gap-2 items-center z-[2] flex-wrap">
+                <span class="bg-accent text-bg w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-extrabold">1</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Floridina</span>
                 <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">3D</span>
+                <span class="bg-black/[0.55] text-[12px] font-bold py-2 px-3 rounded-md">Blender</span>
               </div>
-              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto3.webp" alt="testing project">
+              <img class="project-img w-full h-full object-cover transition-transform duration-[600ms] ease-in-out" src="asset/foto3.webp" alt="Floridina Product Advertisement">
             </div>
-            
             <div class="relative pt-5 px-6 pb-7">
-              <h4 class="text-[20px] mb-2">testing project</h4>
-              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Lorem ipsum dolor sit amet, reprehenderit nulla mollit incididunt nostrud aute dolore.</p>
-              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-[#062a48] border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
+              <h4 class="text-[20px] mb-2 text-accent">Floridina Product Advertisement</h4>
+              <p class="text-muted text-[14px] leading-[1.6] m-0 pr-10">Desain iklan produk minuman Floridina yang dibuat menggunakan Adobe Photoshop dengan teknik photo manipulation dan compositing. Efek percikan jus, irisan jeruk, serta perpaduan warna cerah memberikan kesan segar dan dinamis. Proyek ini menampilkan kemampuan dalam mengolah gambar, mengatur pencahayaan, serta menciptakan visual promosi yang menarik dan profesional untuk kebutuhan digital marketing.</p>
+              <div class="arrow-btn absolute right-5 bottom-5 w-10 h-10 rounded-full bg-panel2 border border-border text-fg flex items-center justify-center transition-all duration-300">↗</div>
             </div>
           </div>
 
           <!-- Card CTA Behance -->
-          <a href="https://www.behance.net/muhammalesmana1" target="_blank" rel="noopener" class="project-card h-full bg-white rounded-[14px] border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out flex flex-col justify-between p-8 no-underline">
+          <a href="https://www.behance.net/muhammalesmana1" target="_blank" rel="noopener" class="project-card h-full bg-accent rounded-[14px] border border-border opacity-0 translate-y-10 transition-[opacity,transform,box-shadow] duration-[800ms] ease-in-out flex flex-col justify-between p-8 no-underline">
             <div class="flex items-start justify-between gap-4">
               <h4 class="text-[22px] font-extrabold leading-snug text-bg m-0">Mau lihat project lain saya? Yuk ke Behance</h4>
-              <div class="arrow-btn w-11 h-11 rounded-full bg-[#062a48] text-fg flex items-center justify-center text-lg shrink-0 transition-all duration-300">↗</div>
+              <div class="arrow-btn w-11 h-11 rounded-full bg-bg text-accent flex items-center justify-center text-lg shrink-0 transition-all duration-300">↗</div>
             </div>
-            <p class="text-[14px] leading-[1.6] m-0" style="color:#5b5d66;">Lihat koleksi lengkap project 3D, branding, dan eksperimen desain lainnya di profil Behance saya.</p>
+            <p class="text-[14px] leading-[1.6] m-0" style="color:#1a3a4a;">Lihat koleksi lengkap project 3D, branding, dan eksperimen desain lainnya di profil Behance saya.</p>
           </a>
         </div>
       </div>
 
       <!-- ===== FAQ ===== -->
       <div id="faq" class="pt-[70px] pb-[20px]">
-        <h2 class="reveal font-extrabold mb-10 opacity-0 translate-y-[30px] transition-[opacity,transform] duration-[800ms] ease-in-out" style="font-size:clamp(34px,6vw,58px);">Tanya kuy!</h2>
+        <h2 class="reveal font-extrabold mb-10 opacity-0 translate-y-[30px] transition-[opacity,transform] duration-[800ms] ease-in-out text-accent" style="font-size:clamp(34px,6vw,58px);">Tanya kuy!</h2>
  
         <div id="faqGrid" class="columns-1 sm:columns-2 gap-4 max-w-[980px]">
  
-          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out" data-open="true" style="background:#0a3457;">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Layanan apa saja yang Anda tawarkan?
+          <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out" data-open="true" style="background:#1f445a;">
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px] text-fg">Layanan apa saja yang Anda tawarkan?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">-</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:200px;opacity:1;margin-top:14px;">
@@ -505,7 +527,7 @@
           </div>
  
           <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Berapa lama proses pengerjaan sebuah proyek?
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px] text-fg">Berapa lama proses pengerjaan sebuah proyek?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
@@ -516,7 +538,7 @@
           </div>
  
           <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Format file apa yang akan saya terima?
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px] text-fg">Format file apa yang akan saya terima?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
@@ -527,7 +549,7 @@
           </div>
  
           <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Apakah Anda menerima proyek dari luar kota atau luar negeri?
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px] text-fg">Apakah Anda menerima proyek dari luar kota atau luar negeri?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
@@ -538,7 +560,7 @@
           </div>
  
           <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Bagaimana cara memulai kerja sama?
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px] text-fg">Bagaimana cara memulai kerja sama?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
@@ -549,7 +571,7 @@
           </div>
  
           <div class="faq-item reveal bg-panel2 border border-border rounded-xl py-5 px-[22px] cursor-pointer mb-4 break-inside-avoid opacity-0 translate-y-[30px] transition-[opacity,transform,background] duration-[800ms] ease-in-out">
-            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px]">Mengapa memilih jasa Anda?
+            <div class="flex justify-between items-center gap-3.5 font-bold text-[14.5px] text-fg">Mengapa memilih jasa Anda?
               <span class="faq-toggle w-5 h-5 rounded-full bg-accent text-bg flex items-center justify-center font-extrabold shrink-0 text-sm transition-transform duration-[400ms]">+</span>
             </div>
             <div class="faq-body overflow-hidden transition-[max-height,opacity,margin-top] duration-500 ease-in-out" style="max-height:0;opacity:0;margin-top:0;">
@@ -566,7 +588,7 @@
   </div>
 </section>
 
-<!-- ================= LIGHTBOX / POPUP FOTO PROJECT ================= -->
+<!-- ================= LIGHTBOX ================= -->
 <div id="projectLightbox" role="dialog" aria-modal="true" aria-label="Preview foto project">
   <div class="lightbox-inner">
     <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Tutup">✕</button>
@@ -584,38 +606,33 @@
     </div>
     <div>
       <div class="text-accent font-bold mb-3.5">Quick Link</div>
-      <a href="#home" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Home</a>
-      <a href="#projects" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Project</a>
-      <a href="#about" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">About</a>
-      <a href="#faq" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">FAQ</a>
+      <a href="#home" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300 hover:text-accent">Home</a>
+      <a href="#projects" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300 hover:text-accent">Project</a>
+      <a href="#about" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300 hover:text-accent">About</a>
+      <a href="#faq" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300 hover:text-accent">FAQ</a>
     </div>
     <div>
       <div class="text-accent font-bold mb-3.5">Follow Me</div>
       <div class="flex gap-2.5 mb-3.5">
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/zoelfrann?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:opacity-80" aria-label="Instagram">
-    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-  </a>
+        <a href="https://www.instagram.com/zoelfrann?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:bg-accent hover:text-bg" aria-label="Instagram">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
 
-  <!-- LinkedIn -->
-  <a href="https://linkedin.com/in/username_anda" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:opacity-80" aria-label="LinkedIn">
-    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-    </svg>
-  </a>
+        <a href="https://linkedin.com/in/username_anda" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:bg-accent hover:text-bg" aria-label="LinkedIn">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
 
-  <!-- Behance -->
-  <a href="https://www.behance.net/muhammalesmana1" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:opacity-80" aria-label="Behance">
-    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-      <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.813 3-3.103 0-5.322-2.112-5.322-5.412 0-3.239 2.112-5.588 5.176-5.588 3.235 0 4.882 2.279 4.882 5.25 0 .426-.044.853-.088 1.062h-7.397c.074 1.485 1.235 2.397 2.706 2.397 1.397 0 2.118-.544 2.485-1.382l2.371.673zm-4.941-5.162c-.015-.985-.721-1.632-1.765-1.632-1.044 0-1.735.632-1.897 1.632h3.662zm-12.785 8.162h-6v-16h6.632c2.721 0 4.368 1.294 4.368 3.515 0 1.544-.809 2.662-2.059 3.162 1.618.471 2.559 1.765 2.559 3.529 0 2.662-1.926 5.794-5.5 5.794zm-3-13v3.838h3.088c1.324 0 2.059-.603 2.059-1.882 0-1.25-.794-1.956-2.059-1.956h-3.088zm0 6.162v4.162h3.338c1.471 0 2.309-.75 2.309-2.059 0-1.397-.897-2.103-2.309-2.103h-3.338z"/>
-    </svg>
-  </a>
-
-  <!-- Mail/Email -->
-</div>
-      <a href="#" class="footlink block text-muted text-[13.5px] no-underline transition-colors duration-300">email@email.com</a>
+        <a href="https://www.behance.net/muhammalesmana1" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:bg-accent hover:text-bg" aria-label="Behance">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.813 3-3.103 0-5.322-2.112-5.322-5.412 0-3.239 2.112-5.588 5.176-5.588 3.235 0 4.882 2.279 4.882 5.25 0 .426-.044.853-.088 1.062h-7.397c.074 1.485 1.235 2.397 2.706 2.397 1.397 0 2.118-.544 2.485-1.382l2.371.673zm-4.941-5.162c-.015-.985-.721-1.632-1.765-1.632-1.044 0-1.735.632-1.897 1.632h3.662zm-12.785 8.162h-6v-16h6.632c2.721 0 4.368 1.294 4.368 3.515 0 1.544-.809 2.662-2.059 3.162 1.618.471 2.559 1.765 2.559 3.529 0 2.662-1.926 5.794-5.5 5.794zm-3-13v3.838h3.088c1.324 0 2.059-.603 2.059-1.882 0-1.25-.794-1.956-2.059-1.956h-3.088zm0 6.162v4.162h3.338c1.471 0 2.309-.75 2.309-2.059 0-1.397-.897-2.103-2.309-2.103h-3.338z"/>
+          </svg>
+        </a>
+      </div>
+      <a href="#" class="footlink block text-muted text-[13.5px] no-underline transition-colors duration-300 hover:text-accent">email@email.com</a>
     </div>
   </div>
 </footer>
@@ -666,29 +683,29 @@ function hoverFX(selector, onEnter, onLeave){
     el.addEventListener('mouseleave', () => onLeave(el));
   });
 }
-hoverFX('.navlink', el => el.style.color = '#03346E', el => el.style.color = '#f5f6f8');
+hoverFX('.navlink', el => el.style.color = '#FFFF15', el => el.style.color = '#f5f6f8');
 hoverFX('.btn-primary',
-  el => { el.style.transform = 'translateY(-3px)'; el.style.boxShadow = '0 10px 24px rgba(3,52,110,.45)'; el.style.background = '#0a4a86'; },
-  el => { el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none'; el.style.background = '#03346E'; });
+  el => { el.style.transform = 'translateY(-3px)'; el.style.boxShadow = '0 10px 24px rgba(255,255,21,.45)'; },
+  el => { el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none'; });
 hoverFX('.btn-outline',
-  el => { el.style.transform = 'translateY(-3px)'; el.style.background = 'rgba(3,52,110,.25)'; },
-  el => { el.style.transform = 'translateY(0)'; el.style.background = '#03346E'; });
+  el => { el.style.transform = 'translateY(-3px)'; el.style.background = 'rgba(255,255,21,.15)'; },
+  el => { el.style.transform = 'translateY(0)'; el.style.background = 'rgba(255,255,21,.05)'; });
 hoverFX('.nav-item',
-  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(4px)'; el.style.background = '#062a48'; } },
-  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(0)'; el.style.background = '#04203a'; } });
+  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(4px)'; el.style.background = '#1f445a'; } },
+  el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(0)'; el.style.background = '#163545'; } });
 hoverFX('.see-more', el => el.style.transform = 'translateY(-2px)', el => el.style.transform = 'translateY(0)');
 hoverFX('.project-card',
   el => { el.style.boxShadow = '0 20px 40px rgba(0,0,0,.4)'; el.style.transform = 'translateY(-6px)';
           const img = el.querySelector('.project-img'); if (img) img.style.transform = 'scale(1.08)';
-          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#03346E'; arrow.style.color = '#021526'; arrow.style.transform = 'rotate(45deg)'; } },
+          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#FFFF15'; arrow.style.color = '#0C1E29'; arrow.style.transform = 'rotate(45deg)'; } },
   el => { el.style.boxShadow = 'none'; el.style.transform = 'translateY(0)';
           const img = el.querySelector('.project-img'); if (img) img.style.transform = 'scale(1)';
-          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#062a48'; arrow.style.color = '#f5f6f8'; arrow.style.transform = 'rotate(0deg)'; } });
-hoverFX('.faq-item', el => { if (el.dataset.open !== 'true') el.style.background = '#0a3457'; }, el => { if (el.dataset.open !== 'true') el.style.background = '#062a48'; });
-hoverFX('.footlink', el => el.style.color = '#03346E', el => el.style.color = '#93959c');
-hoverFX('.social-dot', el => { el.style.background = '#03346E'; el.style.transform = 'translateY(-3px)'; }, el => { el.style.background = '#04203a'; el.style.transform = 'translateY(0)'; });
+          const arrow = el.querySelector('.arrow-btn'); if (arrow){ arrow.style.background = '#1f445a'; arrow.style.color = '#f5f6f8'; arrow.style.transform = 'rotate(0deg)'; } });
+hoverFX('.faq-item', el => { if (el.dataset.open !== 'true') el.style.background = '#1f445a'; }, el => { if (el.dataset.open !== 'true') el.style.background = '#163545'; });
+hoverFX('.footlink', el => el.style.color = '#FFFF15', el => el.style.color = '#9aaeb9');
+hoverFX('.social-dot', el => { el.style.background = '#FFFF15'; el.style.color = '#0C1E29'; el.style.transform = 'translateY(-3px)'; }, el => { el.style.background = '#163545'; el.style.color = '#f5f6f8'; el.style.transform = 'translateY(0)'; });
 
-/* ---------- Reveal-on-scroll (Masuk saat Scroll Down & Keluar saat Scroll Up) ---------- */
+/* ---------- Reveal-on-scroll ---------- */
 const revealEls = document.querySelectorAll('.step-card, .project-card, .reveal, .faq-item, .aside-bubble');
 
 const io = new IntersectionObserver((entries) => {
@@ -715,7 +732,7 @@ revealEls.forEach((el) => {
   io.observe(el);
 });
 
-/* ---------- Garis penghubung timeline (1 GARIS = 1 CARD) ---------- */
+/* ---------- Timeline lines ---------- */
 const track = document.getElementById('timelineTrack');
 const svg = document.getElementById('timelineSvg');
 const cards = Array.from(document.querySelectorAll('.step-card'));
@@ -750,7 +767,7 @@ function drawLines(){
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', d);
     path.setAttribute('fill', 'none');
-    path.setAttribute('stroke', '#03346E');
+    path.setAttribute('stroke', '#FFFF15');
     path.setAttribute('stroke-width', '2');
     path.setAttribute('stroke-linecap', 'round');
     svg.appendChild(path);
@@ -788,7 +805,7 @@ if (window.ResizeObserver) {
   cards.forEach(card => cardResizeObserver.observe(card));
 }
 
-/* ---------- Timeline mobile: garis vertikal lurus + titik per card ---------- */
+/* ---------- Timeline mobile ---------- */
 function updateMobileTimeline(){
   const narrow = window.innerWidth <= 900;
   let line = document.getElementById('timelineMobileLine');
@@ -810,7 +827,7 @@ function updateMobileTimeline(){
     line.style.position = 'absolute';
     line.style.left = '6px';
     line.style.width = '2px';
-    line.style.background = '#0d3a5c';
+    line.style.background = '#2a5a75';
     line.style.zIndex = '0';
     line.style.borderRadius = '2px';
     track.appendChild(line);
@@ -833,14 +850,12 @@ function updateMobileTimeline(){
   dotsLayer.innerHTML = '';
 
   track.style.minHeight = '0';
-  // Ruang di kiri track untuk garis + titik; card TIDAK diubah position/top-nya
-  // sama sekali supaya nilai top absolute peninggalan desktop tidak pernah aktif lagi.
   track.style.paddingLeft = '30px';
 
   requestAnimationFrame(() => {
     if (window.innerWidth > 900) return;
     const trackRect = track.getBoundingClientRect();
-    const dotVerticalOffset = 30; // sejajar kira-kira dengan angka tahun di tiap card
+    const dotVerticalOffset = 30;
     let minY = Infinity, maxY = -Infinity;
 
     cards.forEach(card => {
@@ -858,9 +873,9 @@ function updateMobileTimeline(){
       dot.style.marginLeft = '-7px';
       dot.style.marginTop = '-7px';
       dot.style.borderRadius = '9999px';
-      dot.style.background = '#ffffff';
-      dot.style.border = '3px solid #021526';
-      dot.style.boxShadow = '0 0 0 2px #0d3a5c';
+      dot.style.background = '#FFFF15';
+      dot.style.border = '3px solid #0C1E29';
+      dot.style.boxShadow = '0 0 0 2px #2a5a75';
       dotsLayer.appendChild(dot);
     });
 
@@ -879,17 +894,17 @@ document.querySelectorAll('.faq-item').forEach(item => {
       item.dataset.open = 'false';
       body.style.maxHeight = '0'; body.style.opacity = '0'; body.style.marginTop = '0';
       toggle.style.transform = 'rotate(0deg)'; toggle.textContent = '+';
-      item.style.background = '#062a48';
+      item.style.background = '#163545';
     } else {
       item.dataset.open = 'true';
       body.style.maxHeight = '200px'; body.style.opacity = '1'; body.style.marginTop = '14px';
       toggle.style.transform = 'rotate(135deg)'; toggle.textContent = '-';
-      item.style.background = '#0a3457';
+      item.style.background = '#1f445a';
     }
   });
 });
 
-/* ---------- Sidebar nav: klik untuk scroll ke section + active state ---------- */
+/* ---------- Sidebar nav ---------- */
 const navItems = Array.from(document.querySelectorAll('.nav-item'));
 const navSections = navItems
   .map(item => document.querySelector(item.dataset.target))
@@ -898,12 +913,12 @@ const navSections = navItems
 function setActiveNav(activeItem){
   navItems.forEach(i => {
     i.dataset.active = 'false';
-    i.style.background = '#04203a'; i.style.color = '#f5f6f8';
+    i.style.background = '#163545'; i.style.color = '#f5f6f8';
     i.querySelector('span').style.background = 'rgba(255,255,255,.15)';
   });
   activeItem.dataset.active = 'true';
-  activeItem.style.background = '#03346E'; activeItem.style.color = '#021526';
-  activeItem.querySelector('span').style.background = '#021526';
+  activeItem.style.background = '#FFFF15'; activeItem.style.color = '#0C1E29';
+  activeItem.querySelector('span').style.background = '#0C1E29';
 }
 
 navItems.forEach(item => {
@@ -915,7 +930,6 @@ navItems.forEach(item => {
   });
 });
 
-/* Scroll-spy: highlight nav sesuai section yang sedang terlihat */
 const navSpy = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting){
@@ -927,7 +941,7 @@ const navSpy = new IntersectionObserver((entries) => {
 
 navSections.forEach(sec => navSpy.observe(sec));
 
-/* ---------- Mobile hamburger menu ---------- */
+/* ---------- Mobile hamburger ---------- */
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 let mobileMenuOpen = false;
@@ -974,7 +988,7 @@ window.addEventListener('resize', () => {
   if (window.innerWidth > 900 && mobileMenuOpen) setMobileMenu(false);
 });
 
-/* ---------- Responsif sederhana ---------- */
+/* ---------- Responsif ---------- */
 function applyResponsive(){
   const narrow = window.innerWidth <= 900;
   const grid = document.getElementById('mainGrid');
@@ -996,7 +1010,7 @@ function applyResponsive(){
 window.addEventListener('resize', applyResponsive);
 window.addEventListener('load', applyResponsive);
 
-/* ---------- Lightbox / popup foto project ---------- */
+/* ---------- Lightbox ---------- */
 (function(){
   const lightbox = document.getElementById('projectLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
@@ -1041,6 +1055,22 @@ window.addEventListener('load', applyResponsive);
   }
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && lightbox && lightbox.classList.contains('lightbox-open')) closeLightbox();
+  });
+})();
+
+/* ---------- Page transition ---------- */
+(function(){
+  const overlay = document.getElementById('pageTransition');
+  const bisnisLink = document.getElementById('bisnisLink');
+  if (!overlay || !bisnisLink) return;
+
+  bisnisLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetUrl = bisnisLink.getAttribute('href');
+    overlay.classList.add('show');
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 700);
   });
 })();
 </script>
