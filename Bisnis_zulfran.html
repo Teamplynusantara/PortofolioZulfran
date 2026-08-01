@@ -14,15 +14,15 @@
         theme: {
         extend: {
             colors: {
-            bg: '#021526',
-            panel: '#04203a',
-            panel2: '#062a48',
-            border: '#0d3a5c',
-            accent: '#4DA3FF',
-            accentDim: '#1c4e7d',
-            gold: '#E8B95C',
+            bg: '#0C1E29',
+            panel: '#163545',
+            panel2: '#1f445a',
+            border: '#2a5a75',
+            accent: '#FFFF15',
+            accentDim: '#8a8a0a',
+            gold: '#FFFF15',
             fg: '#f5f6f8',
-            muted: '#8ea2b8',
+            muted: '#9aaeb9',
             }
         }
         }
@@ -30,11 +30,11 @@
     </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background: #0C1E29; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
 
-        #package #header, #whatYouGet #header {
-            background: linear-gradient(90deg, #ffffff 0%, #cfe0f2 45%, #4DA3FF 100%);
+        #package #header, #whatYouGet #header, #testimoni #header {
+            background: linear-gradient(90deg, #FFFF15 0%, #d4d400 45%, #8a8a0a 100%);
             width: fit-content;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -47,8 +47,8 @@
         }
         .card:hover {
             transform: translateY(-6px);
-            border-color: #4DA3FF;
-            box-shadow: 0 20px 40px -20px rgba(77,163,255,0.35);
+            border-color: #FFFF15;
+            box-shadow: 0 20px 40px -20px rgba(255,255,21,0.35);
         }
 
         .bullet {
@@ -64,8 +64,8 @@
             transition: background-color .2s ease, border-color .2s ease;
         }
         .service-row:hover {
-            background-color: rgba(77,163,255,0.06);
-            border-color: #4DA3FF;
+            background-color: rgba(255,255,21,0.06);
+            border-color: #FFFF15;
         }
         #typingTxt::after{
             content: "|";
@@ -80,14 +80,13 @@
             }
         }
 
-        /* ---- About Me style for whatYouGet header ---- */
         .about-photo-frame {
             position: relative;
             border-radius: 1.5rem;
             overflow: hidden;
             aspect-ratio: 4/5;
-            background: linear-gradient(160deg, #0d3a5c 0%, #04203a 60%, #021526 100%);
-            border: 1px solid #0d3a5c;
+            background: linear-gradient(160deg, #2a5a75 0%, #163545 60%, #0C1E29 100%);
+            border: 1px solid #2a5a75;
         }
         .about-photo-frame::before {
             content: "";
@@ -95,7 +94,7 @@
             inset: -40% -40% auto auto;
             width: 60%;
             height: 60%;
-            background: radial-gradient(circle, rgba(77,163,255,0.35) 0%, rgba(77,163,255,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,21,0.35) 0%, rgba(255,255,21,0) 70%);
         }
         .about-photo-frame::after {
             content: "";
@@ -103,11 +102,11 @@
             inset: auto auto -30% -30%;
             width: 55%;
             height: 55%;
-            background: radial-gradient(circle, rgba(232,185,92,0.20) 0%, rgba(232,185,92,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,21,0.20) 0%, rgba(255,255,21,0) 70%);
         }
         .stat-chip {
-            border: 1px solid #0d3a5c;
-            background: rgba(4,32,58,0.6);
+            border: 1px solid #2a5a75;
+            background: rgba(22,53,69,0.6);
             backdrop-filter: blur(6px);
         }
         .divider-label {
@@ -121,14 +120,13 @@
             content: "";
             flex: 1;
             height: 1px;
-            background: #0d3a5c;
+            background: #2a5a75;
         }
 
-        /* ---- Page transition overlay (fade in on entry) ---- */
         #pageTransition {
             position: fixed;
             inset: 0;
-            background: #021526;
+            background: #0C1E29;
             z-index: 9999;
             opacity: 1;
             pointer-events: none;
@@ -137,43 +135,118 @@
         #pageTransition.hide {
             opacity: 0;
         }
+
+        .footlink:hover {
+            color: #FFFF15 !important;
+        }
+        .social-dot:hover {
+            background: #FFFF15 !important;
+            color: #0C1E29 !important;
+        }
+        .social-dot:hover svg {
+            fill: #0C1E29 !important;
+        }
+
+        #siteNav {
+            backdrop-filter: blur(10px);
+        }
+        #siteNav a.navlink {
+            position: relative;
+        }
+        #siteNav a.navlink::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 1.5px;
+            background: #FFFF15;
+            transition: width .25s ease;
+        }
+        #siteNav a.navlink:hover::after {
+            width: 100%;
+        }
+        #navCta:hover {
+            filter: brightness(1.08);
+        }
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease;
+        }
+        #mobileMenu.open {
+            max-height: 320px;
+        }
+
+        .testimonial-slide {
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="bg-bg m-0 p-0 overflow-x-hidden antialiased">
     <div id="pageTransition"></div>
 
+    <nav id="siteNav" class="sticky top-0 z-40 bg-bg/85 border-b border-border">
+        <div class="max-w-6xl mx-auto px-6 h-[76px] flex items-center justify-between">
+            <a href="#whatYouGet" class="font-display text-fg text-xl font-bold tracking-tight">
+                Zulfran<span class="text-accent">.</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-9">
+                <a href="#whatYouGet" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Home</a>
+                <a href="#package" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Paket</a>
+                <a href="#testimoni" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Testimoni</a>
+                <a href="#contact" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Kontak</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-2">
+                <a id="navCtaBack" href="index.html" class="inline-flex items-center border border-accent text-accent font-display font-semibold text-sm px-5 py-2.5 rounded-full transition hover:bg-accent hover:text-bg">
+                    Kembali ke Portfolio
+                </a>
+                <a id="navCta" href="https://wa.me/6289662541617" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-accent text-bg font-display font-semibold text-sm px-5 py-2.5 rounded-full transition">
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <button id="navToggle" class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-border text-fg text-xl" aria-label="Buka menu">
+                <i class="ri-menu-3-line"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden border-t border-border px-6">
+            <a href="#whatYouGet" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Home</a>
+            <a href="#package" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Paket</a>
+            <a href="#testimoni" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Testimoni</a>
+            <a href="#contact" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Kontak</a>
+        </div>
+    </nav>
+
     <section id="whatYouGet" class="bg-panel2 w-full min-h-screen py-16 md:py-24 flex items-center">
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center px-6 gap-16">
 
-            <!-- Top: About Me -->
-          <div class="flex flex-col items-center justify-center mt-24 mb-40 gap-6 md:gap-8 px-4 text-center">
-    <!-- Title -->
-    <h2 class="font-display text-fg text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight max-w-4xl">
-        Zulfran — 3D Visualizer &amp; Architectural Renderer
-    </h2>
+            <div class="flex flex-col items-center justify-center mt-24 mb-40 gap-6 md:gap-8 px-4 text-center">
+                <h2 class="font-display text-fg text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight max-w-4xl">
+                    Zulfran — 3D Visualizer &amp; graphic Designer
+                </h2>
+                <p class="text-muted text-lg sm:text-xl md:text-2xl max-w-3xl leading-relaxed">
+                    Membantu arsitek, developer, dan pemilik proyek mewujudkan desain menjadi visual yang jelas dan meyakinkan, dari sketsa awal hingga render siap presentasi ke klien.
+                </p>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-8 sm:mt-12">
+                    <div class="flex flex-col items-center">
+                        <p class="font-display text-4xl sm:text-5xl font-bold text-accent">50+</p>
+                        <p class="text-muted text-xs sm:text-sm uppercase tracking-widest mt-1">Proyek Selesai</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p class="font-display text-4xl sm:text-5xl font-bold text-accent">5+</p>
+                        <p class="text-muted text-xs sm:text-sm uppercase tracking-widest mt-1">Tahun Pengalaman</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p class="font-display text-4xl sm:text-5xl font-bold text-accent">100%</p>
+                        <p class="text-muted text-xs sm:text-sm uppercase tracking-widest mt-1">Kepuasan Klien</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Subtitle / Deskripsi -->
-    <p class="text-muted text-lg sm:text-xl md:text-2xl max-w-3xl leading-relaxed">
-        Membantu arsitek, developer, dan pemilik proyek mewujudkan desain menjadi visual yang jelas dan meyakinkan, dari sketsa awal hingga render siap presentasi ke klien.
-    </p>
-
-    <!-- Stats Section -->
-    <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-8 sm:mt-12">
-        <div class="flex flex-col items-center">
-            <p class="font-display text-4xl sm:text-5xl font-bold text-accent">50+</p>
-            <p class="text-muted text-xs sm:text-sm uppercase tracking-widest mt-1">Proyek Selesai</p>
-        </div>
-        <div class="flex flex-col items-center">
-            <p class="font-display text-4xl sm:text-5xl font-bold text-accent">5+</p>
-            <p class="text-muted text-xs sm:text-sm uppercase tracking-widest mt-1">Tahun Pengalaman</p>
-        </div>
-        <div class="flex flex-col items-center">
-            <p class="font-display text-4xl sm:text-5xl font-bold text-accent">100%</p>
-            <p class="text-muted text-xs sm:text-sm uppercase tracking-widest mt-1">Kepuasan Klien</p>
-        </div>
-    </div>
-</div>
-                <!-- Bottom: What You Get -->
             <div class="flex flex-col items-center gap-4">
                 <h1 id="header" class="font-display text-6xl md:text-8xl font-bold tracking-tight leading-none uppercase">
                     What you get?
@@ -182,7 +255,7 @@
 
                 <div class="flex flex-wrap justify-center gap-3 mt-6">
                     <span class="stat-chip text-fg text-xs font-medium px-4 py-2 rounded-full">3D Visualization</span>
-                    <span class="stat-chip text-fg text-xs font-medium px-4 py-2 rounded-full">Architectural Rendering</span>
+                    <span class="stat-chip text-fg text-xs font-medium px-4 py-2 rounded-full">graphic Designer</span>
                     <span class="stat-chip text-fg text-xs font-medium px-4 py-2 rounded-full">Cinematic Animation</span>
                 </div>
             </div>
@@ -363,9 +436,7 @@
         </div>
     </section>
 
- 
-
-    <section id="package" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
+    <section id="package-design" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
         <div class="max-w-6xl mx-auto flex flex-col text-left px-6 gap-4">
 
             <span class="text-accent font-display font-semibold tracking-widest text-sm uppercase">Pricing</span>
@@ -534,53 +605,192 @@
         </div>
     </section>
 
-    <footer class="border-t border-border py-[50px] px-8">
-  <div class="flex flex-wrap justify-between gap-10 max-w-[1180px] mx-auto">
-    <div>
-      <h3 class="text-accent mb-2.5 text-xl">Zulfran</h3>
-      <p class="text-muted text-[13px] max-w-[240px] leading-[1.6] m-0">Working closely with your team to deliver Webflow builds that merge creativity, technical excellence, and long-term value.</p>
-    </div>
-    <div>
-      <div class="text-accent font-bold mb-3.5">Quick Link</div>
-      <a href="#home" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Home</a>
-      <a href="#projects" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Project</a>
-      <a href="#about" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">About</a>
-      <a href="#faq" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">FAQ</a>
-    </div>
-    <div>
-      <div class="text-accent font-bold mb-3.5">Follow Me</div>
-      <div class="flex gap-2.5 mb-3.5">
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/zoelfrann?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:opacity-80" aria-label="Instagram">
-    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-  </a>
+    <!-- ====== TESTIMONI SECTION (Carousel - 8 Slide) ====== -->
+    <section id="testimoni" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
+        <div class="max-w-6xl mx-auto flex flex-col text-left px-6 gap-4 w-full">
 
-  <!-- LinkedIn -->
-  <a href="https://linkedin.com/in/username_anda" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:opacity-80" aria-label="LinkedIn">
-    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-    </svg>
-  </a>
+            <span class="text-accent font-display font-semibold tracking-widest text-sm uppercase">Testimoni</span>
+            <h1 id="header" class="font-display text-5xl md:text-6xl font-bold tracking-tight leading-none uppercase">
+                Kata Klien
+            </h1>
+            <p class="text-muted text-lg max-w-2xl mt-2">Sedikit cerita dari klien yang sudah bekerja sama, mulai dari proyek visualisasi 3D hingga desain grafis untuk brand mereka.</p>
 
-  <!-- Behance -->
-  <a href="https://www.behance.net/muhammalesmana1" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300 hover:opacity-80" aria-label="Behance">
-    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-      <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.813 3-3.103 0-5.322-2.112-5.322-5.412 0-3.239 2.112-5.588 5.176-5.588 3.235 0 4.882 2.279 4.882 5.25 0 .426-.044.853-.088 1.062h-7.397c.074 1.485 1.235 2.397 2.706 2.397 1.397 0 2.118-.544 2.485-1.382l2.371.673zm-4.941-5.162c-.015-.985-.721-1.632-1.765-1.632-1.044 0-1.735.632-1.897 1.632h3.662zm-12.785 8.162h-6v-16h6.632c2.721 0 4.368 1.294 4.368 3.515 0 1.544-.809 2.662-2.059 3.162 1.618.471 2.559 1.765 2.559 3.529 0 2.662-1.926 5.794-5.5 5.794zm-3-13v3.838h3.088c1.324 0 2.059-.603 2.059-1.882 0-1.25-.794-1.956-2.059-1.956h-3.088zm0 6.162v4.162h3.338c1.471 0 2.309-.75 2.309-2.059 0-1.397-.897-2.103-2.309-2.103h-3.338z"/>
-    </svg>
-  </a>
+            <!-- Carousel Container -->
+            <div class="relative mt-10">
+                <!-- Track (only this part clips, so the arrow buttons below aren't cut off) -->
+                <div class="overflow-hidden">
+                <div id="testimonialTrack" class="flex transition-transform duration-500 ease-in-out gap-5">
 
-  <!-- Mail/Email -->
-</div>
-      <a href="#" class="footlink block text-muted text-[13.5px] no-underline transition-colors duration-300">email@email.com</a>
-    </div>
-  </div>
-</footer>
-    
+                    <!-- Testimoni 1 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">Zoel Studio berhasil menciptakan logo yang modern, profesional, dan sesuai dengan identitas perusahaan kami. Proses pengerjaannya cepat, komunikatif, dan hasilnya sangat memuaskan.</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">RKA</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">PT RAIHANA KARYA ABADI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimoni 2 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">Company profile yang dibuat Zoel Studio tampil profesional, modern, dan mampu menggambarkan identitas perusahaan kami dengan sangat baik. Sangat membantu saat presentasi kepada calon klien dan investor.</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">LP</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">PT LESMANA PUTRATAMA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimoni 3 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">Zoel Studio memberikan hasil visualisasi 3D yang tidak hanya menarik secara visual, tetapi juga akurat terhadap desain yang kami rencanakan. Sangat direkomendasikan untuk proyek arsitektur maupun properti.</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">LP</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">PT LESMANA PUTRATAMA</p>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimoni 4 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">Tim Zoel Studio memahami karakter brand kami dan mampu membuat strategi konten yang efektif. Hasil desain dan copywriting yang diberikan sangat membantu promosi produk kami.</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">MRS</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">Deby Rahmawati</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimoni 5 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">Kami sangat puas dengan kualitas render interior yang dihasilkan. Detail furnitur, tekstur material, dan suasana ruangan terlihat sangat realistis dan siap dipresentasikan kepada klien.</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">LV</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">LITE VFX ANIMATION</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimoni 6 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">Desain yang dibuat sangat kreatif dan siap untuk proses produksi. Komunikasi selama pengerjaan juga lancar, sehingga hasil akhirnya sesuai dengan ekspektasi kami.</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">PI</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">PAPERISH</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimoni 7 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">Visual campaign yang dibuat Zoel Studio sangat menarik dan mampu menyampaikan pesan promosi dengan jelas. Desainnya modern, profesional, dan berhasil meningkatkan daya tarik kampanye kami.</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">MI</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">MAXIMUM ID</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimoni 8 -->
+                    <div class="testimonial-slide w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex-shrink-0">
+                        <div class="bg-panel border border-border rounded-xl p-5 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_16px_32px_-18px_rgba(255,255,21,0.35)]">
+                            <i class="ri-double-quotes-l text-accent text-xl mb-2"></i>
+                            <p class="text-fg text-xs leading-relaxed mb-4 flex-1">"Tim Zoel Studio mampu menghasilkan konten video yang menarik dan profesional. Setiap video terasa lebih hidup dan efektif untuk memperkenalkan layanan kami kepada calon pelanggan."</p>
+                            <div class="flex items-center gap-2.5 mt-auto">
+                                <div class="w-8 h-8 rounded-full bg-accentDim/40 flex items-center justify-center font-display text-accent text-xs font-semibold">WT</div>
+                                <div>
+                                    <p class="text-fg text-xs font-semibold">PT WAN TEKNOLOGI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-full w-10 h-10 rounded-full bg-panel border border-border text-accent flex items-center justify-center hover:bg-accent hover:text-bg transition-all duration-300 z-10 shadow-lg">
+                    <i class="ri-arrow-left-s-line text-xl"></i>
+                </button>
+                <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-full w-10 h-10 rounded-full bg-panel border border-border text-accent flex items-center justify-center hover:bg-accent hover:text-bg transition-all duration-300 z-10 shadow-lg">
+                    <i class="ri-arrow-right-s-line text-xl"></i>
+                </button>
+
+                <!-- Dots Indicator -->
+                <div id="dotsContainer" class="flex justify-center gap-2 mt-8"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact" class="border-t border-border py-[50px] px-8">
+        <div class="flex flex-wrap justify-between gap-10 max-w-[1180px] mx-auto">
+            <div>
+                <h3 class="text-accent mb-2.5 text-xl">Zulfran</h3>
+                <p class="text-muted text-[13px] max-w-[240px] leading-[1.6] m-0">Working closely with your team to deliver Webflow builds that merge creativity, technical excellence, and long-term value.</p>
+            </div>
+            <div>
+                <div class="text-accent font-bold mb-3.5">Quick Link</div>
+                <a href="#whatYouGet" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Home</a>
+                <a href="#package" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Paket</a>
+                <a href="#testimoni" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Testimoni</a>
+                <a href="https://wa.me/6289662541617" target="_blank" rel="noopener noreferrer" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Kontak</a>
+            </div>
+            <div>
+                <div class="text-accent font-bold mb-3.5">Follow Me</div>
+                <div class="flex gap-2.5 mb-3.5">
+                    <a href="https://www.instagram.com/zoelfrann?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300" aria-label="Instagram">
+                        <svg class="w-4 h-4 fill-current text-fg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/username_anda" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300" aria-label="LinkedIn">
+                        <svg class="w-4 h-4 fill-current text-fg" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.behance.net/muhammalesmana1" target="_blank" rel="noopener noreferrer" class="social-dot w-8 h-8 rounded-full bg-panel border border-border flex items-center justify-center transition-all duration-300" aria-label="Behance">
+                        <svg class="w-4 h-4 fill-current text-fg" viewBox="0 0 24 24">
+                            <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.813 3-3.103 0-5.322-2.112-5.322-5.412 0-3.239 2.112-5.588 5.176-5.588 3.235 0 4.882 2.279 4.882 5.25 0 .426-.044.853-.088 1.062h-7.397c.074 1.485 1.235 2.397 2.706 2.397 1.397 0 2.118-.544 2.485-1.382l2.371.673zm-4.941-5.162c-.015-.985-.721-1.632-1.765-1.632-1.044 0-1.735.632-1.897 1.632h3.662zm-12.785 8.162h-6v-16h6.632c2.721 0 4.368 1.294 4.368 3.515 0 1.544-.809 2.662-2.059 3.162 1.618.471 2.559 1.765 2.559 3.529 0 2.662-1.926 5.794-5.5 5.794zm-3-13v3.838h3.088c1.324 0 2.059-.603 2.059-1.882 0-1.25-.794-1.956-2.059-1.956h-3.088zm0 6.162v4.162h3.338c1.471 0 2.309-.75 2.309-2.059 0-1.397-.897-2.103-2.309-2.103h-3.338z"/>
+                        </svg>
+                    </a>
+                </div>
+                <a href="#" class="footlink block text-muted text-[13.5px] no-underline transition-colors duration-300">email@email.com</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // fade in on entry (hides the black overlay shortly after load)
+        // fade in on entry
         window.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(() => {
                 const overlay = document.getElementById('pageTransition');
@@ -590,8 +800,35 @@
     </script>
 
     <script>
+        // navbar mobile toggle
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        navToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = navToggle.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.remove('ri-menu-3-line');
+                icon.classList.add('ri-close-line');
+            } else {
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-3-line');
+            }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                const icon = navToggle.querySelector('i');
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-3-line');
+            });
+        });
+    </script>
+
+    <script>
         // typewriting
-        const txt = "Pilih paket visualisasi 3D yang sesuai dengan kebutuhan proyekmu, dari eksplorasi konsep awal hingga presentasi final yang siap dipresentasikan ke klien."
+        const txt = " Pilih paket desain yang sesuai dengan kebutuhanmu, mulai dari desain grafis untuk branding dan promosi hingga visualisasi 3D berkualitas tinggi untuk menghadirkan konsep proyek secara realistis."
 
         const element = document.getElementById('typingTxt');
 
@@ -640,6 +877,131 @@
         })
 
         observer.observe(document.getElementById("whatYouGet"))
+    </script>
+
+    <!-- ====== CAROUSEL SCRIPT ====== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('testimonialTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('dotsContainer');
+
+            const slides = track.querySelectorAll('.testimonial-slide');
+            const totalSlides = slides.length;
+
+            let currentPage = 0;
+            let autoPlayInterval = null;
+
+            function getSlidesPerView() {
+                const width = window.innerWidth;
+                if (width >= 1024) return 3;
+                if (width >= 768) return 2;
+                return 1;
+            }
+
+            function getTotalPages() {
+                const spv = getSlidesPerView();
+                return Math.ceil(totalSlides / spv);
+            }
+
+            function goToPage(page) {
+                const spv = getSlidesPerView();
+                const maxPage = Math.ceil(totalSlides / spv) - 1;
+                currentPage = Math.max(0, Math.min(page, maxPage));
+
+                // Use the real rendered width of a slide + gap so the
+                // transform always matches the actual layout (no more
+                // stretched/overflowing cards).
+                const firstSlide = slides[0];
+                const slideRect = firstSlide.getBoundingClientRect();
+                const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+                const stepPx = (slideRect.width + gap) * spv;
+                const offsetPx = currentPage * stepPx;
+
+                track.style.transform = `translateX(-${offsetPx}px)`;
+                updateDots();
+            }
+
+            function updateDots() {
+                const spv = getSlidesPerView();
+                const totalPages = Math.ceil(totalSlides / spv);
+                dotsContainer.innerHTML = '';
+                
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('span');
+                    const isActive = i === currentPage;
+                    dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${isActive ? 'bg-accent w-8' : 'bg-border hover:bg-muted'}`;
+                    dot.dataset.page = i;
+                    dot.addEventListener('click', function() {
+                        goToPage(parseInt(this.dataset.page));
+                        resetAutoPlay();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    const spv = getSlidesPerView();
+                    const maxPage = Math.ceil(totalSlides / spv) - 1;
+                    if (currentPage >= maxPage) {
+                        goToPage(0);
+                    } else {
+                        goToPage(currentPage + 1);
+                    }
+                }, 5000);
+            }
+
+            function resetAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    startAutoPlay();
+                }
+            }
+
+            prevBtn.addEventListener('click', function() {
+                const spv = getSlidesPerView();
+                const maxPage = Math.ceil(totalSlides / spv) - 1;
+                if (currentPage === 0) {
+                    goToPage(maxPage);
+                } else {
+                    goToPage(currentPage - 1);
+                }
+                resetAutoPlay();
+            });
+
+            nextBtn.addEventListener('click', function() {
+                const spv = getSlidesPerView();
+                const maxPage = Math.ceil(totalSlides / spv) - 1;
+                if (currentPage >= maxPage) {
+                    goToPage(0);
+                } else {
+                    goToPage(currentPage + 1);
+                }
+                resetAutoPlay();
+            });
+
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    goToPage(currentPage);
+                }, 200);
+            });
+
+            goToPage(0);
+            startAutoPlay();
+
+            const container = track.parentElement;
+            container.addEventListener('mouseenter', function() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+            });
+            container.addEventListener('mouseleave', function() {
+                startAutoPlay();
+            });
+        });
     </script>
 </body>
 </html>
