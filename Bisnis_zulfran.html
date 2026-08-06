@@ -30,6 +30,10 @@
     </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 76px; /* offset supaya section tidak ketutup navbar sticky */
+        }
         body { font-family: 'Inter', sans-serif; background: #0C1E29; }
         .font-display { font-family: 'Space Grotesk', sans-serif; }
 
@@ -175,30 +179,51 @@
             transition: max-height .3s ease;
         }
         #mobileMenu.open {
-            max-height: 320px;
+            max-height: 360px;
         }
 
         .testimonial-slide {
             flex-shrink: 0;
+        }
+
+        /* Gallery Button Styles */
+        .gallery-btn {
+            transition: all 0.3s ease;
+        }
+        .gallery-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,255,21,0.25);
         }
     </style>
 </head>
 <body class="bg-bg m-0 p-0 overflow-x-hidden antialiased">
     <div id="pageTransition"></div>
 
-    <nav id="siteNav" class="sticky top-0 z-40 bg-bg/85 border-b border-border">
-        <div class="max-w-6xl mx-auto px-6 h-[76px] flex items-center justify-between">
+   <nav id="navbar" class="sticky top-0 z-40 bg-bg/85 border-b border-border">
+    <div class="max-w-6xl mx-auto px-6 h-[76px] grid grid-cols-2 md:grid-cols-3 items-center">
+        
+        <!-- Kiri: Logo -->
+        <div class="flex justify-start">
             <a href="#whatYouGet" class="font-display text-fg text-xl font-bold tracking-tight">
                 Zulfran<span class="text-accent">.</span>
             </a>
+        </div>
 
-            <div class="hidden md:flex items-center gap-9">
-                <a href="#whatYouGet" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Home</a>
-                <a href="#package" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Paket</a>
-                <a href="#testimoni" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Testimoni</a>
-                <a href="#contact" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Kontak</a>
-            </div>
+        <!-- Tengah: Menu Navigasi -->
+        <div class="hidden md:flex items-center justify-center gap-9">
+            <a href="#whatYouGet" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Home</a>
+            <a href="#package" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Paket</a>
+            <a href="#testimoni" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Testimoni</a>
+            <a href="#contact" class="navlink text-muted hover:text-fg text-sm font-medium transition-colors duration-200">Kontak</a>
+            <!-- Tombol Gallery di Navbar -->
+            <a href="gallery.html" class="inline-flex items-center gap-1.5 border-2 border-accent text-accent font-display font-semibold text-sm px-4 py-2 rounded-full transition-all duration-300 hover:bg-accent hover:text-bg gallery-btn">
+                <i class="ri-gallery-line"></i>
+                Gallery
+            </a>
+        </div>
 
+        <!-- Kanan: Tombol CTA & Mobile Toggle -->
+        <div class="flex items-center justify-end gap-2">
             <div class="hidden md:flex items-center gap-2">
                 <a id="navCtaBack" href="index.html" class="inline-flex items-center border border-accent text-accent font-display font-semibold text-sm px-5 py-2.5 rounded-full transition hover:bg-accent hover:text-bg">
                     Kembali ke Portfolio
@@ -208,18 +233,26 @@
                 </a>
             </div>
 
+            <!-- Hamburger Icon untuk Mobile -->
             <button id="navToggle" class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-border text-fg text-xl" aria-label="Buka menu">
                 <i class="ri-menu-3-line"></i>
             </button>
         </div>
+        
+    </div>
 
-        <div id="mobileMenu" class="md:hidden border-t border-border px-6">
-            <a href="#whatYouGet" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Home</a>
-            <a href="#package" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Paket</a>
-            <a href="#testimoni" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Testimoni</a>
-            <a href="#contact" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Kontak</a>
-        </div>
-    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden border-t border-border px-6">
+        <a href="#whatYouGet" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Home</a>
+        <a href="#package" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Paket</a>
+        <a href="#testimoni" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Testimoni</a>
+        <a href="#contact" class="block py-3 text-muted text-sm footlink transition-colors duration-300">Kontak</a>
+        <!-- Tombol Gallery di Mobile Menu -->
+        <a href="gallery.html" class="block py-3 text-accent text-sm font-semibold footlink transition-colors duration-300">
+            <i class="ri-gallery-line mr-2"></i>Gallery
+        </a>
+    </div>
+</nav>
 
     <section id="whatYouGet" class="bg-panel2 w-full min-h-screen py-16 md:py-24 flex items-center">
         <div class="max-w-4xl mx-auto flex flex-col items-center text-center px-6 gap-16">
@@ -244,6 +277,15 @@
                         <p class="font-display text-4xl sm:text-5xl font-bold text-accent">100%</p>
                         <p class="text-muted text-xs sm:text-sm uppercase tracking-widest mt-1">Kepuasan Klien</p>
                     </div>
+                </div>
+                
+                <!-- Tombol Gallery di Hero Section -->
+                <div class="mt-8">
+                    <a href="gallery.html" class="inline-flex items-center gap-3 bg-accent text-bg font-display font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,21,0.3)] gallery-btn">
+                        <i class="ri-gallery-line text-2xl"></i>
+                        Lihat Portfolio Gallery
+                        <i class="ri-arrow-right-line"></i>
+                    </a>
                 </div>
             </div>
 
@@ -436,7 +478,7 @@
         </div>
     </section>
 
-    <section id="package-design" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
+    <section id="package" class="bg-panel2 w-full min-h-screen py-16 md:py-24">
         <div class="max-w-6xl mx-auto flex flex-col text-left px-6 gap-4">
 
             <span class="text-accent font-display font-semibold tracking-widest text-sm uppercase">Pricing</span>
@@ -617,7 +659,7 @@
 
             <!-- Carousel Container -->
             <div class="relative mt-10">
-                <!-- Track (only this part clips, so the arrow buttons below aren't cut off) -->
+                <!-- Track -->
                 <div class="overflow-hidden">
                 <div id="testimonialTrack" class="flex transition-transform duration-500 ease-in-out gap-5">
 
@@ -764,6 +806,9 @@
                 <a href="#package" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Paket</a>
                 <a href="#testimoni" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Testimoni</a>
                 <a href="https://wa.me/6289662541617" target="_blank" rel="noopener noreferrer" class="footlink block text-muted text-[13.5px] mb-2 no-underline transition-colors duration-300">Kontak</a>
+                <a href="gallery.html" class="footlink block text-accent text-[13.5px] mb-2 no-underline transition-colors duration-300 font-semibold">
+                    <i class="ri-gallery-line mr-1"></i>Gallery
+                </a>
             </div>
             <div>
                 <div class="text-accent font-bold mb-3.5">Follow Me</div>
@@ -910,9 +955,6 @@
                 const maxPage = Math.ceil(totalSlides / spv) - 1;
                 currentPage = Math.max(0, Math.min(page, maxPage));
 
-                // Use the real rendered width of a slide + gap so the
-                // transform always matches the actual layout (no more
-                // stretched/overflowing cards).
                 const firstSlide = slides[0];
                 const slideRect = firstSlide.getBoundingClientRect();
                 const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;

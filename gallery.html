@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri Project</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#0C1E29',
+          panel: '#163545',
+          line: '#2a5a75',
+          txt: '#f5f6f8',
+          dim: '#9aaeb9',
+          accent: '#FFFF15',
+          accentdim: '#6B6B0A',
+        },
+        fontFamily: {
+          sans: ['Inter','sans-serif'],
+          serif: ['Fraunces','serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* modal transition helpers */
+  #lightbox { transition: opacity 280ms ease; }
+  #lightbox.hidden-lb { opacity: 0; pointer-events: none; }
+  #lightbox img { transition: transform 320ms cubic-bezier(.2,.8,.2,1); transform: scale(0.92); }
+  #lightbox.open img { transform: scale(1); }
+  .zoom-cursor { cursor: zoom-in; }
+</style>
+</head>
+<body class="m-0 bg-bg text-txt font-sans p-[4vw]">
+
+<header class="max-w-[1200px] mx-auto mb-12 flex justify-between items-end flex-wrap gap-4 border-b border-line pb-8">
+  <div>
+    <p class="text-accent text-[13px] tracking-[0.12em] uppercase font-semibold mb-1.5">Portfolio</p>
+    <h1 class="font-serif font-semibold text-[clamp(32px,5vw,52px)] leading-[1.05] m-0">Hasil project</h1>
+  </div>
+  <p class="text-dim text-sm max-w-[320px]">12 project asli — render interior/produk 3D, desain iklan, dan UI/UX. Klik foto untuk memperbesar dan melihat deskripsinya.</p>
+</header>
+
+<div class="max-w-[1200px] mx-auto columns-1 sm:columns-2 lg:columns-3 gap-7">
+
+  <!-- 01 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 16 / 9;"
+         onclick="openLightbox(this)"
+         data-title="Render Kamar Tidur"
+         data-desc="Visualisasi 3D kamar tidur dengan mezzanine dan cermin besar, lengkap dengan pencahayaan interior."
+         data-tag="Interior 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Interior 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.41.jpeg" alt="Render kamar tidur 3D">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">01</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Render Kamar Tidur</p>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 1 / 1;"
+         onclick="openLightbox(this)"
+         data-title='Render Isometrik Cafe "Cf.e"'
+         data-desc="Denah isometrik interior cafe dua lantai, lengkap dengan area bar, meja duduk, dan tangga kayu."
+         data-tag="Interior 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Interior 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (1).jpeg" alt="Render isometrik cafe">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">02</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Render Isometrik Cafe "Cf.e"</p>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 16 / 9;"
+         onclick="openLightbox(this)"
+         data-title="Render Dapur Modern"
+         data-desc="Visualisasi dapur bergaya industrial dengan island counter, tanaman gantung, dan cooker hood."
+         data-tag="Interior 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Interior 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42.jpeg" alt="Render dapur modern">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">03</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Render Dapur Modern</p>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 9 / 16;"
+         onclick="openLightbox(this)"
+         data-title='Render Produk "California Z"'
+         data-desc="Studio render botol parfum dengan pencahayaan dramatis dan latar bergaris untuk kesan premium."
+         data-tag="Product 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Product 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (3).jpeg" alt="Render botol parfum">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">04</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Render Produk "California Z"</p>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 16 / 9;"
+         onclick="openLightbox(this)"
+         data-title="Render Ruang Keluarga"
+         data-desc="Visualisasi ruang tamu dengan sofa kulit, TV panel kayu, dan tirai — nuansa hangat dan modern."
+         data-tag="Interior 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Interior 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (4).jpeg" alt="Render ruang tamu">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">05</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Render Ruang Keluarga</p>
+    </div>
+  </div>
+
+  <!-- 06 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 16 / 9;"
+         onclick="openLightbox(this)"
+         data-title="Studi Material Kaca"
+         data-desc="Eksplorasi shader kaca transparan pada berbagai bentuk gelas — martini, tumbler, dan wine glass."
+         data-tag="Product 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Product 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (5).jpeg" alt="Render gelas kaca">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">06</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Studi Material Kaca</p>
+    </div>
+  </div>
+
+  <!-- 07 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 1 / 1;"
+         onclick="openLightbox(this)"
+         data-title='Konten Promo "Bukber 30K"'
+         data-desc="Desain konten promo makanan untuk Instagram feed, dengan tipografi tebal dan foto produk."
+         data-tag="Social Media">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Social Media</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (6).jpeg" alt="Desain iklan promo bukber">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">07</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Konten Promo "Bukber 30K"</p>
+    </div>
+  </div>
+
+  <!-- 08 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 1 / 1;"
+         onclick="openLightbox(this)"
+         data-title='Konten Promo "Kejar Diskon Kilat"'
+         data-desc="Key visual campaign e-commerce dengan komposisi produk 3D-style dan CTA yang jelas."
+         data-tag="Social Media">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Social Media</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (7).jpeg" alt="Desain iklan Tokopedia diskon kilat">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">08</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Konten Promo "Kejar Diskon Kilat"</p>
+    </div>
+  </div>
+
+  <!-- 09 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 1600 / 1363;"
+         onclick="openLightbox(this)"
+         data-title="Alur UI Pendaftaran & Verifikasi"
+         data-desc="Rangkaian layar mobile untuk flow onboarding: daftar, verifikasi OTP, sampai halaman beranda."
+         data-tag="UI/UX">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">UI/UX</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (8).jpeg" alt="Mockup alur pendaftaran aplikasi">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">09</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Alur UI Pendaftaran & Verifikasi</p>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 16 / 9;"
+         onclick="openLightbox(this)"
+         data-title="Render Keranjang Buah"
+         data-desc="Still life 3D buah-buahan segar dalam keranjang anyaman di atas taplak kotak-kotak."
+         data-tag="Product 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Product 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42.jpeg" alt="Render keranjang buah">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">10</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Render Keranjang Buah</p>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 1 / 1;"
+         onclick="openLightbox(this)"
+         data-title='Konten Promo "Floridina Florida Orange"'
+         data-desc="Key visual iklan minuman jus jeruk dengan efek splash dinamis dan bingkai gaya feed Instagram."
+         data-tag="Social Media">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Social Media</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/foto3.webp" alt="Iklan Floridina Florida Orange">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">11</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Konten Promo "Floridina Florida Orange"</p>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="group bg-panel border border-line rounded-2xl overflow-hidden inline-block w-full break-inside-avoid mb-7 transition-all duration-300 hover:-translate-y-1 hover:border-accentdim hover:shadow-[0_16px_30px_rgba(0,0,0,0.35)]">
+    <div class="relative overflow-hidden bg-line zoom-cursor" style="aspect-ratio: 16 / 9;"
+         onclick="openLightbox(this)"
+         data-title="Render Dapur Industrial"
+         data-desc="Visualisasi dapur bergaya industrial dengan island bar kayu, rak terbuka, dan tanaman gantung di atas kabinet."
+         data-tag="Interior 3D">
+      <span class="absolute top-3 left-3 bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim">Interior 3D</span>
+      <img class="w-full h-full object-cover block saturate-[0.85] transition-transform duration-[400ms] group-hover:scale-[1.06]" src="asset/WhatsApp Image 2026-08-03 at 18.52.42 (2).jpeg" alt="Render dapur industrial dengan island bar">
+    </div>
+    <div class="pt-[1.1rem] px-5 pb-[1.4rem]">
+      <p class="font-serif text-dim text-[13px] mb-1.5">12</p>
+      <p class="font-serif text-[19px] font-semibold m-0">Render Dapur Industrial</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="max-w-[1200px] mx-auto mt-12 text-dim text-[13px] text-center border-t border-line pt-6">
+  12 project ditampilkan — klik foto mana pun untuk memperbesar dan membaca deskripsinya.
+</footer>
+
+<!-- Lightbox / modal -->
+<div id="lightbox" class="hidden-lb fixed inset-0 z-50 flex items-center justify-center p-6" style="background: rgba(6,15,21,0.88);" onclick="if(event.target===this) closeLightbox()">
+  <button onclick="closeLightbox()" class="absolute top-5 right-5 sm:top-8 sm:right-8 text-txt/80 hover:text-accent text-3xl leading-none w-10 h-10 flex items-center justify-center border border-line rounded-full">&times;</button>
+  <div class="max-w-[1000px] w-full max-h-[90vh] flex flex-col items-center gap-5">
+    <img id="lb-img" src="" alt="" class="max-h-[68vh] w-auto max-w-full object-contain rounded-xl border border-line">
+    <div class="text-center max-w-[640px]">
+      <span id="lb-tag" class="inline-block bg-black/[0.55] text-accent text-[11px] font-semibold tracking-[0.06em] uppercase px-2.5 py-1.5 rounded-full border border-accentdim mb-3"></span>
+      <p id="lb-title" class="font-serif text-[24px] font-semibold m-0 mb-2"></p>
+      <p id="lb-desc" class="text-dim text-[15px] leading-[1.6] m-0"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb-img').alt = img.alt;
+    document.getElementById('lb-title').textContent = el.dataset.title;
+    document.getElementById('lb-desc').textContent = el.dataset.desc;
+    document.getElementById('lb-tag').textContent = el.dataset.tag;
+    lb.classList.remove('hidden-lb');
+    requestAnimationFrame(() => lb.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.remove('open');
+    lb.classList.add('hidden-lb');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
