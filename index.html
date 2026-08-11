@@ -50,19 +50,18 @@
   #mobileNavbar { display: none; }
   #mobileMenuOverlay { display: none; }
 
-  .hamburger-btn { background: none; border: none; padding: 0; }
+  .hamburger-btn { background: none; border: none; padding: 0; align-items: center; }
   .hamburger-btn .line {
     display: block;
-    width: 26px;
+    width: 24px;
     height: 2px;
     background: #f5f6f8;
     border-radius: 2px;
     transition: transform .35s cubic-bezier(.65,0,.35,1), opacity .25s ease, width .25s ease;
   }
-  .hamburger-btn .line2 { width: 19px; align-self: flex-end; }
-  .hamburger-btn.active .line1 { transform: translateY(7px) rotate(45deg); }
+  .hamburger-btn.active .line1 { transform: translateY(8px) rotate(45deg); }
   .hamburger-btn.active .line2 { opacity: 0; }
-  .hamburger-btn.active .line3 { transform: translateY(-7px) rotate(-45deg); width: 26px; }
+  .hamburger-btn.active .line3 { transform: translateY(-8px) rotate(-45deg); }
 
   #mobileMenuOverlay {
     opacity: 0;
@@ -684,8 +683,8 @@ hoverFX('.btn-primary',
   el => { el.style.transform = 'translateY(-3px)'; el.style.boxShadow = '0 10px 24px rgba(255,255,21,.45)'; },
   el => { el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none'; });
 hoverFX('.btn-outline',
-  el => { el.style.transform = 'translateY(-3px)'; el.style.background = 'rgba(255,255,21,.15)'; },
-  el => { el.style.transform = 'translateY(0)'; el.style.background = 'rgba(255,255,21,.05)'; });
+  el => { el.style.transform = 'translateY(-3px)'; el.style.background = 'rgba(255,255,255,.15)'; },
+  el => { el.style.transform = 'translateY(0)'; el.style.background = 'rgba(255,255,255,.05)'; });
 hoverFX('.nav-item',
   el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(4px)'; el.style.background = '#1f445a'; } },
   el => { if (el.dataset.active !== 'true'){ el.style.transform = 'translateX(0)'; el.style.background = '#163545'; } });
@@ -926,16 +925,47 @@ navItems.forEach(item => {
   });
 });
 
-const navSpy = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting){
-      const idx = navSections.indexOf(entry.target);
-      if (idx !== -1) setActiveNav(navItems[idx]);
-    }
-  });
-}, { threshold: 0.4, rootMargin: '-20% 0px -40% 0px' });
+/* Scroll-based section highlighting.
+   IntersectionObserver dengan threshold besar tidak cocok untuk section
+   yang tingginya jauh melebihi tinggi viewport (About/Projects/FAQ),
+   jadi kita pakai referensi garis di viewport (offsetLine) dan pilih
+   section terakhir yang top-nya sudah melewati garis itu. */
+const SCROLL_SPY_OFFSET = 140; // jarak dari atas viewport (px), sesuaikan kalau perlu
 
-navSections.forEach(sec => navSpy.observe(sec));
+function updateActiveNavOnScroll(){
+  if (!navSections.length) return;
+  const refLine = window.scrollY + SCROLL_SPY_OFFSET;
+
+  let activeIdx = 0;
+  for (let i = 0; i < navSections.length; i++){
+    const top = navSections[i].getBoundingClientRect().top + window.scrollY;
+    if (top <= refLine) {
+      activeIdx = i;
+    } else {
+      break;
+    }
+  }
+
+  // kalau sudah scroll sampai (hampir) dasar halaman, paksa section terakhir aktif
+  const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+  if (nearBottom) activeIdx = navSections.length - 1;
+
+  const target = navItems[activeIdx];
+  if (target && target.dataset.active !== 'true') setActiveNav(target);
+}
+
+let scrollSpyTicking = false;
+window.addEventListener('scroll', () => {
+  if (scrollSpyTicking) return;
+  scrollSpyTicking = true;
+  requestAnimationFrame(() => {
+    updateActiveNavOnScroll();
+    scrollSpyTicking = false;
+  });
+}, { passive: true });
+
+window.addEventListener('load', updateActiveNavOnScroll);
+window.addEventListener('resize', updateActiveNavOnScroll);
 
 /* ---------- Mobile hamburger ---------- */
 const hamburgerBtn = document.getElementById('hamburgerBtn');
